@@ -63,13 +63,15 @@ class _MainScreenState extends State<MainScreen> with AutomaticKeepAliveClientMi
     _scrollController.addListener(_handleScroll);
     AuthHelper.isLoggedIn();
 
+    WidgetsBinding.instance.addPostFrameCallback((_) {
     HomeScreen.loadData(false).then((value) {
       Get.find<SplashController>().getReferBottomSheetStatus();
       if((Get.find<ProfileController>().userInfoModel?.isValidForDiscount??false) && Get.find<SplashController>().showReferBottomSheet) {
         _showReferBottomSheet();
       }
     });
-
+    });
+    
     if(!ResponsiveHelper.isWeb()) {
       Get.find<LocationController>().getZone(
         AddressHelper.getUserAddressFromSharedPref()?.latitude??'',

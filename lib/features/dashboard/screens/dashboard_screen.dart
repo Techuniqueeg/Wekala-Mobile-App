@@ -47,7 +47,12 @@ class DashboardScreen extends StatefulWidget {
   final int pageIndex;
   final int? rideOfferIndex;
   final bool fromSplash;
-  const DashboardScreen({super.key, required this.pageIndex, this.fromSplash = false, this.rideOfferIndex = 0});
+  const DashboardScreen({
+    super.key,
+    required this.pageIndex,
+    this.fromSplash = false,
+    this.rideOfferIndex = 0,
+  });
 
   @override
   DashboardScreenState createState() => DashboardScreenState();
@@ -75,7 +80,9 @@ class DashboardScreenState extends State<DashboardScreen> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    final Animation<double>? secondary = ModalRoute.of(context)?.secondaryAnimation;
+    final Animation<double>? secondary = ModalRoute.of(
+      context,
+    )?.secondaryAnimation;
     if (secondary != _secondaryAnimation) {
       _secondaryAnimation?.removeListener(_onCoverChanged);
       _secondaryAnimation = secondary;
@@ -95,16 +102,22 @@ class DashboardScreenState extends State<DashboardScreen> {
   // Home tab (index 0) is MainScreen, the only screen that paints a dynamic
   // status-bar tint. Keep the overlay active only then.
   void _updateHomeStatusBarTint() {
-    HomeStatusBarTint.active.value = mounted && !ResponsiveHelper.isWeb() && _pageIndex == 0 && !_coveredByOpaque;
+    HomeStatusBarTint.active.value =
+        mounted &&
+        !ResponsiveHelper.isWeb() &&
+        _pageIndex == 0 &&
+        !_coveredByOpaque;
   }
 
   bool _handleScrollNotification(ScrollNotification notification) {
     // Only react to vertical scrolls — horizontal carousels (e.g. banner/store
     // sliders) also bubble UserScrollNotifications, and should not hide the navbar.
-    if (notification is UserScrollNotification && notification.metrics.axis == Axis.vertical) {
+    if (notification is UserScrollNotification &&
+        notification.metrics.axis == Axis.vertical) {
       if (notification.direction == ScrollDirection.reverse && _navBarVisible) {
         setState(() => _navBarVisible = false);
-      } else if (notification.direction == ScrollDirection.forward && !_navBarVisible) {
+      } else if (notification.direction == ScrollDirection.forward &&
+          !_navBarVisible) {
         setState(() => _navBarVisible = true);
       }
     }
@@ -126,29 +139,55 @@ class DashboardScreenState extends State<DashboardScreen> {
     _isLogin = AuthHelper.isLoggedIn();
 
     _showRegistrationSuccessBottomSheet();
-    if(!_isLogin && Get.find<SplashController>().showLoginSuggestion() && (GetPlatform.isAndroid || GetPlatform.isIOS)) {
+    if (!_isLogin &&
+        Get.find<SplashController>().showLoginSuggestion() &&
+        (GetPlatform.isAndroid || GetPlatform.isIOS)) {
       Future.delayed(const Duration(milliseconds: 3000), () {
         _showLoginSuggestionBottomSheet();
       });
     }
 
-    if(_isLogin){
-      if(Get.find<SplashController>().configModel!.loyaltyPointStatus == 1 && Get.find<AuthController>().getEarningPint().isNotEmpty
-          && !ResponsiveHelper.isDesktop(Get.context)){
-        Future.delayed(const Duration(seconds: 1), () => showAnimatedDialog(Get.context!, const CongratulationDialogue()));
+    if (_isLogin) {
+      if (Get.find<SplashController>().configModel!.loyaltyPointStatus == 1 &&
+          Get.find<AuthController>().getEarningPint().isNotEmpty &&
+          !ResponsiveHelper.isDesktop(Get.context)) {
+        Future.delayed(
+          const Duration(seconds: 1),
+          () =>
+              showAnimatedDialog(Get.context!, const CongratulationDialogue()),
+        );
       }
       suggestAddressBottomSheet();
       // Get.find<OrderController>().getRunningOrders(1, fromDashboard: true);
       Get.find<OrderController>().getDashboardOrders();
 
       Get.find<SplashController>().getPaymentIncompleteSheetStatus();
-      if((Get.find<SplashController>().showPaymentIncompleteBottomSheet && !GetPlatform.isWeb) || (GetPlatform.isWeb && !Get.find<SplashController>().getPaymentIncompleteSheetStatus())) {
-        Get.find<OrderController>().getPaymentFailedDetails(null).then((paymentModel) {
+      if ((Get.find<SplashController>().showPaymentIncompleteBottomSheet &&
+              !GetPlatform.isWeb) ||
+          (GetPlatform.isWeb &&
+              !Get.find<SplashController>()
+                  .getPaymentIncompleteSheetStatus())) {
+        Get.find<OrderController>().getPaymentFailedDetails(null).then((
+          paymentModel,
+        ) {
           if (paymentModel != null) {
-            if(ResponsiveHelper.isDesktop(Get.context)) {
-              Get.dialog(Center(child: PaymentIncompleteBottomSheet(paymentModel: paymentModel, fromHome: true)));
+            if (ResponsiveHelper.isDesktop(Get.context)) {
+              Get.dialog(
+                Center(
+                  child: PaymentIncompleteBottomSheet(
+                    paymentModel: paymentModel,
+                    fromHome: true,
+                  ),
+                ),
+              );
             } else {
-              Get.bottomSheet(PaymentIncompleteBottomSheet(paymentModel: paymentModel, fromHome: true), isScrollControlled: true);
+              Get.bottomSheet(
+                PaymentIncompleteBottomSheet(
+                  paymentModel: paymentModel,
+                  fromHome: true,
+                ),
+                isScrollControlled: true,
+              );
             }
           }
         });
@@ -177,36 +216,58 @@ class DashboardScreenState extends State<DashboardScreen> {
   @override
   void dispose() {
     _secondaryAnimation?.removeListener(_onCoverChanged);
-    HomeStatusBarTint.active.value = false;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      HomeStatusBarTint.active.value = false;
+    });
+
     super.dispose();
   }
 
   void _showRegistrationSuccessBottomSheet() {
-    bool canShowBottomSheet = Get.find<HomeController>().getRegistrationSuccessfulSharedPref();
-    if(canShowBottomSheet) {
+    bool canShowBottomSheet = Get.find<HomeController>()
+        .getRegistrationSuccessfulSharedPref();
+    if (canShowBottomSheet) {
       Future.delayed(const Duration(seconds: 1), () {
-        ResponsiveHelper.isDesktop(Get.context) ? Get.dialog(const Dialog(child: StoreRegistrationSuccessBottomSheet())).then((value) {
-          Get.find<HomeController>().saveRegistrationSuccessfulSharedPref(false);
-          Get.find<HomeController>().saveIsStoreRegistrationSharedPref(false);
-          setState(() {});
-        }) : showModalBottomSheet(
-          context: Get.context!, isScrollControlled: true, backgroundColor: Colors.transparent,
-          builder: (con) => const StoreRegistrationSuccessBottomSheet(),
-        ).then((value) {
-          Get.find<HomeController>().saveRegistrationSuccessfulSharedPref(false);
-          Get.find<HomeController>().saveIsStoreRegistrationSharedPref(false);
-          setState(() {});
-        });
+        ResponsiveHelper.isDesktop(Get.context)
+            ? Get.dialog(
+                const Dialog(child: StoreRegistrationSuccessBottomSheet()),
+              ).then((value) {
+                Get.find<HomeController>().saveRegistrationSuccessfulSharedPref(
+                  false,
+                );
+                Get.find<HomeController>().saveIsStoreRegistrationSharedPref(
+                  false,
+                );
+                setState(() {});
+              })
+            : showModalBottomSheet(
+                context: Get.context!,
+                isScrollControlled: true,
+                backgroundColor: Colors.transparent,
+                builder: (con) => const StoreRegistrationSuccessBottomSheet(),
+              ).then((value) {
+                Get.find<HomeController>().saveRegistrationSuccessfulSharedPref(
+                  false,
+                );
+                Get.find<HomeController>().saveIsStoreRegistrationSharedPref(
+                  false,
+                );
+                setState(() {});
+              });
       });
     }
   }
 
   Future<void> suggestAddressBottomSheet() async {
     active = await Get.find<LocationController>().checkLocationActive();
-    if(widget.fromSplash && Get.find<LocationController>().showLocationSuggestion && active) {
+    if (widget.fromSplash &&
+        Get.find<LocationController>().showLocationSuggestion &&
+        active) {
       Future.delayed(const Duration(seconds: 1), () {
         showModalBottomSheet(
-          context: Get.context!, isScrollControlled: true, backgroundColor: Colors.transparent,
+          context: Get.context!,
+          isScrollControlled: true,
+          backgroundColor: Colors.transparent,
           builder: (con) => const AddressBottomSheetWidget(),
         ).then((value) {
           Get.find<LocationController>().showSuggestedLocation(false);
@@ -238,24 +299,33 @@ class DashboardScreenState extends State<DashboardScreen> {
             } else if (splashController.selectedModuleIndex != 0) {
               splashController.selectHomeModule();
             } else {
-              if(!ResponsiveHelper.isDesktop(context) && Get.find<SplashController>().module != null && Get.find<SplashController>().configModel!.module == null && splashController.moduleList != null && splashController.moduleList!.length != 1) {
+              if (!ResponsiveHelper.isDesktop(context) &&
+                  Get.find<SplashController>().module != null &&
+                  Get.find<SplashController>().configModel!.module == null &&
+                  splashController.moduleList != null &&
+                  splashController.moduleList!.length != 1) {
                 splashController.removeModule();
                 Get.find<StoreController>().resetStoreData();
-              }else {
-                if(_canExit) {
+              } else {
+                if (_canExit) {
                   if (GetPlatform.isAndroid) {
                     SystemNavigator.pop();
                   } else if (GetPlatform.isIOS) {
                     exit(0);
                   }
-                }else {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text('back_press_again_to_exit'.tr, style: const TextStyle(color: Colors.white)),
-                    behavior: SnackBarBehavior.floating,
-                    backgroundColor: Colors.green,
-                    duration: const Duration(seconds: 2),
-                    margin: const EdgeInsets.all(Dimensions.paddingSizeSmall),
-                  ));
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        'back_press_again_to_exit'.tr,
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                      behavior: SnackBarBehavior.floating,
+                      backgroundColor: Colors.green,
+                      duration: const Duration(seconds: 2),
+                      margin: const EdgeInsets.all(Dimensions.paddingSizeSmall),
+                    ),
+                  );
                   _canExit = true;
                   Timer(const Duration(seconds: 2), () {
                     _canExit = false;
@@ -266,232 +336,350 @@ class DashboardScreenState extends State<DashboardScreen> {
           },
           child: GetBuilder<OrderController>(
             builder: (orderController) {
-              List<OrderData> runningOrder = orderController.ongoingOrderModel != null ? orderController.ongoingOrderModel!.data! : [];
+              List<OrderData> runningOrder =
+                  orderController.ongoingOrderModel != null
+                  ? orderController.ongoingOrderModel!.data!
+                  : [];
 
               return SafeArea(
-                top: false, bottom: GetPlatform.isAndroid,
+                top: false,
+                bottom: GetPlatform.isAndroid,
                 child: Scaffold(
                   key: _scaffoldKey,
-                  floatingActionButton: _pageIndex == 0 ? GetBuilder<FlashSaleController>(builder: (flashSaleController) {
-                    // Lift the FAB by the banner's height while the promo is shown so
-                    // they never overlap.
-                    final double promoOffset = _shouldShowNavbarPromo(flashSaleController, splashController) ? _kPromoBannerReservedHeight : 0;
-                    return IgnorePointer(
-                      ignoring: !_navBarVisible,
-                      child: AnimatedScale(
-                        scale: _navBarVisible ? 1.0 : 0.0,
-                        duration: const Duration(milliseconds: 220),
-                        curve: Curves.easeOutBack,
-                        child: AnimatedOpacity(
-                          opacity: _navBarVisible ? 1.0 : 0.0,
-                          duration: const Duration(milliseconds: 180),
-                          curve: Curves.easeOut,
-                          child: _HomeFloatingActionButton(splashController: splashController, extraBottomOffset: promoOffset),
-                        ),
-                      ),
-                    );
-                  }) : null,
-                  body: ExpandableBottomSheet(
-                    background: Stack(children: [
-                      NotificationListener<ScrollNotification>(
-                        onNotification: _handleScrollNotification,
-                        child: PageView.builder(
-                          controller: _pageController,
-                          itemCount: _screens.length,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemBuilder: (context, index) {
-                            return _screens[index];
-                          },
-                        ),
-                      ),
-
-                      // Card-color → transparent fade behind the floating navbar, so
-                      // content scrolling underneath fades out at the bottom. Slides
-                      // away together with the navbar when scrolling down.
-                      ResponsiveHelper.isDesktop(context) || keyboardVisible ? const SizedBox() : Positioned(
-                        bottom: 0, left: 0, right: 0,
-                        child: IgnorePointer(
-                          child: AnimatedSlide(
-                            offset: _navBarVisible ? Offset.zero : const Offset(0, 1),
-                            duration: const Duration(milliseconds: 250),
-                            curve: Curves.easeInOut,
-                            child: Container(
-                              height: 40,
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  begin: Alignment.bottomCenter,
-                                  end: Alignment.topCenter,
-                                  colors: [
-                                    Theme.of(context).cardColor,
-                                    Theme.of(context).cardColor.withValues(alpha: 0.0),
-                                  ],
+                  floatingActionButton: _pageIndex == 0
+                      ? GetBuilder<FlashSaleController>(
+                          builder: (flashSaleController) {
+                            // Lift the FAB by the banner's height while the promo is shown so
+                            // they never overlap.
+                            final double promoOffset =
+                                _shouldShowNavbarPromo(
+                                  flashSaleController,
+                                  splashController,
+                                )
+                                ? _kPromoBannerReservedHeight
+                                : 0;
+                            return IgnorePointer(
+                              ignoring: !_navBarVisible,
+                              child: AnimatedScale(
+                                scale: _navBarVisible ? 1.0 : 0.0,
+                                duration: const Duration(milliseconds: 220),
+                                curve: Curves.easeOutBack,
+                                child: AnimatedOpacity(
+                                  opacity: _navBarVisible ? 1.0 : 0.0,
+                                  duration: const Duration(milliseconds: 180),
+                                  curve: Curves.easeOut,
+                                  child: _HomeFloatingActionButton(
+                                    splashController: splashController,
+                                    extraBottomOffset: promoOffset,
+                                  ),
                                 ),
                               ),
-                            ),
+                            );
+                          },
+                        )
+                      : null,
+                  body: ExpandableBottomSheet(
+                    background: Stack(
+                      children: [
+                        NotificationListener<ScrollNotification>(
+                          onNotification: _handleScrollNotification,
+                          child: PageView.builder(
+                            controller: _pageController,
+                            itemCount: _screens.length,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemBuilder: (context, index) {
+                              return _screens[index];
+                            },
                           ),
                         ),
-                      ),
 
-                      ResponsiveHelper.isDesktop(context) || keyboardVisible ? const SizedBox() : Positioned(
-                        bottom: Dimensions.paddingSizeDefault,
-                        left: Dimensions.paddingSizeDefault,
-                        right: Dimensions.paddingSizeDefault,
-                        child: IgnorePointer(
-                          ignoring: !_navBarVisible,
-                          child: AnimatedSlide(
-                            offset: _navBarVisible ? Offset.zero : const Offset(0, 2),
-                            duration: const Duration(milliseconds: 250),
-                            curve: Curves.easeInOut,
-                            child: Stack(alignment: Alignment.bottomCenter, children: [
-                              // Banner tucked behind the pill: a bottom padding equal to
-                              // (pill height − overlap) sizes the Stack so the banner is
-                              // fully laid out (and tappable), while its empty bottom slides
-                              // under the navbar for a no-gap overlap.
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: _kNavPillHeight - _kPromoOverlap),
-                                child: _buildNavbarPromo(context, splashController),
-                              ),
-                              Container(
-                              height: 62,
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).cardColor,
-                            borderRadius: BorderRadius.circular(50),
-                            boxShadow: [BoxShadow(
-                              color: Colors.black.withValues(alpha: .15),
-                              blurRadius: 5, spreadRadius: 1, offset: const Offset(0,2),
-                            )],
-                          ),
-                          clipBehavior: Clip.antiAlias,
-                          // Transparent Material so the InkWell ripples paint ON the
-                          // pill (above its opaque cardColor fill) instead of behind it,
-                          // clipped to the pill shape by the Container's antiAlias clip.
-                          child: Material(
-                            type: MaterialType.transparency,
-                            child: LayoutBuilder(
-                            builder: (context, constraints) {
-                              const indicatorWidth = 36.0;
-                              const indicatorHeight = 4.0;
-                              final itemWidth = constraints.maxWidth / 4;
-                              final selectedSlot = _pageIndex >= 1 && _pageIndex <= 4 ? _pageIndex - 1 : -1;
-                              final indicatorLeft = selectedSlot == -1
-                                  ? -indicatorWidth
-                                  : (itemWidth * selectedSlot) + (itemWidth - indicatorWidth) / 2;
-
-                              return Stack(
-                                clipBehavior: Clip.none,
-                                children: [
-                                  AnimatedPositioned(
-                                    duration: const Duration(milliseconds: 280),
-                                    curve: Curves.easeOutCubic,
-                                    top: 0,
-                                    left: indicatorLeft,
-                                    width: indicatorWidth,
-                                    height: indicatorHeight,
-                                    child: AnimatedOpacity(
-                                      duration: const Duration(milliseconds: 180),
-                                      opacity: selectedSlot == -1 ? 0 : 1,
-                                      child: DecoratedBox(
-                                        decoration: BoxDecoration(
-                                          color: Theme.of(context).primaryColor,
-                                          borderRadius: const BorderRadius.vertical(
-                                            bottom: Radius.circular(8),
-                                          ),
-                                          // boxShadow: [BoxShadow(
-                                          //   color: Colors.black.withValues(alpha: .15),
-                                          //   blurRadius: 8, spreadRadius: 0, offset: const Offset(0, 2),
-                                          // )],
+                        // Card-color → transparent fade behind the floating navbar, so
+                        // content scrolling underneath fades out at the bottom. Slides
+                        // away together with the navbar when scrolling down.
+                        ResponsiveHelper.isDesktop(context) || keyboardVisible
+                            ? const SizedBox()
+                            : Positioned(
+                                bottom: 0,
+                                left: 0,
+                                right: 0,
+                                child: IgnorePointer(
+                                  child: AnimatedSlide(
+                                    offset: _navBarVisible
+                                        ? Offset.zero
+                                        : const Offset(0, 1),
+                                    duration: const Duration(milliseconds: 250),
+                                    curve: Curves.easeInOut,
+                                    child: Container(
+                                      height: 40,
+                                      decoration: BoxDecoration(
+                                        gradient: LinearGradient(
+                                          begin: Alignment.bottomCenter,
+                                          end: Alignment.topCenter,
+                                          colors: [
+                                            Theme.of(context).cardColor,
+                                            Theme.of(
+                                              context,
+                                            ).cardColor.withValues(alpha: 0.0),
+                                          ],
                                         ),
                                       ),
                                     ),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 5),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
+                                ),
+                              ),
+
+                        ResponsiveHelper.isDesktop(context) || keyboardVisible
+                            ? const SizedBox()
+                            : Positioned(
+                                bottom: Dimensions.paddingSizeDefault,
+                                left: Dimensions.paddingSizeDefault,
+                                right: Dimensions.paddingSizeDefault,
+                                child: IgnorePointer(
+                                  ignoring: !_navBarVisible,
+                                  child: AnimatedSlide(
+                                    offset: _navBarVisible
+                                        ? Offset.zero
+                                        : const Offset(0, 2),
+                                    duration: const Duration(milliseconds: 250),
+                                    curve: Curves.easeInOut,
+                                    child: Stack(
+                                      alignment: Alignment.bottomCenter,
                                       children: [
-                                        _FoodModuleBottomNavigationItem(
-                                          label: 'offers'.tr,
-                                          icon: Images.offersIcon,
-                                          selectedIcon: Images.offersIconSolid,
-                                          isSelected: _pageIndex == 1,
-                                          onTap: ()=> _setPage(1),
+                                        // Banner tucked behind the pill: a bottom padding equal to
+                                        // (pill height − overlap) sizes the Stack so the banner is
+                                        // fully laid out (and tappable), while its empty bottom slides
+                                        // under the navbar for a no-gap overlap.
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                            bottom:
+                                                _kNavPillHeight -
+                                                _kPromoOverlap,
+                                          ),
+                                          child: _buildNavbarPromo(
+                                            context,
+                                            splashController,
+                                          ),
                                         ),
-                                        _FoodModuleBottomNavigationItem(
-                                          label: 'orders'.tr,
-                                          icon: Images.orderIcon,
-                                          selectedIcon: Images.orderIconSolid,
-                                          isSelected: _pageIndex == 2,
-                                          onTap: () => _setPage(2),
-                                        ),
-                                        _FoodModuleBottomNavigationItem(
-                                          label: 'favourite'.tr,
-                                          icon: Images.heartIcon,
-                                          selectedIcon: Images.heartIconSolid,
-                                          isSelected: _pageIndex == 3,
-                                          onTap: () => _setPage(3),
-                                        ),
-                                        _FoodModuleBottomNavigationItem(
-                                          label: 'profile'.tr,
-                                          icon: '',
-                                          selectedIcon: '',
-                                          isProfile: true,
-                                          isSelected: _pageIndex == 4,
-                                          onTap: () => _setPage(4),
+                                        Container(
+                                          height: 62,
+                                          decoration: BoxDecoration(
+                                            color: Theme.of(context).cardColor,
+                                            borderRadius: BorderRadius.circular(
+                                              50,
+                                            ),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Colors.black.withValues(
+                                                  alpha: .15,
+                                                ),
+                                                blurRadius: 5,
+                                                spreadRadius: 1,
+                                                offset: const Offset(0, 2),
+                                              ),
+                                            ],
+                                          ),
+                                          clipBehavior: Clip.antiAlias,
+                                          // Transparent Material so the InkWell ripples paint ON the
+                                          // pill (above its opaque cardColor fill) instead of behind it,
+                                          // clipped to the pill shape by the Container's antiAlias clip.
+                                          child: Material(
+                                            type: MaterialType.transparency,
+                                            child: LayoutBuilder(
+                                              builder: (context, constraints) {
+                                                const indicatorWidth = 36.0;
+                                                const indicatorHeight = 4.0;
+                                                final itemWidth =
+                                                    constraints.maxWidth / 4;
+                                                final selectedSlot =
+                                                    _pageIndex >= 1 &&
+                                                        _pageIndex <= 4
+                                                    ? _pageIndex - 1
+                                                    : -1;
+                                                final indicatorLeft =
+                                                    selectedSlot == -1
+                                                    ? -indicatorWidth
+                                                    : (itemWidth *
+                                                              selectedSlot) +
+                                                          (itemWidth -
+                                                                  indicatorWidth) /
+                                                              2;
+
+                                                return Stack(
+                                                  clipBehavior: Clip.none,
+                                                  children: [
+                                                    AnimatedPositioned(
+                                                      duration: const Duration(
+                                                        milliseconds: 280,
+                                                      ),
+                                                      curve:
+                                                          Curves.easeOutCubic,
+                                                      top: 0,
+                                                      left: indicatorLeft,
+                                                      width: indicatorWidth,
+                                                      height: indicatorHeight,
+                                                      child: AnimatedOpacity(
+                                                        duration:
+                                                            const Duration(
+                                                              milliseconds: 180,
+                                                            ),
+                                                        opacity:
+                                                            selectedSlot == -1
+                                                            ? 0
+                                                            : 1,
+                                                        child: DecoratedBox(
+                                                          decoration: BoxDecoration(
+                                                            color: Theme.of(
+                                                              context,
+                                                            ).primaryColor,
+                                                            borderRadius:
+                                                                const BorderRadius.vertical(
+                                                                  bottom:
+                                                                      Radius.circular(
+                                                                        8,
+                                                                      ),
+                                                                ),
+                                                            // boxShadow: [BoxShadow(
+                                                            //   color: Colors.black.withValues(alpha: .15),
+                                                            //   blurRadius: 8, spreadRadius: 0, offset: const Offset(0, 2),
+                                                            // )],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                            top: 5,
+                                                          ),
+                                                      child: Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          _FoodModuleBottomNavigationItem(
+                                                            label: 'offers'.tr,
+                                                            icon: Images
+                                                                .offersIcon,
+                                                            selectedIcon: Images
+                                                                .offersIconSolid,
+                                                            isSelected:
+                                                                _pageIndex == 1,
+                                                            onTap: () =>
+                                                                _setPage(1),
+                                                          ),
+                                                          _FoodModuleBottomNavigationItem(
+                                                            label: 'orders'.tr,
+                                                            icon: Images
+                                                                .orderIcon,
+                                                            selectedIcon: Images
+                                                                .orderIconSolid,
+                                                            isSelected:
+                                                                _pageIndex == 2,
+                                                            onTap: () =>
+                                                                _setPage(2),
+                                                          ),
+                                                          _FoodModuleBottomNavigationItem(
+                                                            label:
+                                                                'favourite'.tr,
+                                                            icon: Images
+                                                                .heartIcon,
+                                                            selectedIcon: Images
+                                                                .heartIconSolid,
+                                                            isSelected:
+                                                                _pageIndex == 3,
+                                                            onTap: () =>
+                                                                _setPage(3),
+                                                          ),
+                                                          _FoodModuleBottomNavigationItem(
+                                                            label: 'profile'.tr,
+                                                            icon: '',
+                                                            selectedIcon: '',
+                                                            isProfile: true,
+                                                            isSelected:
+                                                                _pageIndex == 4,
+                                                            onTap: () =>
+                                                                _setPage(4),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            ),
+                                          ),
                                         ),
                                       ],
                                     ),
                                   ),
-                                ],
-                              );
-                            },
-                          ),
-                          ),
-                        ),
-                            ]),
-                          ),
-                        ),
-                      ),
-                    ]),
+                                ),
+                              ),
+                      ],
+                    ),
 
-                    persistentContentHeight: (widget.fromSplash && Get.find<LocationController>().showLocationSuggestion && active) ? 0 : GetPlatform.isIOS ? 110 : 100,
+                    persistentContentHeight:
+                        (widget.fromSplash &&
+                            Get.find<LocationController>()
+                                .showLocationSuggestion &&
+                            active)
+                        ? 0
+                        : GetPlatform.isIOS
+                        ? 110
+                        : 100,
 
                     onIsContractedCallback: () {
-                      if(!orderController.showOneOrder) {
+                      if (!orderController.showOneOrder) {
                         orderController.showOrders();
                       }
                     },
                     onIsExtendedCallback: () {
-                      if(orderController.showOneOrder) {
+                      if (orderController.showOneOrder) {
                         orderController.showOrders();
                       }
                     },
 
                     enableToggle: true,
 
-                    expandableContent: (widget.fromSplash && Get.find<LocationController>().showLocationSuggestion && active && !ResponsiveHelper.isDesktop(context)) ?  const SizedBox()
-                    : (ResponsiveHelper.isDesktop(context) || !_isLogin || orderController.ongoingOrderModel == null
-                    || orderController.ongoingOrderModel!.data!.isEmpty || !orderController.showBottomSheet) ? const SizedBox()
-                    : Dismissible(
-                      key: UniqueKey(),
-                      onDismissed: (direction) {
-                        if(orderController.showBottomSheet){
-                          orderController.showRunningOrders();
-                        }
-                      },
-                      child: RunningOrderViewWidget(reversOrder: runningOrder, onOrderTap: () {
-                        _setPage(2);
-                        if(orderController.showBottomSheet){
-                          orderController.showRunningOrders();
-                        }
-                      }),
-                    ),
+                    expandableContent:
+                        (widget.fromSplash &&
+                            Get.find<LocationController>()
+                                .showLocationSuggestion &&
+                            active &&
+                            !ResponsiveHelper.isDesktop(context))
+                        ? const SizedBox()
+                        : (ResponsiveHelper.isDesktop(context) ||
+                              !_isLogin ||
+                              orderController.ongoingOrderModel == null ||
+                              orderController
+                                  .ongoingOrderModel!
+                                  .data!
+                                  .isEmpty ||
+                              !orderController.showBottomSheet)
+                        ? const SizedBox()
+                        : Dismissible(
+                            key: UniqueKey(),
+                            onDismissed: (direction) {
+                              if (orderController.showBottomSheet) {
+                                orderController.showRunningOrders();
+                              }
+                            },
+                            child: RunningOrderViewWidget(
+                              reversOrder: runningOrder,
+                              onOrderTap: () {
+                                _setPage(2);
+                                if (orderController.showBottomSheet) {
+                                  orderController.showRunningOrders();
+                                }
+                              },
+                            ),
+                          ),
                   ),
                 ),
               );
-            }
+            },
           ),
         );
-      }
+      },
     );
   }
 
@@ -513,7 +701,8 @@ class DashboardScreenState extends State<DashboardScreen> {
   /// Switches the enclosing dashboard to [pageIndex] from any descendant context.
   /// Returns true when a [DashboardScreen] ancestor was found and switched.
   static bool switchToTab(BuildContext context, int pageIndex) {
-    final DashboardScreenState? state = context.findAncestorStateOfType<DashboardScreenState>();
+    final DashboardScreenState? state = context
+        .findAncestorStateOfType<DashboardScreenState>();
     if (state == null) {
       return false;
     }
@@ -531,69 +720,88 @@ class DashboardScreenState extends State<DashboardScreen> {
   // True while the active module's flash sale is live (grocery/shop only).
   bool _isFlashOngoing(FlashSaleController flashSaleController) {
     final flashSaleModel = flashSaleController.flashSaleModel;
-    return flashSaleModel != null
-        && (flashSaleModel.activeProducts?.isNotEmpty ?? false)
-        && flashSaleController.duration != null
-        && flashSaleController.duration!.inSeconds > 1;
+    return flashSaleModel != null &&
+        (flashSaleModel.activeProducts?.isNotEmpty ?? false) &&
+        flashSaleController.duration != null &&
+        flashSaleController.duration!.inSeconds > 1;
   }
 
   // Whether the promo banner should currently be visible: on the Home tab, not yet
   // dismissed for this module, and there's something to promote — an ongoing flash
   // sale OR free delivery (so food/pharmacy, which have no flash sale, still show it).
-  bool _shouldShowNavbarPromo(FlashSaleController flashSaleController, SplashController splashController) {
-    if (_pageIndex != 0 || !Get.find<HomeController>().isFlashPromoVisible(splashController.module?.id)) {
+  bool _shouldShowNavbarPromo(
+    FlashSaleController flashSaleController,
+    SplashController splashController,
+  ) {
+    if (_pageIndex != 0 ||
+        !Get.find<HomeController>().isFlashPromoVisible(
+          splashController.module?.id,
+        )) {
       return false;
     }
     // Rental module has no flash sale / free-delivery promos — never show the banner.
     if (splashController.module?.moduleType == AppConstants.taxi) {
       return false;
     }
-    return _isFlashOngoing(flashSaleController) || splashController.module?.freeDelivery == 1;
+    return _isFlashOngoing(flashSaleController) ||
+        splashController.module?.freeDelivery == 1;
   }
 
   // Promo banner shown above the navbar (home tab only, dismissable per module).
   // Rotates a flash-deal item (only while a sale is ongoing) and a free-delivery
   // item (when the module offers it) — so modules without flash sale still show it.
-  Widget _buildNavbarPromo(BuildContext context, SplashController splashController) {
-    return GetBuilder<FlashSaleController>(builder: (flashSaleController) {
-      if (!_shouldShowNavbarPromo(flashSaleController, splashController)) {
-        return const SizedBox.shrink();
-      }
+  Widget _buildNavbarPromo(
+    BuildContext context,
+    SplashController splashController,
+  ) {
+    return GetBuilder<FlashSaleController>(
+      builder: (flashSaleController) {
+        if (!_shouldShowNavbarPromo(flashSaleController, splashController)) {
+          return const SizedBox.shrink();
+        }
 
-      final List<PromoBannerItem> promos = [
-        if (_isFlashOngoing(flashSaleController))
-          PromoBannerItem(
-            title: 'hurry_up_flash_deal_ongoing'.tr,
-            subtitle: 'grab_best_price_for_your_order'.tr,
-            image: Images.flashSaleDashboard,
-            accent: const Color(0xFFE2572B),
-          ),
-        if (splashController.module?.freeDelivery == 1)
-          PromoBannerItem(
-            title: 'free_delivery_for_all_order'.tr,
-            subtitle: 'treat_yourself_we_got_it'.tr,
-            image: Images.deliveryDashboard,
-            accent: const Color(0xFFE2572B),
-          ),
-      ];
+        final List<PromoBannerItem> promos = [
+          if (_isFlashOngoing(flashSaleController))
+            PromoBannerItem(
+              title: 'hurry_up_flash_deal_ongoing'.tr,
+              subtitle: 'grab_best_price_for_your_order'.tr,
+              image: Images.flashSaleDashboard,
+              accent: const Color(0xFFE2572B),
+            ),
+          if (splashController.module?.freeDelivery == 1)
+            PromoBannerItem(
+              title: 'free_delivery_for_all_order'.tr,
+              subtitle: 'treat_yourself_we_got_it'.tr,
+              image: Images.deliveryDashboard,
+              accent: const Color(0xFFE2572B),
+            ),
+        ];
 
-      return NavbarPromoBanner(
-        items: promos,
-        bottomTuck: _kPromoOverlap,
-        onClose: () {
-          Get.find<HomeController>().hideFlashPromoBanner(splashController.module?.id);
-          if (mounted) setState(() {});
-        },
-      );
-    });
+        return NavbarPromoBanner(
+          items: promos,
+          bottomTuck: _kPromoOverlap,
+          onClose: () {
+            Get.find<HomeController>().hideFlashPromoBanner(
+              splashController.module?.id,
+            );
+            if (mounted) setState(() {});
+          },
+        );
+      },
+    );
   }
 
   Widget trackView(BuildContext context, {required bool status}) {
-    return Container(height: 3, decoration: BoxDecoration(color: status ? Theme.of(context).primaryColor
-        : Theme.of(context).disabledColor.withValues(alpha: 0.5), borderRadius: BorderRadius.circular(Dimensions.radiusDefault)));
+    return Container(
+      height: 3,
+      decoration: BoxDecoration(
+        color: status
+            ? Theme.of(context).primaryColor
+            : Theme.of(context).disabledColor.withValues(alpha: 0.5),
+        borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
+      ),
+    );
   }
-
-
 }
 
 class _FoodModuleBottomNavigationItem extends StatefulWidget {
@@ -608,14 +816,19 @@ class _FoodModuleBottomNavigationItem extends StatefulWidget {
     required this.label,
     required this.icon,
     this.onTap,
-    required this.isSelected, this.isProfile = false, required this.selectedIcon,
+    required this.isSelected,
+    this.isProfile = false,
+    required this.selectedIcon,
   });
 
   @override
-  State<_FoodModuleBottomNavigationItem> createState() => _FoodModuleBottomNavigationItemState();
+  State<_FoodModuleBottomNavigationItem> createState() =>
+      _FoodModuleBottomNavigationItemState();
 }
 
-class _FoodModuleBottomNavigationItemState extends State<_FoodModuleBottomNavigationItem> with SingleTickerProviderStateMixin {
+class _FoodModuleBottomNavigationItemState
+    extends State<_FoodModuleBottomNavigationItem>
+    with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
   late final Animation<double> _glow;
   late final Animation<double> _scale;
@@ -623,13 +836,28 @@ class _FoodModuleBottomNavigationItemState extends State<_FoodModuleBottomNaviga
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(vsync: this, duration: const Duration(milliseconds: 600));
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 600),
+    );
     // Soft glow: expands outward from the icon and dissolves as it grows.
     _glow = CurvedAnimation(parent: _controller, curve: Curves.easeOut);
     // Icon pop: quick scale up, then settle back with a soft overshoot.
     _scale = TweenSequence<double>(<TweenSequenceItem<double>>[
-      TweenSequenceItem(tween: Tween(begin: 1.0, end: 1.22).chain(CurveTween(curve: Curves.easeOut)), weight: 35),
-      TweenSequenceItem(tween: Tween(begin: 1.22, end: 1.0).chain(CurveTween(curve: Curves.easeOutBack)), weight: 65),
+      TweenSequenceItem(
+        tween: Tween(
+          begin: 1.0,
+          end: 1.22,
+        ).chain(CurveTween(curve: Curves.easeOut)),
+        weight: 35,
+      ),
+      TweenSequenceItem(
+        tween: Tween(
+          begin: 1.22,
+          end: 1.0,
+        ).chain(CurveTween(curve: Curves.easeOutBack)),
+        weight: 65,
+      ),
     ]).animate(_controller);
   }
 
@@ -657,30 +885,43 @@ class _FoodModuleBottomNavigationItemState extends State<_FoodModuleBottomNaviga
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(height: widget.isProfile! ? 25 : 20, child: Center(
-              child: AnimatedBuilder(
-                animation: _controller,
-                builder: (context, child) => CustomPaint(
-                  painter: _NavGlowPainter(value: _glow.value, color: primary),
-                  child: Transform.scale(scale: _scale.value, child: child),
+            SizedBox(
+              height: widget.isProfile! ? 25 : 20,
+              child: Center(
+                child: AnimatedBuilder(
+                  animation: _controller,
+                  builder: (context, child) => CustomPaint(
+                    painter: _NavGlowPainter(
+                      value: _glow.value,
+                      color: primary,
+                    ),
+                    child: Transform.scale(scale: _scale.value, child: child),
+                  ),
+                  child: widget.isProfile!
+                      ? _FoodModuleBottomNavigationProfileIcon(
+                          isSelected: widget.isSelected,
+                        )
+                      : Image.asset(
+                          widget.isSelected ? widget.selectedIcon : widget.icon,
+                          color: widget.isSelected ? primary : null,
+                        ),
                 ),
-                child: widget.isProfile!
-                  ? _FoodModuleBottomNavigationProfileIcon(isSelected: widget.isSelected)
-                  : Image.asset(widget.isSelected ? widget.selectedIcon : widget.icon, color: widget.isSelected ? primary : null),
               ),
-            )),
+            ),
             const SizedBox(height: Dimensions.paddingSizeExtraSmall),
             Text(
               widget.label,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: widget.isSelected ? robotoBold.copyWith(
-                color: primary,
-                fontSize: Dimensions.fontSizeSmall,
-              ) : robotoRegular.copyWith(
-                color: Theme.of(context).textTheme.bodyLarge!.color,
-                fontSize: Dimensions.fontSizeSmall,
-              ),
+              style: widget.isSelected
+                  ? robotoBold.copyWith(
+                      color: primary,
+                      fontSize: Dimensions.fontSizeSmall,
+                    )
+                  : robotoRegular.copyWith(
+                      color: Theme.of(context).textTheme.bodyLarge!.color,
+                      fontSize: Dimensions.fontSizeSmall,
+                    ),
             ),
           ],
         ),
@@ -735,24 +976,38 @@ class _FoodModuleBottomNavigationProfileIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if(!Get.isRegistered<ProfileController>()) {
+    if (!Get.isRegistered<ProfileController>()) {
       return const _FoodModuleBottomNavigationGuestIcon();
     }
 
-    return GetBuilder<ProfileController>(builder: (profileController) {
-      final String image = profileController.userInfoModel != null && AuthHelper.isLoggedIn() ? profileController.userInfoModel!.imageFullUrl ?? '' : '';
+    return GetBuilder<ProfileController>(
+      builder: (profileController) {
+        final String image =
+            profileController.userInfoModel != null && AuthHelper.isLoggedIn()
+            ? profileController.userInfoModel!.imageFullUrl ?? ''
+            : '';
 
-      return Container(
-        height: 24,
-        width: 24,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          border: isSelected ? Border.all(color: Theme.of(context).primaryColor, width: 1) : null,
-          // border: image.isNotEmpty ? Border.all(color: Theme.of(context).disabledColor): null,
-        ) ,
-        child: ClipRRect(borderRadius: BorderRadius.circular(Dimensions.radiusExtraLarge), child: CustomImage(image: image, placeholder: Images.guestIcon, fit: BoxFit.cover,)),
-      );
-    });
+        return Container(
+          height: 24,
+          width: 24,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: isSelected
+                ? Border.all(color: Theme.of(context).primaryColor, width: 1)
+                : null,
+            // border: image.isNotEmpty ? Border.all(color: Theme.of(context).disabledColor): null,
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(Dimensions.radiusExtraLarge),
+            child: CustomImage(
+              image: image,
+              placeholder: Images.guestIcon,
+              fit: BoxFit.cover,
+            ),
+          ),
+        );
+      },
+    );
   }
 }
 
@@ -776,69 +1031,100 @@ class _HomeFloatingActionButton extends StatelessWidget {
   final SplashController splashController;
   final double extraBottomOffset;
 
-  const _HomeFloatingActionButton({required this.splashController, this.extraBottomOffset = 0});
+  const _HomeFloatingActionButton({
+    required this.splashController,
+    this.extraBottomOffset = 0,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final bool isRide = splashController.module != null
-        && splashController.module!.moduleType.toString() == AppConstants.ride;
+    final bool isRide =
+        splashController.module != null &&
+        splashController.module!.moduleType.toString() == AppConstants.ride;
 
-    return GetBuilder<HomeController>(builder: (homeController) {
-      if(isRide) {
-        return GetBuilder<RideController>(builder: (rideController) {
-          if(rideController.biddingList.isEmpty || !homeController.showFavButton) {
-            return const SizedBox();
-          }
-          return Padding(
-            padding: EdgeInsets.only(bottom: Get.height * 0.08),
-            child: InkWell(
-              onTap: () => Get.to(() => BidingListScreen(tripId: rideController.rideDetails!.id!)),
-              child: Image.asset(Images.biddingIcon, height: 60, width: 60),
-            ),
+    return GetBuilder<HomeController>(
+      builder: (homeController) {
+        if (isRide) {
+          return GetBuilder<RideController>(
+            builder: (rideController) {
+              if (rideController.biddingList.isEmpty ||
+                  !homeController.showFavButton) {
+                return const SizedBox();
+              }
+              return Padding(
+                padding: EdgeInsets.only(bottom: Get.height * 0.08),
+                child: InkWell(
+                  onTap: () => Get.to(
+                    () => BidingListScreen(
+                      tripId: rideController.rideDetails!.id!,
+                    ),
+                  ),
+                  child: Image.asset(Images.biddingIcon, height: 60, width: 60),
+                ),
+              );
+            },
           );
-        });
-      }
+        }
 
-      final bool showCashBack = AuthHelper.isLoggedIn()
-          && homeController.cashBackOfferList != null
-          && homeController.cashBackOfferList!.isNotEmpty
-          && homeController.showFavButton;
+        final bool showCashBack =
+            AuthHelper.isLoggedIn() &&
+            homeController.cashBackOfferList != null &&
+            homeController.cashBackOfferList!.isNotEmpty &&
+            homeController.showFavButton;
 
-      // AI chat is only available for the shopping modules (food, grocery, shop,
-      // pharmacy). Hidden on Home (no module), parcel, rental and rideshare.
-      const Set<String> aiChatModules = {
-        AppConstants.food, AppConstants.grocery, AppConstants.ecommerce, AppConstants.pharmacy,
-      };
-      // Gate on the selected dashboard tab, not the active module: navbar screens
-      // (e.g. My Orders) call setModule() as a side effect, so `module` can be a real
-      // module even while the Home landing is shown. selectedModuleIndex == 0 is the
-      // reliable "Home landing" signal.
-      final String? moduleType = splashController.module?.moduleType?.toString();
-      final bool showAiChat = (splashController.configModel?.aiChatStatus ?? false)
-          && splashController.selectedModuleIndex != 0
-          && moduleType != null && aiChatModules.contains(moduleType);
+        // AI chat is only available for the shopping modules (food, grocery, shop,
+        // pharmacy). Hidden on Home (no module), parcel, rental and rideshare.
+        const Set<String> aiChatModules = {
+          AppConstants.food,
+          AppConstants.grocery,
+          AppConstants.ecommerce,
+          AppConstants.pharmacy,
+        };
+        // Gate on the selected dashboard tab, not the active module: navbar screens
+        // (e.g. My Orders) call setModule() as a side effect, so `module` can be a real
+        // module even while the Home landing is shown. selectedModuleIndex == 0 is the
+        // reliable "Home landing" signal.
+        final String? moduleType = splashController.module?.moduleType
+            ?.toString();
+        final bool showAiChat =
+            (splashController.configModel?.aiChatStatus ?? false) &&
+            splashController.selectedModuleIndex != 0 &&
+            moduleType != null &&
+            aiChatModules.contains(moduleType);
 
-      return AnimatedPadding(
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeOutCubic,
-        padding: EdgeInsets.only(bottom: 50.0 + extraBottomOffset, right: ResponsiveHelper.isDesktop(context) ? 50 : 0),
-        child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.end, children: [
+        return AnimatedPadding(
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeOutCubic,
+          padding: EdgeInsets.only(
+            bottom: 50.0 + extraBottomOffset,
+            right: ResponsiveHelper.isDesktop(context) ? 50 : 0,
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              showAiChat
+                  ? const AiChatBotFloatingButtonWidget()
+                  : const SizedBox(),
+              showAiChat
+                  ? const SizedBox(height: Dimensions.paddingSizeSmall)
+                  : const SizedBox(),
 
-          showAiChat ? const AiChatBotFloatingButtonWidget() : const SizedBox(),
-          showAiChat ? const SizedBox(height: Dimensions.paddingSizeSmall) : const SizedBox(),
-
-          showCashBack ? Padding(
-            padding: const EdgeInsets.only(bottom: Dimensions.paddingSizeSmall),
-            child: InkWell(
-              onTap: () => Get.dialog(const CashBackDialogWidget()),
-              child: const CashBackLogoWidget(),
-            ),
-          ) : const SizedBox(),
-
-
-        ]),
-      );
-    });
+              showCashBack
+                  ? Padding(
+                      padding: const EdgeInsets.only(
+                        bottom: Dimensions.paddingSizeSmall,
+                      ),
+                      child: InkWell(
+                        onTap: () => Get.dialog(const CashBackDialogWidget()),
+                        child: const CashBackLogoWidget(),
+                      ),
+                    )
+                  : const SizedBox(),
+            ],
+          ),
+        );
+      },
+    );
   }
 }
-

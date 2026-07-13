@@ -50,7 +50,7 @@ class SearchAndQuickFilterWidget extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(
                     Dimensions.paddingSizeDefault,
-                    Dimensions.paddingSizeDefault + 7,
+                    Dimensions.paddingSizeDefault + 5,
                     Dimensions.paddingSizeDefault,
                     0,
                   ),
