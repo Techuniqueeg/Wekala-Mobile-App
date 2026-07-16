@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/features/checkout/controllers/checkout_controller.dart';
-import 'package:sixam_mart/features/coupon/controllers/coupon_controller.dart';
-import 'package:sixam_mart/features/coupon/domain/models/coupon_model.dart';
-import 'package:sixam_mart/helper/responsive_helper.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/images.dart';
-import 'package:sixam_mart/util/styles.dart';
-import 'package:sixam_mart/features/coupon/widgets/coupon_card_widget.dart';
+import 'package:wekala_user/features/checkout/controllers/checkout_controller.dart';
+import 'package:wekala_user/features/coupon/controllers/coupon_controller.dart';
+import 'package:wekala_user/features/coupon/domain/models/coupon_model.dart';
+import 'package:wekala_user/helper/responsive_helper.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/images.dart';
+import 'package:wekala_user/util/styles.dart';
+import 'package:wekala_user/features/coupon/widgets/coupon_card_widget.dart';
 
 class CouponBottomSheet extends StatelessWidget {
   final int? storeId;

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pointer_interceptor/pointer_interceptor.dart';
-import 'package:sixam_mart/common/widgets/custom_button.dart';
-import 'package:sixam_mart/common/widgets/custom_loader.dart';
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/helper/address_helper.dart';
-import 'package:sixam_mart/helper/route_helper.dart';
-import 'package:sixam_mart/helper/shallow_route_helper.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/images.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/common/widgets/custom_button.dart';
+import 'package:wekala_user/common/widgets/custom_loader.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/helper/address_helper.dart';
+import 'package:wekala_user/helper/route_helper.dart';
+import 'package:wekala_user/helper/shallow_route_helper.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/images.dart';
+import 'package:wekala_user/util/styles.dart';
 class ZoneWarningDialog extends StatelessWidget {
   final String title;
   final String? description;

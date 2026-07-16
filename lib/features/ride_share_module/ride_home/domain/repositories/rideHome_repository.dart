@@ -1,7 +1,7 @@
    
 import 'package:get/get.dart';
-import 'package:sixam_mart/features/profile/controllers/profile_controller.dart';
-import 'package:sixam_mart/util/app_constants.dart';
+import 'package:wekala_user/features/profile/controllers/profile_controller.dart';
+import 'package:wekala_user/util/app_constants.dart';
 
 import '../../../../../api/api_client.dart';
 import 'rideHome_repository_interface.dart';

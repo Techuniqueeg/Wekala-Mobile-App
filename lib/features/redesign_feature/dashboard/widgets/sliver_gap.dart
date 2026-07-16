@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sixam_mart/util/dimensions.dart';
+import 'package:wekala_user/util/dimensions.dart';
 
 Widget sliverGepY({double? value}) {
   return SliverToBoxAdapter(
@@ -11,7 +11,7 @@ Widget sliverPadX({required Widget child, isSliver = false}) {
 
   if(isSliver){
    return SliverPadding(
-      padding: EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
         horizontal: Dimensions.paddingSizeDefault,
       ),
       sliver: child,
@@ -19,7 +19,7 @@ Widget sliverPadX({required Widget child, isSliver = false}) {
   }
     return SliverToBoxAdapter(
       child: Padding(
-        padding: EdgeInsets.symmetric(
+        padding: const EdgeInsets.symmetric(
           horizontal: Dimensions.paddingSizeDefault,
         ),
         child: child,

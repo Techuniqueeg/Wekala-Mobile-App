@@ -1,6 +1,6 @@
    
 import 'package:get/get_connect/http/src/response/response.dart';
-import 'package:sixam_mart/util/app_constants.dart';
+import 'package:wekala_user/util/app_constants.dart';
 
 import '../../../../../api/api_client.dart';
 import 'trip_repository_interface.dart';

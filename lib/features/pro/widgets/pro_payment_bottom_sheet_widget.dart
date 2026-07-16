@@ -1,13 +1,13 @@
-import 'package:sixam_mart/common/widgets/custom_image.dart';
-import 'package:sixam_mart/common/widgets/custom_snackbar.dart';
-import 'package:sixam_mart/features/pro/controllers/pro_controller.dart';
-import 'package:sixam_mart/features/pro/domain/models/pro_plan_model.dart';
-import 'package:sixam_mart/features/profile/controllers/profile_controller.dart';
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/helper/price_converter.dart';
-import 'package:sixam_mart/helper/responsive_helper.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/common/widgets/custom_image.dart';
+import 'package:wekala_user/common/widgets/custom_snackbar.dart';
+import 'package:wekala_user/features/pro/controllers/pro_controller.dart';
+import 'package:wekala_user/features/pro/domain/models/pro_plan_model.dart';
+import 'package:wekala_user/features/profile/controllers/profile_controller.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/helper/price_converter.dart';
+import 'package:wekala_user/helper/responsive_helper.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -109,13 +109,13 @@ class _ProPaymentBottomSheetWidgetState extends State<ProPaymentBottomSheetWidge
                 ),
 
                 if(hasDigital) ...[
-                  SizedBox(height: Dimensions.paddingSizeLarge,),
+                  const SizedBox(height: Dimensions.paddingSizeLarge,),
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
                       border: Border.all(color: Theme.of(context).disabledColor.withValues(alpha: 0.2)),
                     ),
-                    padding: EdgeInsets.only(left: Dimensions.paddingSizeDefault, right: Dimensions.paddingSizeSmall),
+                    padding: const EdgeInsets.only(left: Dimensions.paddingSizeDefault, right: Dimensions.paddingSizeSmall),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

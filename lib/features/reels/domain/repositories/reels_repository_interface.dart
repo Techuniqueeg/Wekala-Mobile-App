@@ -1,7 +1,7 @@
-import 'package:sixam_mart/common/enums/data_source_enum.dart';
-import 'package:sixam_mart/common/models/response_model.dart';
-import 'package:sixam_mart/features/reels/domain/models/reel_model.dart';
-import 'package:sixam_mart/interfaces/repository_interface.dart';
+import 'package:wekala_user/common/enums/data_source_enum.dart';
+import 'package:wekala_user/common/models/response_model.dart';
+import 'package:wekala_user/features/reels/domain/models/reel_model.dart';
+import 'package:wekala_user/interfaces/repository_interface.dart';
 
 abstract class ReelsRepositoryInterface extends RepositoryInterface {
   @override

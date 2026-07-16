@@ -4,25 +4,25 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:sixam_mart/common/widgets/custom_ink_well.dart';
-import 'package:sixam_mart/features/refer_and_earn/widgets/bottom_sheet_view_widget.dart';
-import 'package:sixam_mart/features/refer_and_earn/widgets/bottomsheet_for_mobile.dart';
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/features/profile/controllers/profile_controller.dart';
-import 'package:sixam_mart/helper/auth_helper.dart';
-import 'package:sixam_mart/helper/price_converter.dart';
-import 'package:sixam_mart/helper/responsive_helper.dart';
-import 'package:sixam_mart/helper/route_helper.dart';
-import 'package:sixam_mart/util/app_constants.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/images.dart';
-import 'package:sixam_mart/util/styles.dart';
-import 'package:sixam_mart/common/widgets/custom_app_bar.dart';
-import 'package:sixam_mart/common/widgets/custom_snackbar.dart';
-import 'package:sixam_mart/common/widgets/footer_view.dart';
-import 'package:sixam_mart/common/widgets/menu_drawer.dart';
-import 'package:sixam_mart/common/widgets/not_logged_in_screen.dart';
-import 'package:sixam_mart/common/widgets/web_page_title_widget.dart';
+import 'package:wekala_user/common/widgets/custom_ink_well.dart';
+import 'package:wekala_user/features/refer_and_earn/widgets/bottom_sheet_view_widget.dart';
+import 'package:wekala_user/features/refer_and_earn/widgets/bottomsheet_for_mobile.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/features/profile/controllers/profile_controller.dart';
+import 'package:wekala_user/helper/auth_helper.dart';
+import 'package:wekala_user/helper/price_converter.dart';
+import 'package:wekala_user/helper/responsive_helper.dart';
+import 'package:wekala_user/helper/route_helper.dart';
+import 'package:wekala_user/util/app_constants.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/images.dart';
+import 'package:wekala_user/util/styles.dart';
+import 'package:wekala_user/common/widgets/custom_app_bar.dart';
+import 'package:wekala_user/common/widgets/custom_snackbar.dart';
+import 'package:wekala_user/common/widgets/footer_view.dart';
+import 'package:wekala_user/common/widgets/menu_drawer.dart';
+import 'package:wekala_user/common/widgets/not_logged_in_screen.dart';
+import 'package:wekala_user/common/widgets/web_page_title_widget.dart';
 
 class ReferAndEarnScreen extends StatefulWidget {
   final String? deeplinkUrlCode;
@@ -118,7 +118,7 @@ class _ReferAndEarnScreenState extends State<ReferAndEarnScreen> {
                               decoration: BoxDecoration(
                                 color: Theme.of(context).cardColor,
                                 borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
-                                boxShadow: [BoxShadow(color: Theme.of(context).disabledColor.withValues(alpha: 0.2), blurRadius: 10, offset: Offset(0, 5))],
+                                boxShadow: [BoxShadow(color: Theme.of(context).disabledColor.withValues(alpha: 0.2), blurRadius: 10, offset: const Offset(0, 5))],
                               ),
                               padding: EdgeInsets.all(ResponsiveHelper.isDesktop(context) ? Dimensions.paddingSizeExtraLarge : Dimensions.paddingSizeLarge),
                               margin: EdgeInsets.symmetric(horizontal: ResponsiveHelper.isDesktop(context) ? Dimensions.paddingSizeLarge : 0),

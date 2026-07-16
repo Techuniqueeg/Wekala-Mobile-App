@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/features/flash_sale/controllers/flash_sale_controller.dart';
-import 'package:sixam_mart/features/home/widgets/web/web_recomanded_store_view_widget.dart';
-import 'package:sixam_mart/features/item/controllers/item_controller.dart';
-import 'package:sixam_mart/features/item/domain/models/item_model.dart';
-import 'package:sixam_mart/features/home/widgets/components/flash_sale_card_widget.dart';
-import 'package:sixam_mart/helper/price_converter.dart';
-import 'package:sixam_mart/helper/route_helper.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/styles.dart';
-import 'package:sixam_mart/features/flash_sale/widgets/flash_sale_timer_view_widget.dart';
+import 'package:wekala_user/features/flash_sale/controllers/flash_sale_controller.dart';
+import 'package:wekala_user/features/home/widgets/web/web_recomanded_store_view_widget.dart';
+import 'package:wekala_user/features/item/controllers/item_controller.dart';
+import 'package:wekala_user/features/item/domain/models/item_model.dart';
+import 'package:wekala_user/features/home/widgets/components/flash_sale_card_widget.dart';
+import 'package:wekala_user/helper/price_converter.dart';
+import 'package:wekala_user/helper/route_helper.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/styles.dart';
+import 'package:wekala_user/features/flash_sale/widgets/flash_sale_timer_view_widget.dart';
 
 class WebFlashSaleViewWidget extends StatefulWidget {
   const WebFlashSaleViewWidget({super.key, required this.showBanner});

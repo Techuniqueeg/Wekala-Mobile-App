@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/common/widgets/custom_image.dart';
-import 'package:sixam_mart/common/widgets/custom_snackbar.dart';
-import 'package:sixam_mart/features/address/domain/models/address_model.dart';
-import 'package:sixam_mart/features/favourite/controllers/favourite_controller.dart';
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/features/store/controllers/store_controller.dart';
-import 'package:sixam_mart/features/store/domain/models/store_model.dart';
-import 'package:sixam_mart/helper/auth_helper.dart';
-import 'package:sixam_mart/helper/price_converter.dart';
-import 'package:sixam_mart/helper/responsive_helper.dart';
-import 'package:sixam_mart/helper/route_helper.dart';
-import 'package:sixam_mart/util/app_constants.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/images.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/common/widgets/custom_image.dart';
+import 'package:wekala_user/common/widgets/custom_snackbar.dart';
+import 'package:wekala_user/features/address/domain/models/address_model.dart';
+import 'package:wekala_user/features/favourite/controllers/favourite_controller.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/features/store/controllers/store_controller.dart';
+import 'package:wekala_user/features/store/domain/models/store_model.dart';
+import 'package:wekala_user/helper/auth_helper.dart';
+import 'package:wekala_user/helper/price_converter.dart';
+import 'package:wekala_user/helper/responsive_helper.dart';
+import 'package:wekala_user/helper/route_helper.dart';
+import 'package:wekala_user/util/app_constants.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/images.dart';
+import 'package:wekala_user/util/styles.dart';
 
 class StoreDescriptionViewWidget extends StatelessWidget {
   final Store? store;

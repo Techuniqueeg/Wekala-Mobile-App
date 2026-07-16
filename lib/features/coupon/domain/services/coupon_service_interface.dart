@@ -1,4 +1,4 @@
-import 'package:sixam_mart/features/coupon/domain/models/coupon_model.dart';
+import 'package:wekala_user/features/coupon/domain/models/coupon_model.dart';
 
 abstract class CouponServiceInterface{
   Future<List<CouponModel>?> getCouponList({int? customerId, int? storeId});

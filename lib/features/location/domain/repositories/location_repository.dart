@@ -1,12 +1,12 @@
 import 'package:get/get_connect/http/src/response/response.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sixam_mart/api/api_client.dart';
-import 'package:sixam_mart/features/location/domain/models/zone_model.dart';
-import 'package:sixam_mart/features/location/domain/models/zone_response_model.dart';
-import 'package:sixam_mart/features/location/domain/repositories/location_repository_interface.dart';
-import 'package:sixam_mart/util/app_constants.dart';
-import 'package:sixam_mart/common/widgets/custom_snackbar.dart';
+import 'package:wekala_user/api/api_client.dart';
+import 'package:wekala_user/features/location/domain/models/zone_model.dart';
+import 'package:wekala_user/features/location/domain/models/zone_response_model.dart';
+import 'package:wekala_user/features/location/domain/repositories/location_repository_interface.dart';
+import 'package:wekala_user/util/app_constants.dart';
+import 'package:wekala_user/common/widgets/custom_snackbar.dart';
 
 class LocationRepository implements LocationRepositoryInterface {
   final ApiClient apiClient;
@@ -21,7 +21,8 @@ class LocationRepository implements LocationRepositoryInterface {
     if(response.statusCode == 200 && response.body['status'] == 'OK') {
       address = response.body['results'][0]['formatted_address'].toString();
     }else {
-      showCustomSnackBar(response.body['error_message'] ?? response.bodyString);
+      final  errorMessage =response.body is Map ? response.body['error_message'] : response.bodyString;
+      showCustomSnackBar(errorMessage ?? 'Unknown error');
     }
     return address;
   }
@@ -29,6 +30,7 @@ class LocationRepository implements LocationRepositoryInterface {
   @override
   Future<ZoneResponseModel> getZone(String? lat, String? lng, {bool handleError = false}) async {
     Response response = await apiClient.getData('${AppConstants.zoneUri}?lat=$lat&lng=$lng', handleError: handleError);
+    print('${AppConstants.zoneUri}?lat=$lat&lng=$lng');
     if(response.statusCode == 200) {
       ZoneResponseModel responseModel;
       List<int>? zoneIds = ZoneModel.fromJson(response.body).zoneIds;

@@ -2,19 +2,19 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
-import 'package:sixam_mart/common/widgets/custom_app_bar.dart';
-import 'package:sixam_mart/common/widgets/footer_view.dart';
-import 'package:sixam_mart/common/widgets/menu_drawer.dart';
-import 'package:sixam_mart/features/category/controllers/category_controller.dart';
-import 'package:sixam_mart/features/item/domain/models/item_model.dart';
-import 'package:sixam_mart/features/redesign_feature/dashboard/widgets/common_widget/featured_store_card.dart';
-import 'package:sixam_mart/features/redesign_feature/global_widgets/exclusive_deal_card.dart';
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/features/store/domain/models/store_model.dart';
-import 'package:sixam_mart/helper/responsive_helper.dart';
-import 'package:sixam_mart/helper/route_helper.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/common/widgets/custom_app_bar.dart';
+import 'package:wekala_user/common/widgets/footer_view.dart';
+import 'package:wekala_user/common/widgets/menu_drawer.dart';
+import 'package:wekala_user/features/category/controllers/category_controller.dart';
+import 'package:wekala_user/features/item/domain/models/item_model.dart';
+import 'package:wekala_user/features/redesign_feature/dashboard/widgets/common_widget/featured_store_card.dart';
+import 'package:wekala_user/features/redesign_feature/global_widgets/exclusive_deal_card.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/features/store/domain/models/store_model.dart';
+import 'package:wekala_user/helper/responsive_helper.dart';
+import 'package:wekala_user/helper/route_helper.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/styles.dart';
 
 enum _CatFilter { items, stores }
 

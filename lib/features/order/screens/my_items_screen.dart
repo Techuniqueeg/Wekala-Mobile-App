@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/common/widgets/custom_app_bar.dart';
-import 'package:sixam_mart/common/widgets/custom_loader.dart';
-import 'package:sixam_mart/features/order/controllers/order_controller.dart';
-import 'package:sixam_mart/features/order/domain/models/monthly_order_model.dart';
-import 'package:sixam_mart/features/order/widgets/monthly_store_card.dart';
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/util/app_constants.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/common/widgets/custom_app_bar.dart';
+import 'package:wekala_user/common/widgets/custom_loader.dart';
+import 'package:wekala_user/features/order/controllers/order_controller.dart';
+import 'package:wekala_user/features/order/domain/models/monthly_order_model.dart';
+import 'package:wekala_user/features/order/widgets/monthly_store_card.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/util/app_constants.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/styles.dart';
 
 class _ModuleTab {
   final String labelKey;

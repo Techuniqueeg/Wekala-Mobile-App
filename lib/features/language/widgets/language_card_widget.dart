@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sixam_mart/features/language/controllers/language_controller.dart';
-import 'package:sixam_mart/features/language/domain/models/language_model.dart';
-import 'package:sixam_mart/util/app_constants.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/features/language/controllers/language_controller.dart';
+import 'package:wekala_user/features/language/domain/models/language_model.dart';
+import 'package:wekala_user/util/app_constants.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/styles.dart';
 
 class LanguageCardWidget extends StatelessWidget {
   final LanguageModel languageModel;

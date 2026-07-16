@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/common/widgets/footer_view.dart';
-import 'package:sixam_mart/common/widgets/item_view.dart';
-import 'package:sixam_mart/common/widgets/web_item_view.dart';
-import 'package:sixam_mart/features/search/controllers/search_controller.dart' as search;
-import 'package:sixam_mart/helper/responsive_helper.dart';
-import 'package:sixam_mart/util/dimensions.dart';
+import 'package:wekala_user/common/widgets/footer_view.dart';
+import 'package:wekala_user/common/widgets/item_view.dart';
+import 'package:wekala_user/common/widgets/web_item_view.dart';
+import 'package:wekala_user/features/search/controllers/search_controller.dart' as search;
+import 'package:wekala_user/helper/responsive_helper.dart';
+import 'package:wekala_user/util/dimensions.dart';
 
 class ItemViewWidget extends StatelessWidget {
   final bool isItem;

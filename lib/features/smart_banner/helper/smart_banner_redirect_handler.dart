@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
-import 'package:sixam_mart/common/models/module_model.dart';
-import 'package:sixam_mart/features/offer/offer_screen.dart';
-import 'package:sixam_mart/features/smart_banner/domain/models/smart_banner_model.dart';
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/helper/route_helper.dart';
+import 'package:wekala_user/common/models/module_model.dart';
+import 'package:wekala_user/features/offer/offer_screen.dart';
+import 'package:wekala_user/features/smart_banner/domain/models/smart_banner_model.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/helper/route_helper.dart';
 
 class SmartBannerRedirectHandler {
   const SmartBannerRedirectHandler._();

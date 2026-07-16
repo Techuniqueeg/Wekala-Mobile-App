@@ -1,18 +1,18 @@
 import 'package:get/get.dart';
-import 'package:sixam_mart/features/item/domain/models/item_model.dart';
-import 'package:sixam_mart/common/models/module_model.dart';
-import 'package:sixam_mart/features/cart/domain/models/all_carts_model.dart';
-import 'package:sixam_mart/features/cart/domain/models/cart_model.dart';
-import 'package:sixam_mart/features/cart/domain/models/online_cart_model.dart';
-import 'package:sixam_mart/features/cart/domain/services/cart_service_interface.dart';
-import 'package:sixam_mart/features/checkout/domain/models/place_order_body_model.dart';
-import 'package:sixam_mart/features/home/screens/home_screen.dart';
-import 'package:sixam_mart/features/item/controllers/item_controller.dart';
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/helper/auth_helper.dart';
-import 'package:sixam_mart/helper/date_converter.dart';
-import 'package:sixam_mart/helper/module_helper.dart';
-import 'package:sixam_mart/helper/price_converter.dart';
+import 'package:wekala_user/features/item/domain/models/item_model.dart';
+import 'package:wekala_user/common/models/module_model.dart';
+import 'package:wekala_user/features/cart/domain/models/all_carts_model.dart';
+import 'package:wekala_user/features/cart/domain/models/cart_model.dart';
+import 'package:wekala_user/features/cart/domain/models/online_cart_model.dart';
+import 'package:wekala_user/features/cart/domain/services/cart_service_interface.dart';
+import 'package:wekala_user/features/checkout/domain/models/place_order_body_model.dart';
+import 'package:wekala_user/features/home/screens/home_screen.dart';
+import 'package:wekala_user/features/item/controllers/item_controller.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/helper/auth_helper.dart';
+import 'package:wekala_user/helper/date_converter.dart';
+import 'package:wekala_user/helper/module_helper.dart';
+import 'package:wekala_user/helper/price_converter.dart';
 
 class CartController extends GetxController implements GetxService {
   final CartServiceInterface cartServiceInterface;

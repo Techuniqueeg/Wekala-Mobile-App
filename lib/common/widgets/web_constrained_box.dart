@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sixam_mart/helper/responsive_helper.dart';
+import 'package:wekala_user/helper/responsive_helper.dart';
 
 class WebConstrainedBox extends StatelessWidget {
   final int dataLength;

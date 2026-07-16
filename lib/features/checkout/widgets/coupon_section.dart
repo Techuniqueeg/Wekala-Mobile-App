@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:sixam_mart/common/widgets/custom_snackbar.dart';
-import 'package:sixam_mart/features/checkout/controllers/checkout_controller.dart';
-import 'package:sixam_mart/features/checkout/widgets/coupon_bottom_sheet.dart';
-import 'package:sixam_mart/features/checkout/widgets_new/custom_card_checkout.dart';
-import 'package:sixam_mart/features/coupon/controllers/coupon_controller.dart';
-import 'package:sixam_mart/features/coupon/domain/models/coupon_model.dart';
-import 'package:sixam_mart/features/store/controllers/store_controller.dart';
-import 'package:sixam_mart/helper/price_converter.dart';
-import 'package:sixam_mart/helper/responsive_helper.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/common/widgets/custom_snackbar.dart';
+import 'package:wekala_user/features/checkout/controllers/checkout_controller.dart';
+import 'package:wekala_user/features/checkout/widgets/coupon_bottom_sheet.dart';
+import 'package:wekala_user/features/checkout/widgets_new/custom_card_checkout.dart';
+import 'package:wekala_user/features/coupon/controllers/coupon_controller.dart';
+import 'package:wekala_user/features/coupon/domain/models/coupon_model.dart';
+import 'package:wekala_user/features/store/controllers/store_controller.dart';
+import 'package:wekala_user/helper/price_converter.dart';
+import 'package:wekala_user/helper/responsive_helper.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/styles.dart';
 
 class CouponSection extends StatelessWidget {
   final int? storeId;

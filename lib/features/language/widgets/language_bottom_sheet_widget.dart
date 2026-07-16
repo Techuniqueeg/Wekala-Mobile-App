@@ -1,10 +1,10 @@
-import 'package:sixam_mart/features/language/widgets/language_card_widget.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/features/language/widgets/language_card_widget.dart';
+import 'package:wekala_user/util/styles.dart';
 import 'package:flutter/material.dart';
-import 'package:sixam_mart/features/language/controllers/language_controller.dart';
-import 'package:sixam_mart/util/app_constants.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/common/widgets/custom_button.dart';
+import 'package:wekala_user/features/language/controllers/language_controller.dart';
+import 'package:wekala_user/util/app_constants.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/common/widgets/custom_button.dart';
 import 'package:get/get.dart';
 
 class LanguageBottomSheetWidget extends StatefulWidget {

@@ -1,4 +1,4 @@
-import 'package:sixam_mart/helper/type_converter_helper.dart';
+import 'package:wekala_user/helper/type_converter_helper.dart';
 
 class ProActiveOfferModel {
   bool? status;

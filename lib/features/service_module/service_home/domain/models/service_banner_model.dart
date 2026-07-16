@@ -1,4 +1,4 @@
-import 'package:sixam_mart/features/service_module/service_home/domain/models/service_model.dart';
+import 'package:wekala_user/features/service_module/service_home/domain/models/service_model.dart';
 
 class ServiceBannerModel {
   final int? id;

@@ -1,6 +1,6 @@
-import 'package:sixam_mart/features/item/domain/models/item_model.dart';
-import 'package:sixam_mart/features/order/domain/models/order_model.dart';
-import 'package:sixam_mart/helper/type_converter_helper.dart';
+import 'package:wekala_user/features/item/domain/models/item_model.dart';
+import 'package:wekala_user/features/order/domain/models/order_model.dart';
+import 'package:wekala_user/helper/type_converter_helper.dart';
 
 class OrderDetailsModel {
   int? id;

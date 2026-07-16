@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:sixam_mart/features/rental_module/common/models/trip_model.dart';
-import 'package:sixam_mart/features/rental_module/rental_order/domain/services/taxi_order_service_interface.dart';
+import 'package:wekala_user/features/rental_module/common/models/trip_model.dart';
+import 'package:wekala_user/features/rental_module/rental_order/domain/services/taxi_order_service_interface.dart';
 
 class TaxiOrderController extends GetxController implements GetxService {
   final TaxiOrderServiceInterface taxiOrderServiceInterface;

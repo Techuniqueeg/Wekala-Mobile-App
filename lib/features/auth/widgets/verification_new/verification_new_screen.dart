@@ -3,25 +3,25 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:sixam_mart/common/models/response_model.dart';
-import 'package:sixam_mart/common/widgets/custom_snackbar.dart';
-import 'package:sixam_mart/features/auth/controllers/auth_controller.dart';
-import 'package:sixam_mart/features/auth/domain/enum/centralize_login_enum.dart';
-import 'package:sixam_mart/features/auth/screens/new_user_setup_screen.dart';
-import 'package:sixam_mart/features/auth/widgets/sign_in/existing_user_bottom_sheet.dart';
-import 'package:sixam_mart/features/location/controllers/location_controller.dart';
-import 'package:sixam_mart/features/profile/controllers/profile_controller.dart';
-import 'package:sixam_mart/features/profile/domain/models/update_user_model.dart';
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/features/verification/controllers/verification_controller.dart';
-import 'package:sixam_mart/features/verification/domein/enum/verification_type_enum.dart';
-import 'package:sixam_mart/features/verification/domein/models/verification_data_model.dart';
-import 'package:sixam_mart/features/verification/screens/new_pass_screen.dart';
-import 'package:sixam_mart/helper/auth_helper.dart';
-import 'package:sixam_mart/helper/responsive_helper.dart';
-import 'package:sixam_mart/helper/route_helper.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/common/models/response_model.dart';
+import 'package:wekala_user/common/widgets/custom_snackbar.dart';
+import 'package:wekala_user/features/auth/controllers/auth_controller.dart';
+import 'package:wekala_user/features/auth/domain/enum/centralize_login_enum.dart';
+import 'package:wekala_user/features/auth/screens/new_user_setup_screen.dart';
+import 'package:wekala_user/features/auth/widgets/sign_in/existing_user_bottom_sheet.dart';
+import 'package:wekala_user/features/location/controllers/location_controller.dart';
+import 'package:wekala_user/features/profile/controllers/profile_controller.dart';
+import 'package:wekala_user/features/profile/domain/models/update_user_model.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/features/verification/controllers/verification_controller.dart';
+import 'package:wekala_user/features/verification/domein/enum/verification_type_enum.dart';
+import 'package:wekala_user/features/verification/domein/models/verification_data_model.dart';
+import 'package:wekala_user/features/verification/screens/new_pass_screen.dart';
+import 'package:wekala_user/helper/auth_helper.dart';
+import 'package:wekala_user/helper/responsive_helper.dart';
+import 'package:wekala_user/helper/route_helper.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/styles.dart';
 
 class VerificationNewScreen extends StatefulWidget {
   final String? number;
@@ -64,7 +64,7 @@ class VerificationNewScreenState extends State<VerificationNewScreen> {
     _email = widget.email;
     _startTimer();
 
-    errorController = StreamController<ErrorAnimationType>();
+    errorController = StreamController<ErrorAnimationType>.broadcast();
   }
 
   void _startTimer() {
@@ -158,40 +158,43 @@ class VerificationNewScreenState extends State<VerificationNewScreen> {
                     borderRadius: const BorderRadius.all(Radius.circular(Dimensions.radiusExtraLarge)),
                   ),
                   child: Column(children: [
-                    PinCodeTextField(
-                      length: 6,
-                      appContext: context,
-                      autoFocus: true,
-                      keyboardType: TextInputType.number,
-                      animationType: AnimationType.slide,
-                      cursorColor: Theme.of(context).textTheme.bodyLarge!.color,
-                      textStyle: robotoMedium.copyWith(fontSize: 20),
-                      pinTheme: PinTheme(
-                        shape: PinCodeFieldShape.box,
-                        fieldHeight: 52,
-                        fieldWidth: context.width > 390 ? 52 : 44,
-                        borderWidth: borderWidth,
-                        borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
-                        selectedColor: Theme.of(context).disabledColor.withValues(alpha: 0.35),
-                        selectedFillColor: Theme.of(context).cardColor,
-                        inactiveFillColor: Theme.of(context).cardColor,
-                        inactiveColor: Theme.of(context).disabledColor.withValues(alpha: 0.35),
-                        activeColor: hasError ? Colors.orange : Theme.of(context).disabledColor.withValues(alpha: 0.35),
-                        activeFillColor: Theme.of(context).cardColor,
-                        inactiveBorderWidth: borderWidth,
-                        selectedBorderWidth: borderWidth,
-                        disabledBorderWidth: borderWidth,
-                        errorBorderWidth: borderWidth,
-                        activeBorderWidth: borderWidth,
+                    Directionality(
+                      textDirection:  TextDirection.ltr,
+                      child: PinCodeTextField(
+                        length: 6,
+                        appContext: context,
+                        autoFocus: true,
+                        keyboardType: TextInputType.number,
+                        animationType: AnimationType.slide,
+                        cursorColor: Theme.of(context).textTheme.bodyLarge!.color,
+                        textStyle: robotoMedium.copyWith(fontSize: 20),
+                        pinTheme: PinTheme(
+                          shape: PinCodeFieldShape.box,
+                          fieldHeight: 52,
+                          fieldWidth: context.width > 390 ? 52 : 44,
+                          borderWidth: borderWidth,
+                          borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
+                          selectedColor: Theme.of(context).disabledColor.withValues(alpha: 0.35),
+                          selectedFillColor: Theme.of(context).cardColor,
+                          inactiveFillColor: Theme.of(context).cardColor,
+                          inactiveColor: Theme.of(context).disabledColor.withValues(alpha: 0.35),
+                          activeColor: hasError ? Colors.orange : Theme.of(context).disabledColor.withValues(alpha: 0.35),
+                          activeFillColor: Theme.of(context).cardColor,
+                          inactiveBorderWidth: borderWidth,
+                          selectedBorderWidth: borderWidth,
+                          disabledBorderWidth: borderWidth,
+                          errorBorderWidth: borderWidth,
+                          activeBorderWidth: borderWidth,
+                        ),
+                        animationDuration: const Duration(milliseconds: 300),
+                        backgroundColor: Colors.transparent,
+                        enableActiveFill: true,
+                        onChanged: verificationController.updateVerificationCode,
+                        beforeTextPaste: (text) => true,
+                        errorAnimationController: errorController, // Optional: Custom error animation
+                        errorTextSpace: 20, // Space for error text
+                        errorTextMargin: const EdgeInsets.only(top: 10),
                       ),
-                      animationDuration: const Duration(milliseconds: 300),
-                      backgroundColor: Colors.transparent,
-                      enableActiveFill: true,
-                      onChanged: verificationController.updateVerificationCode,
-                      beforeTextPaste: (text) => true,
-                      errorAnimationController: errorController, // Optional: Custom error animation
-                      errorTextSpace: 20, // Space for error text
-                      errorTextMargin: const EdgeInsets.only(top: 10),
                     ),
                     hasError ? Text(
                       hasError ? errorMessage : "",

@@ -1,8 +1,8 @@
 
-import 'package:sixam_mart/features/address/domain/models/address_model.dart';
-import 'package:sixam_mart/features/parcel/domain/models/parcel_category_model.dart';
-import 'package:sixam_mart/features/pro/domain/models/pro_active_offer_model.dart';
-import 'package:sixam_mart/features/store/domain/models/store_model.dart';
+import 'package:wekala_user/features/address/domain/models/address_model.dart';
+import 'package:wekala_user/features/parcel/domain/models/parcel_category_model.dart';
+import 'package:wekala_user/features/pro/domain/models/pro_active_offer_model.dart';
+import 'package:wekala_user/features/store/domain/models/store_model.dart';
 
 class PaginatedOrderModel {
   int? totalSize;

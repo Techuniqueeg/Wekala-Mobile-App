@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 

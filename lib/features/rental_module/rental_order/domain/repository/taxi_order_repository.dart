@@ -1,5 +1,5 @@
-import 'package:sixam_mart/api/api_client.dart';
-import 'package:sixam_mart/features/rental_module/rental_order/domain/repository/taxi_order_repository_interface.dart';
+import 'package:wekala_user/api/api_client.dart';
+import 'package:wekala_user/features/rental_module/rental_order/domain/repository/taxi_order_repository_interface.dart';
 
 class TaxiOrderRepository implements TaxiOrderRepositoryInterface {
   final ApiClient apiClient;

@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:sixam_mart/features/redesign_feature/common/models/new_item_model.dart';
-import 'package:sixam_mart/features/offer/domain/services/offer_service_interface.dart';
-import 'package:sixam_mart/features/store/domain/models/store_model.dart';
+import 'package:wekala_user/features/redesign_feature/common/models/new_item_model.dart';
+import 'package:wekala_user/features/offer/domain/services/offer_service_interface.dart';
+import 'package:wekala_user/features/store/domain/models/store_model.dart';
 
 class OfferController extends GetxController implements GetxService {
   final OfferServiceInterface offerServiceInterface;

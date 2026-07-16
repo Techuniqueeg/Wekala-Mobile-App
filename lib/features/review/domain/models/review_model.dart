@@ -1,4 +1,4 @@
-import 'package:sixam_mart/features/item/domain/models/item_model.dart';
+import 'package:wekala_user/features/item/domain/models/item_model.dart';
 
 class ReviewModel {
   int? id;

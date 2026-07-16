@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/common/controllers/theme_controller.dart';
-import 'package:sixam_mart/common/widgets/custom_app_bar.dart';
-import 'package:sixam_mart/common/widgets/menu_drawer.dart';
-import 'package:sixam_mart/features/auth/controllers/auth_controller.dart';
-import 'package:sixam_mart/features/language/controllers/language_controller.dart';
-import 'package:sixam_mart/features/language/widgets/language_bottom_sheet_widget.dart';
-import 'package:sixam_mart/features/profile/widgets/notification_status_change_bottom_sheet.dart';
-import 'package:sixam_mart/features/profile/widgets/profile_button_widget.dart';
-import 'package:sixam_mart/helper/auth_helper.dart';
-import 'package:sixam_mart/util/app_constants.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/common/controllers/theme_controller.dart';
+import 'package:wekala_user/common/widgets/custom_app_bar.dart';
+import 'package:wekala_user/common/widgets/menu_drawer.dart';
+import 'package:wekala_user/features/auth/controllers/auth_controller.dart';
+import 'package:wekala_user/features/language/controllers/language_controller.dart';
+import 'package:wekala_user/features/language/widgets/language_bottom_sheet_widget.dart';
+import 'package:wekala_user/features/profile/widgets/notification_status_change_bottom_sheet.dart';
+import 'package:wekala_user/features/profile/widgets/profile_button_widget.dart';
+import 'package:wekala_user/helper/auth_helper.dart';
+import 'package:wekala_user/util/app_constants.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/styles.dart';
 class SettingPage extends StatelessWidget {
   const SettingPage({super.key});
 
@@ -23,7 +23,7 @@ class SettingPage extends StatelessWidget {
       endDrawer: const MenuDrawer(), endDrawerEnableOpenDragGesture: false,
       key: UniqueKey(),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(Dimensions.paddingSizeDefault),
+        padding: const EdgeInsets.all(Dimensions.paddingSizeDefault),
         child: Column(children: [
 
           ProfileButtonWidget(icon: Icons.language, title: 'language'.tr, languageName: AppConstants.languages[Get.find<LocalizationController>().selectedLanguageIndex].languageName, onTap: () {

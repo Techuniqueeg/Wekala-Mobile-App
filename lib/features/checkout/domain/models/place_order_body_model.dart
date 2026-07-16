@@ -1,7 +1,7 @@
 import 'dart:convert';
-import 'package:sixam_mart/features/address/domain/models/address_model.dart';
-import 'package:sixam_mart/features/item/domain/models/item_model.dart';
-import 'package:sixam_mart/helper/type_converter_helper.dart';
+import 'package:wekala_user/features/address/domain/models/address_model.dart';
+import 'package:wekala_user/features/item/domain/models/item_model.dart';
+import 'package:wekala_user/helper/type_converter_helper.dart';
 
 class PlaceOrderBodyModel {
   List<OnlineCart>? _cart;

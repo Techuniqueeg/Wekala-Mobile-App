@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:just_the_tooltip/just_the_tooltip.dart';
-import 'package:sixam_mart/features/language/controllers/language_controller.dart';
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/features/profile/controllers/profile_controller.dart';
-import 'package:sixam_mart/helper/price_converter.dart';
-import 'package:sixam_mart/helper/responsive_helper.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/styles.dart';
-import 'package:sixam_mart/features/wallet/widgets/add_fund_dialogue_widget.dart';
+import 'package:wekala_user/features/language/controllers/language_controller.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/features/profile/controllers/profile_controller.dart';
+import 'package:wekala_user/helper/price_converter.dart';
+import 'package:wekala_user/helper/responsive_helper.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/styles.dart';
+import 'package:wekala_user/features/wallet/widgets/add_fund_dialogue_widget.dart';
 
 class WalletCardWidget extends StatelessWidget {
   final JustTheController tooltipController;

@@ -1,15 +1,15 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/common/widgets/custom_tool_tip_widget.dart';
-import 'package:sixam_mart/features/order/domain/models/order_model.dart';
-import 'package:sixam_mart/features/pro/domain/models/pro_active_offer_model.dart';
-import 'package:sixam_mart/features/order/model/billing_value.dart';
-import 'package:sixam_mart/features/order/widgets/collapsible_header.dart';
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/helper/price_converter.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/common/widgets/custom_tool_tip_widget.dart';
+import 'package:wekala_user/features/order/domain/models/order_model.dart';
+import 'package:wekala_user/features/pro/domain/models/pro_active_offer_model.dart';
+import 'package:wekala_user/features/order/model/billing_value.dart';
+import 'package:wekala_user/features/order/widgets/collapsible_header.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/helper/price_converter.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/styles.dart';
 
 class BillingSummarySection extends StatefulWidget {
   final OrderModel order;

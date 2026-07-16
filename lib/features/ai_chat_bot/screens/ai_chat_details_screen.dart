@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/common/models/module_model.dart';
-import 'package:sixam_mart/common/widgets/custom_app_bar.dart';
-import 'package:sixam_mart/common/widgets/custom_snackbar.dart';
-import 'package:sixam_mart/common/widgets/menu_drawer.dart';
-import 'package:sixam_mart/common/widgets/paginated_list_view.dart';
-import 'package:sixam_mart/features/ai_chat_bot/controllers/ai_chat_bot_controller.dart';
-import 'package:sixam_mart/features/ai_chat_bot/domain/models/ai_chat_message_model.dart';
-import 'package:sixam_mart/features/ai_chat_bot/widgets/ai_chat_message_bubble_widget.dart';
-import 'package:sixam_mart/features/ai_chat_bot/widgets/ai_chat_suggestion_chips_widget.dart';
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/common/models/module_model.dart';
+import 'package:wekala_user/common/widgets/custom_app_bar.dart';
+import 'package:wekala_user/common/widgets/custom_snackbar.dart';
+import 'package:wekala_user/common/widgets/menu_drawer.dart';
+import 'package:wekala_user/common/widgets/paginated_list_view.dart';
+import 'package:wekala_user/features/ai_chat_bot/controllers/ai_chat_bot_controller.dart';
+import 'package:wekala_user/features/ai_chat_bot/domain/models/ai_chat_message_model.dart';
+import 'package:wekala_user/features/ai_chat_bot/widgets/ai_chat_message_bubble_widget.dart';
+import 'package:wekala_user/features/ai_chat_bot/widgets/ai_chat_suggestion_chips_widget.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/styles.dart';
 
 class AiChatDetailsScreen extends StatefulWidget {
   final int? conversationId;

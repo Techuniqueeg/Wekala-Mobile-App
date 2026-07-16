@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/features/language/controllers/language_controller.dart';
-import 'package:sixam_mart/features/parcel/controllers/parcel_controller.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/features/language/controllers/language_controller.dart';
+import 'package:wekala_user/features/parcel/controllers/parcel_controller.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/styles.dart';
 
 class ServiceInfoListWidget extends StatelessWidget {
   final ParcelController parcelController;
@@ -42,7 +42,7 @@ class ServiceInfoListWidget extends StatelessWidget {
                   color: Theme.of(context).primaryColor,
                 ),
                 padding: const EdgeInsets.all(2),
-                child: Icon(Icons.check, color: Colors.white, size: 10,),
+                child: const Icon(Icons.check, color: Colors.white, size: 10,),
               ),
               const SizedBox(width: Dimensions.paddingSizeDefault),
 

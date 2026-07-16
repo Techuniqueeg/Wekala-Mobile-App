@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:sixam_mart/features/location/domain/models/zone_response_model.dart';
-import 'package:sixam_mart/features/location/domain/services/location_service_interface.dart';
+import 'package:wekala_user/features/location/domain/models/zone_response_model.dart';
+import 'package:wekala_user/features/location/domain/services/location_service_interface.dart';
 import '../domain/services/search_location_service_interface.dart';
 
 enum LocationType{from, to, extraOne, extraTwo, location, accessLocation, senderLocation, receiverLocation}

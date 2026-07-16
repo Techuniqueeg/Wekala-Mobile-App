@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
-import 'package:sixam_mart/common/widgets/custom_image.dart';
-import 'package:sixam_mart/features/smart_banner/controllers/smart_banner_controller.dart';
-import 'package:sixam_mart/features/smart_banner/domain/models/smart_banner_model.dart';
-import 'package:sixam_mart/features/smart_banner/helper/smart_banner_redirect_handler.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/common/widgets/custom_image.dart';
+import 'package:wekala_user/features/smart_banner/controllers/smart_banner_controller.dart';
+import 'package:wekala_user/features/smart_banner/domain/models/smart_banner_model.dart';
+import 'package:wekala_user/features/smart_banner/helper/smart_banner_redirect_handler.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/styles.dart';
 
 class HomeSmartBannerWidget extends StatelessWidget {
   const HomeSmartBannerWidget({super.key});

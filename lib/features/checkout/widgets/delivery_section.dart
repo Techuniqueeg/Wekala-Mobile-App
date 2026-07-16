@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:sixam_mart/common/widgets/custom_dropdown.dart';
-import 'package:sixam_mart/features/address/domain/models/address_model.dart';
-import 'package:sixam_mart/features/checkout/controllers/checkout_controller.dart';
-import 'package:sixam_mart/features/checkout/widgets/delivery_instraction_bottom_sheet_widget.dart';
-import 'package:sixam_mart/features/checkout/widgets_new/address_info_bottom_sheet.dart';
-import 'package:sixam_mart/features/checkout/widgets_new/custom_card_checkout.dart';
-import 'package:sixam_mart/features/location/screens/pick_location_screen.dart';
-import 'package:sixam_mart/helper/auth_helper.dart';
-import 'package:sixam_mart/helper/responsive_helper.dart';
-import 'package:sixam_mart/util/app_constants.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/common/widgets/custom_dropdown.dart';
+import 'package:wekala_user/features/address/domain/models/address_model.dart';
+import 'package:wekala_user/features/checkout/controllers/checkout_controller.dart';
+import 'package:wekala_user/features/checkout/widgets/delivery_instraction_bottom_sheet_widget.dart';
+import 'package:wekala_user/features/checkout/widgets_new/address_info_bottom_sheet.dart';
+import 'package:wekala_user/features/checkout/widgets_new/custom_card_checkout.dart';
+import 'package:wekala_user/features/location/screens/pick_location_screen.dart';
+import 'package:wekala_user/helper/auth_helper.dart';
+import 'package:wekala_user/helper/responsive_helper.dart';
+import 'package:wekala_user/util/app_constants.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/styles.dart';
 
 class DeliverySection extends StatelessWidget {
   final CheckoutController checkoutController;

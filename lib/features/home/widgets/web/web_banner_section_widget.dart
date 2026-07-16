@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/features/banner/controllers/banner_controller.dart';
-import 'package:sixam_mart/features/flash_sale/controllers/flash_sale_controller.dart';
-import 'package:sixam_mart/features/home/widgets/web/web_flash_sale_view_widget.dart';
-import 'package:sixam_mart/features/home/widgets/web/web_new_banner_view_widget.dart';
-import 'package:sixam_mart/features/home/widgets/web/web_recomanded_store_view_widget.dart';
-import 'package:sixam_mart/features/store/controllers/store_controller.dart';
-import 'package:sixam_mart/util/dimensions.dart';
+import 'package:wekala_user/features/banner/controllers/banner_controller.dart';
+import 'package:wekala_user/features/flash_sale/controllers/flash_sale_controller.dart';
+import 'package:wekala_user/features/home/widgets/web/web_flash_sale_view_widget.dart';
+import 'package:wekala_user/features/home/widgets/web/web_new_banner_view_widget.dart';
+import 'package:wekala_user/features/home/widgets/web/web_recomanded_store_view_widget.dart';
+import 'package:wekala_user/features/store/controllers/store_controller.dart';
+import 'package:wekala_user/util/dimensions.dart';
 class WebBannerSectionWidget extends StatelessWidget {
   const WebBannerSectionWidget({super.key});
 

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/common/widgets/custom_button.dart';
-import 'package:sixam_mart/common/widgets/custom_snackbar.dart';
-import 'package:sixam_mart/common/widgets/custom_text_field.dart';
-import 'package:sixam_mart/features/order/controllers/order_controller.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/common/widgets/custom_button.dart';
+import 'package:wekala_user/common/widgets/custom_snackbar.dart';
+import 'package:wekala_user/common/widgets/custom_text_field.dart';
+import 'package:wekala_user/features/order/controllers/order_controller.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/styles.dart';
 
 class CancellationDialogueWidget extends StatefulWidget {
   final int? orderId;

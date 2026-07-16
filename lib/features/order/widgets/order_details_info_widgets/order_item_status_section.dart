@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:intl/intl.dart';
-import 'package:sixam_mart/common/widgets/custom_snackbar.dart';
-import 'package:sixam_mart/features/order/domain/models/order_model.dart';
-import 'package:sixam_mart/theme/light_theme.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/images.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/common/widgets/custom_snackbar.dart';
+import 'package:wekala_user/features/order/domain/models/order_model.dart';
+import 'package:wekala_user/theme/light_theme.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/images.dart';
+import 'package:wekala_user/util/styles.dart';
 
 class OrderItemStatusSection extends StatelessWidget {
   final OrderModel order;

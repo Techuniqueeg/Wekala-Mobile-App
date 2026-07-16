@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:sixam_mart/common/widgets/confirmation_dialog.dart';
-import 'package:sixam_mart/common/widgets/custom_snackbar.dart';
-import 'package:sixam_mart/features/order/controllers/order_controller.dart';
-import 'package:sixam_mart/features/order/domain/models/monthly_order_model.dart';
-import 'package:sixam_mart/features/order/domain/models/order_model.dart';
-import 'package:sixam_mart/features/cart/screens/global_cart_screen.dart';
-import 'package:sixam_mart/util/images.dart';
+import 'package:wekala_user/common/widgets/confirmation_dialog.dart';
+import 'package:wekala_user/common/widgets/custom_snackbar.dart';
+import 'package:wekala_user/features/order/controllers/order_controller.dart';
+import 'package:wekala_user/features/order/domain/models/monthly_order_model.dart';
+import 'package:wekala_user/features/order/domain/models/order_model.dart';
+import 'package:wekala_user/features/cart/screens/global_cart_screen.dart';
+import 'package:wekala_user/util/images.dart';
 
 /// Shared actions for monthly-order (My Items) menus across the list and detail screens.
 class MonthlyOrderActions {

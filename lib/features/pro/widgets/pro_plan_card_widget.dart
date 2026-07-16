@@ -1,8 +1,8 @@
-import 'package:sixam_mart/features/pro/domain/models/pro_plan_model.dart';
-import 'package:sixam_mart/features/pro/widgets/pro_benefit_items.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/images.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/features/pro/domain/models/pro_plan_model.dart';
+import 'package:wekala_user/features/pro/widgets/pro_benefit_items.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/images.dart';
+import 'package:wekala_user/util/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -28,7 +28,7 @@ class ProPlanCardWidget extends StatelessWidget {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: Colors.white.withAlpha(100),
-                  borderRadius: BorderRadius.vertical(bottom: Radius.circular( Dimensions.radiusExtraLarge), top: Radius.circular(Dimensions.radiusLarge)),
+                  borderRadius: const BorderRadius.vertical(bottom: Radius.circular( Dimensions.radiusExtraLarge), top: Radius.circular(Dimensions.radiusLarge)),
                 ),
                 child: Column(
                   children: [

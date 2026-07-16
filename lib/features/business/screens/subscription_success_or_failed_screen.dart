@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/common/widgets/custom_app_bar.dart';
-import 'package:sixam_mart/common/widgets/custom_asset_image_widget.dart';
-import 'package:sixam_mart/common/widgets/footer_view.dart';
-import 'package:sixam_mart/common/widgets/menu_drawer.dart';
-import 'package:sixam_mart/common/widgets/web_page_title_widget.dart';
-import 'package:sixam_mart/features/auth/widgets/web_registration_stepper_widget.dart';
-import 'package:sixam_mart/features/business/controllers/business_controller.dart';
-import 'package:sixam_mart/helper/responsive_helper.dart';
-import 'package:sixam_mart/helper/route_helper.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/images.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/common/widgets/custom_app_bar.dart';
+import 'package:wekala_user/common/widgets/custom_asset_image_widget.dart';
+import 'package:wekala_user/common/widgets/footer_view.dart';
+import 'package:wekala_user/common/widgets/menu_drawer.dart';
+import 'package:wekala_user/common/widgets/web_page_title_widget.dart';
+import 'package:wekala_user/features/auth/widgets/web_registration_stepper_widget.dart';
+import 'package:wekala_user/features/business/controllers/business_controller.dart';
+import 'package:wekala_user/helper/responsive_helper.dart';
+import 'package:wekala_user/helper/route_helper.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/images.dart';
+import 'package:wekala_user/util/styles.dart';
 
 class SubscriptionSuccessOrFailedScreen extends StatefulWidget {
   final bool success;

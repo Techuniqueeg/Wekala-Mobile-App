@@ -1,8 +1,8 @@
-import 'package:sixam_mart/common/enums/data_source_enum.dart';
-import 'package:sixam_mart/features/item/domain/models/basic_campaign_model.dart';
-import 'package:sixam_mart/features/item/domain/models/item_model.dart';
-import 'package:sixam_mart/features/item/domain/repositories/campaign_repository_interface.dart';
-import 'package:sixam_mart/features/item/domain/services/campaign_service_interface.dart';
+import 'package:wekala_user/common/enums/data_source_enum.dart';
+import 'package:wekala_user/features/item/domain/models/basic_campaign_model.dart';
+import 'package:wekala_user/features/item/domain/models/item_model.dart';
+import 'package:wekala_user/features/item/domain/repositories/campaign_repository_interface.dart';
+import 'package:wekala_user/features/item/domain/services/campaign_service_interface.dart';
 
 class CampaignService implements CampaignServiceInterface {
   final CampaignRepositoryInterface campaignRepositoryInterface;

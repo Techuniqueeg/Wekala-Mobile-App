@@ -3,21 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:sixam_mart/api/api_client.dart';
-import 'package:sixam_mart/common/widgets/custom_snackbar.dart';
-import 'package:sixam_mart/features/business/controllers/business_controller.dart';
-import 'package:sixam_mart/features/business/domain/models/package_model.dart';
-import 'package:sixam_mart/features/home/controllers/home_controller.dart';
-import 'package:sixam_mart/features/location/controllers/location_controller.dart';
-import 'package:sixam_mart/features/location/domain/services/location_service_interface.dart';
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/common/models/module_model.dart';
-import 'package:sixam_mart/features/location/domain/models/zone_data_model.dart';
-import 'package:sixam_mart/features/location/domain/models/zone_response_model.dart';
-import 'package:sixam_mart/features/auth/domain/models/store_body_model.dart';
-import 'package:sixam_mart/features/auth/domain/services/store_registration_service_interface.dart';
-import 'package:sixam_mart/helper/date_converter.dart';
-import 'package:sixam_mart/helper/route_helper.dart';
+import 'package:wekala_user/api/api_client.dart';
+import 'package:wekala_user/common/widgets/custom_snackbar.dart';
+import 'package:wekala_user/features/business/controllers/business_controller.dart';
+import 'package:wekala_user/features/business/domain/models/package_model.dart';
+import 'package:wekala_user/features/home/controllers/home_controller.dart';
+import 'package:wekala_user/features/location/controllers/location_controller.dart';
+import 'package:wekala_user/features/location/domain/services/location_service_interface.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/common/models/module_model.dart';
+import 'package:wekala_user/features/location/domain/models/zone_data_model.dart';
+import 'package:wekala_user/features/location/domain/models/zone_response_model.dart';
+import 'package:wekala_user/features/auth/domain/models/store_body_model.dart';
+import 'package:wekala_user/features/auth/domain/services/store_registration_service_interface.dart';
+import 'package:wekala_user/helper/date_converter.dart';
+import 'package:wekala_user/helper/route_helper.dart';
 
 class StoreRegistrationController extends GetxController implements GetxService {
   final StoreRegistrationServiceInterface storeRegistrationServiceInterface;
@@ -249,6 +249,7 @@ class StoreRegistrationController extends GetxController implements GetxService 
     _zoneIds = null;
     List<ZoneDataModel>? zones = await storeRegistrationServiceInterface.getZoneList();
     if (zones != null) {
+      print('zones: $zones');
       _zoneList = [];
       _zoneList!.addAll(zones);
       setLocation(LatLng(

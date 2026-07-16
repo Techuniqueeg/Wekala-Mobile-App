@@ -1,8 +1,8 @@
-import 'package:sixam_mart/common/enums/data_source_enum.dart';
-import 'package:sixam_mart/common/models/module_model.dart';
-import 'package:sixam_mart/features/store/domain/models/store_model.dart';
-import 'package:sixam_mart/features/store/domain/models/store_category_items_model.dart';
-import 'package:sixam_mart/interfaces/repository_interface.dart';
+import 'package:wekala_user/common/enums/data_source_enum.dart';
+import 'package:wekala_user/common/models/module_model.dart';
+import 'package:wekala_user/features/store/domain/models/store_model.dart';
+import 'package:wekala_user/features/store/domain/models/store_category_items_model.dart';
+import 'package:wekala_user/interfaces/repository_interface.dart';
 
 abstract class StoreRepositoryInterface extends RepositoryInterface {
   @override

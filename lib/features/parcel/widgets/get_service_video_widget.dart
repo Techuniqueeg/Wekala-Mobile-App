@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sixam_mart/util/dimensions.dart';
+import 'package:wekala_user/util/dimensions.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'package:video_player/video_player.dart';
 

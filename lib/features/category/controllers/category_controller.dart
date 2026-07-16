@@ -1,8 +1,8 @@
-import 'package:sixam_mart/common/enums/data_source_enum.dart';
-import 'package:sixam_mart/features/category/domain/models/category_model.dart';
-import 'package:sixam_mart/features/item/domain/models/item_model.dart';
+import 'package:wekala_user/common/enums/data_source_enum.dart';
+import 'package:wekala_user/features/category/domain/models/category_model.dart';
+import 'package:wekala_user/features/item/domain/models/item_model.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/features/category/domain/services/category_service_interface.dart';
+import 'package:wekala_user/features/category/domain/services/category_service_interface.dart';
 
 import '../../store/domain/models/store_model.dart';
 

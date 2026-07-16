@@ -1,16 +1,16 @@
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/features/auth/controllers/auth_controller.dart';
-import 'package:sixam_mart/features/order/controllers/order_controller.dart';
-import 'package:sixam_mart/helper/auth_helper.dart';
-import 'package:sixam_mart/helper/price_converter.dart';
-import 'package:sixam_mart/helper/route_helper.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/images.dart';
-import 'package:sixam_mart/util/styles.dart';
-import 'package:sixam_mart/common/widgets/custom_button.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/features/auth/controllers/auth_controller.dart';
+import 'package:wekala_user/features/order/controllers/order_controller.dart';
+import 'package:wekala_user/helper/auth_helper.dart';
+import 'package:wekala_user/helper/price_converter.dart';
+import 'package:wekala_user/helper/route_helper.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/images.dart';
+import 'package:wekala_user/util/styles.dart';
+import 'package:wekala_user/common/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/common/widgets/custom_snackbar.dart';
+import 'package:wekala_user/common/widgets/custom_snackbar.dart';
 
 class PaymentFailedDialog extends StatelessWidget {
   final String? orderID;

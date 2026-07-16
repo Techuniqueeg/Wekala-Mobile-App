@@ -1,7 +1,7 @@
-import 'package:sixam_mart/features/pro/domain/models/pro_active_offer_model.dart';
-import 'package:sixam_mart/features/pro/domain/models/pro_faq_model.dart';
-import 'package:sixam_mart/features/pro/domain/models/pro_plan_model.dart';
-import 'package:sixam_mart/interfaces/repository_interface.dart';
+import 'package:wekala_user/features/pro/domain/models/pro_active_offer_model.dart';
+import 'package:wekala_user/features/pro/domain/models/pro_faq_model.dart';
+import 'package:wekala_user/features/pro/domain/models/pro_plan_model.dart';
+import 'package:wekala_user/interfaces/repository_interface.dart';
 import 'package:get/get_connect.dart';
 
 abstract class ProRepositoryInterface extends RepositoryInterface {

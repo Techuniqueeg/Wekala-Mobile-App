@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/common/widgets/custom_card.dart';
-import 'package:sixam_mart/common/widgets/custom_image.dart';
-import 'package:sixam_mart/features/item/domain/models/item_model.dart';
-import 'package:sixam_mart/features/order/domain/models/order_details_model.dart';
-import 'package:sixam_mart/features/order/domain/models/order_model.dart';
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/helper/price_converter.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/common/widgets/custom_card.dart';
+import 'package:wekala_user/common/widgets/custom_image.dart';
+import 'package:wekala_user/features/item/domain/models/item_model.dart';
+import 'package:wekala_user/features/order/domain/models/order_details_model.dart';
+import 'package:wekala_user/features/order/domain/models/order_model.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/helper/price_converter.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/styles.dart';
 
 class OrderItemWidget extends StatelessWidget {
   final OrderModel order;

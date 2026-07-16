@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pointer_interceptor/pointer_interceptor.dart';
-import 'package:sixam_mart/features/favourite/controllers/favourite_controller.dart';
-import 'package:sixam_mart/features/item/domain/models/item_model.dart';
-import 'package:sixam_mart/helper/auth_helper.dart';
-import 'package:sixam_mart/common/widgets/custom_snackbar.dart';
-import 'package:sixam_mart/util/dimensions.dart';
+import 'package:wekala_user/features/favourite/controllers/favourite_controller.dart';
+import 'package:wekala_user/features/item/domain/models/item_model.dart';
+import 'package:wekala_user/helper/auth_helper.dart';
+import 'package:wekala_user/common/widgets/custom_snackbar.dart';
+import 'package:wekala_user/util/dimensions.dart';
 
 class AddFavouriteView extends StatefulWidget {
   final Item? item;

@@ -1,5 +1,5 @@
-import 'package:sixam_mart/common/models/module_model.dart';
-import 'package:sixam_mart/helper/type_converter_helper.dart';
+import 'package:wekala_user/common/models/module_model.dart';
+import 'package:wekala_user/helper/type_converter_helper.dart';
 
 class ConfigModel {
   String? businessName;

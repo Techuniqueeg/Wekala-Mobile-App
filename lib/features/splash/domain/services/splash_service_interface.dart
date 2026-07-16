@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
-import 'package:sixam_mart/common/enums/data_source_enum.dart';
-import 'package:sixam_mart/common/models/config_model.dart';
-import 'package:sixam_mart/common/models/response_model.dart';
-import 'package:sixam_mart/features/splash/domain/models/landing_model.dart';
-import 'package:sixam_mart/common/models/module_model.dart';
+import 'package:wekala_user/common/enums/data_source_enum.dart';
+import 'package:wekala_user/common/models/config_model.dart';
+import 'package:wekala_user/common/models/response_model.dart';
+import 'package:wekala_user/features/splash/domain/models/landing_model.dart';
+import 'package:wekala_user/common/models/module_model.dart';
 
 import '../models/app_download_section_model.dart';
 

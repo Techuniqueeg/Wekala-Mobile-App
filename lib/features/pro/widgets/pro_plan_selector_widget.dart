@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/common/widgets/custom_button.dart';
-import 'package:sixam_mart/features/pro/controllers/pro_controller.dart';
-import 'package:sixam_mart/features/pro/domain/models/pro_plan_model.dart';
-import 'package:sixam_mart/features/pro/widgets/pro_payment_bottom_sheet_widget.dart';
-import 'package:sixam_mart/helper/price_converter.dart';
-import 'package:sixam_mart/helper/responsive_helper.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/common/widgets/custom_button.dart';
+import 'package:wekala_user/features/pro/controllers/pro_controller.dart';
+import 'package:wekala_user/features/pro/domain/models/pro_plan_model.dart';
+import 'package:wekala_user/features/pro/widgets/pro_payment_bottom_sheet_widget.dart';
+import 'package:wekala_user/helper/price_converter.dart';
+import 'package:wekala_user/helper/responsive_helper.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/styles.dart';
 
 class ProPlanSelectorWidget extends StatefulWidget {
   final List<PlanItem> plans;
@@ -112,7 +112,7 @@ class _ProPlanSelectorWidgetState extends State<ProPlanSelectorWidget> {
         Stack(
           children: [
             Container(
-              padding: EdgeInsets.all(Dimensions.paddingSizeExtraSmall),
+              padding: const EdgeInsets.all(Dimensions.paddingSizeExtraSmall),
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
@@ -137,7 +137,7 @@ class _ProPlanSelectorWidgetState extends State<ProPlanSelectorWidget> {
                             boxShadow: [
                               if(isSelected) BoxShadow(
                                 color: Theme.of(context).disabledColor.withAlpha(30),
-                                offset: Offset(0, 2),
+                                offset: const Offset(0, 2),
                               ),
                             ],
                           ),

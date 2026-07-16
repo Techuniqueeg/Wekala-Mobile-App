@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sixam_mart/features/redesign_feature/dashboard/widgets/quick_filters_widget.dart';
-import 'package:sixam_mart/features/redesign_feature/dashboard/widgets/search_widget.dart';
-import 'package:sixam_mart/util/dimensions.dart';
+import 'package:wekala_user/features/redesign_feature/dashboard/widgets/quick_filters_widget.dart';
+import 'package:wekala_user/features/redesign_feature/dashboard/widgets/search_widget.dart';
+import 'package:wekala_user/util/dimensions.dart';
 
 class SearchAndQuickFilterWidget extends StatelessWidget {
   static const double height = 135;

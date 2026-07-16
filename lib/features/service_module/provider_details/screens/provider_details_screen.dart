@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sixam_mart/features/service_module/common/models/service_provider_model.dart';
+import 'package:wekala_user/features/service_module/common/models/service_provider_model.dart';
 
 class ProviderDetailsScreen extends StatefulWidget {
   final int providerId;

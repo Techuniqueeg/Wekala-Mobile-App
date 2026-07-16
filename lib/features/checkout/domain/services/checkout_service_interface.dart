@@ -1,12 +1,12 @@
 import 'package:get/get_connect/http/src/response/response.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:sixam_mart/api/api_client.dart';
-import 'package:sixam_mart/features/checkout/domain/models/surge_price_model.dart';
-import 'package:sixam_mart/features/checkout/domain/models/saved_prescription_model.dart';
-import 'package:sixam_mart/features/store/domain/models/store_model.dart';
-import 'package:sixam_mart/features/payment/domain/models/offline_method_model.dart';
-import 'package:sixam_mart/features/checkout/domain/models/place_order_body_model.dart';
-import 'package:sixam_mart/features/checkout/domain/models/timeslote_model.dart';
+import 'package:wekala_user/api/api_client.dart';
+import 'package:wekala_user/features/checkout/domain/models/surge_price_model.dart';
+import 'package:wekala_user/features/checkout/domain/models/saved_prescription_model.dart';
+import 'package:wekala_user/features/store/domain/models/store_model.dart';
+import 'package:wekala_user/features/payment/domain/models/offline_method_model.dart';
+import 'package:wekala_user/features/checkout/domain/models/place_order_body_model.dart';
+import 'package:wekala_user/features/checkout/domain/models/timeslote_model.dart';
 
 abstract class CheckoutServiceInterface {
   Future<List<OfflineMethodModel>?> getOfflineMethodList();

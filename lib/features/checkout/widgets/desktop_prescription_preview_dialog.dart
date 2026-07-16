@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:sixam_mart/helper/auth_helper.dart';
+import 'package:wekala_user/helper/auth_helper.dart';
 
 import '../../../helper/responsive_helper.dart';
 import '../../../util/app_constants.dart';

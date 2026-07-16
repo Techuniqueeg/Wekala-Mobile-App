@@ -6,40 +6,40 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/common/models/ongoing_order_model.dart';
-import 'package:sixam_mart/common/widgets/custom_dialog.dart';
-import 'package:sixam_mart/common/widgets/custom_image.dart';
-import 'package:sixam_mart/common/widgets/login_suggestion_bottomsheet.dart';
-import 'package:sixam_mart/features/ai_chat_bot/widgets/ai_chat_bot_floating_button_widget.dart';
-import 'package:sixam_mart/features/auth/controllers/auth_controller.dart';
-import 'package:sixam_mart/features/checkout/widgets/congratulation_dialogue.dart';
-import 'package:sixam_mart/features/dashboard/widgets/address_bottom_sheet_widget.dart';
-import 'package:sixam_mart/features/dashboard/widgets/payment_incomplete_bottomsheet.dart';
-import 'package:sixam_mart/features/dashboard/widgets/store_registration_success_bottom_sheet.dart';
-import 'package:sixam_mart/features/favourite/screens/favourite_screen.dart';
-import 'package:sixam_mart/features/flash_sale/controllers/flash_sale_controller.dart';
-import 'package:sixam_mart/features/home/controllers/home_controller.dart';
-import 'package:sixam_mart/features/home/widgets/cashback_dialog_widget.dart';
-import 'package:sixam_mart/features/home/widgets/cashback_logo_widget.dart';
-import 'package:sixam_mart/features/location/controllers/location_controller.dart';
-import 'package:sixam_mart/features/order/controllers/order_controller.dart';
-import 'package:sixam_mart/features/profile/controllers/profile_controller.dart';
-import 'package:sixam_mart/features/redesign_feature/dashboard/screens/main_screen.dart';
-import 'package:sixam_mart/features/redesign_feature/dashboard/widgets/home_status_bar_tint.dart';
-import 'package:sixam_mart/features/redesign_feature/dashboard/widgets/navbar_promo_banner.dart';
-import 'package:sixam_mart/features/offer/offer_screen.dart';
-import 'package:sixam_mart/features/order/screens/my_order_screen.dart';
-import 'package:sixam_mart/features/profile/screens/profile_screen.dart';
-import 'package:sixam_mart/features/ride_share_module/ride_home/screens/biding_list_screen.dart';
-import 'package:sixam_mart/features/ride_share_module/ride_order/controllers/ride_controller.dart';
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/features/store/controllers/store_controller.dart';
-import 'package:sixam_mart/helper/auth_helper.dart';
-import 'package:sixam_mart/helper/responsive_helper.dart';
-import 'package:sixam_mart/util/app_constants.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/images.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/common/models/ongoing_order_model.dart';
+import 'package:wekala_user/common/widgets/custom_dialog.dart';
+import 'package:wekala_user/common/widgets/custom_image.dart';
+import 'package:wekala_user/common/widgets/login_suggestion_bottomsheet.dart';
+import 'package:wekala_user/features/ai_chat_bot/widgets/ai_chat_bot_floating_button_widget.dart';
+import 'package:wekala_user/features/auth/controllers/auth_controller.dart';
+import 'package:wekala_user/features/checkout/widgets/congratulation_dialogue.dart';
+import 'package:wekala_user/features/dashboard/widgets/address_bottom_sheet_widget.dart';
+import 'package:wekala_user/features/dashboard/widgets/payment_incomplete_bottomsheet.dart';
+import 'package:wekala_user/features/dashboard/widgets/store_registration_success_bottom_sheet.dart';
+import 'package:wekala_user/features/favourite/screens/favourite_screen.dart';
+import 'package:wekala_user/features/flash_sale/controllers/flash_sale_controller.dart';
+import 'package:wekala_user/features/home/controllers/home_controller.dart';
+import 'package:wekala_user/features/home/widgets/cashback_dialog_widget.dart';
+import 'package:wekala_user/features/home/widgets/cashback_logo_widget.dart';
+import 'package:wekala_user/features/location/controllers/location_controller.dart';
+import 'package:wekala_user/features/order/controllers/order_controller.dart';
+import 'package:wekala_user/features/profile/controllers/profile_controller.dart';
+import 'package:wekala_user/features/redesign_feature/dashboard/screens/main_screen.dart';
+import 'package:wekala_user/features/redesign_feature/dashboard/widgets/home_status_bar_tint.dart';
+import 'package:wekala_user/features/redesign_feature/dashboard/widgets/navbar_promo_banner.dart';
+import 'package:wekala_user/features/offer/offer_screen.dart';
+import 'package:wekala_user/features/order/screens/my_order_screen.dart';
+import 'package:wekala_user/features/profile/screens/profile_screen.dart';
+import 'package:wekala_user/features/ride_share_module/ride_home/screens/biding_list_screen.dart';
+import 'package:wekala_user/features/ride_share_module/ride_order/controllers/ride_controller.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/features/store/controllers/store_controller.dart';
+import 'package:wekala_user/helper/auth_helper.dart';
+import 'package:wekala_user/helper/responsive_helper.dart';
+import 'package:wekala_user/util/app_constants.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/images.dart';
+import 'package:wekala_user/util/styles.dart';
 
 import '../widgets/running_order_view_widget.dart';
 
@@ -495,7 +495,7 @@ class DashboardScreenState extends State<DashboardScreen> {
                                                         _pageIndex <= 4
                                                     ? _pageIndex - 1
                                                     : -1;
-                                                final indicatorLeft =
+                                                final indicatorPosition =
                                                     selectedSlot == -1
                                                     ? -indicatorWidth
                                                     : (itemWidth *
@@ -503,18 +503,17 @@ class DashboardScreenState extends State<DashboardScreen> {
                                                           (itemWidth -
                                                                   indicatorWidth) /
                                                               2;
-
                                                 return Stack(
                                                   clipBehavior: Clip.none,
                                                   children: [
-                                                    AnimatedPositioned(
+                                                    AnimatedPositionedDirectional(
                                                       duration: const Duration(
                                                         milliseconds: 280,
                                                       ),
                                                       curve:
                                                           Curves.easeOutCubic,
                                                       top: 0,
-                                                      left: indicatorLeft,
+                                                      start: indicatorPosition,
                                                       width: indicatorWidth,
                                                       height: indicatorHeight,
                                                       child: AnimatedOpacity(

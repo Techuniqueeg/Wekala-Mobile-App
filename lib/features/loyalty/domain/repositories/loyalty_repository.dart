@@ -1,8 +1,8 @@
 import 'package:get/get_connect.dart';
-import 'package:sixam_mart/common/models/transaction_model.dart';
-import 'package:sixam_mart/api/api_client.dart';
-import 'package:sixam_mart/features/loyalty/domain/repositories/loyalty_repository_interface.dart';
-import 'package:sixam_mart/util/app_constants.dart';
+import 'package:wekala_user/common/models/transaction_model.dart';
+import 'package:wekala_user/api/api_client.dart';
+import 'package:wekala_user/features/loyalty/domain/repositories/loyalty_repository_interface.dart';
+import 'package:wekala_user/util/app_constants.dart';
 
 class LoyaltyRepository implements LoyaltyRepositoryInterface {
   final ApiClient apiClient;

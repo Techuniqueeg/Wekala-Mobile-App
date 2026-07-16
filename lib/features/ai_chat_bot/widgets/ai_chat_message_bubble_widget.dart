@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/features/ai_chat_bot/domain/models/ai_chat_message_model.dart';
-import 'package:sixam_mart/features/ai_chat_bot/widgets/ai_chat_metadata_view_widget.dart';
-import 'package:sixam_mart/helper/date_converter.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/features/ai_chat_bot/domain/models/ai_chat_message_model.dart';
+import 'package:wekala_user/features/ai_chat_bot/widgets/ai_chat_metadata_view_widget.dart';
+import 'package:wekala_user/helper/date_converter.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/styles.dart';
 
 class AiChatMessageBubbleWidget extends StatelessWidget {
   final AiChatMessage message;

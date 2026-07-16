@@ -1,11 +1,11 @@
-import 'package:sixam_mart/features/brands/domain/models/brands_model.dart';
-import 'package:sixam_mart/features/search/domain/models/popular_categories_model.dart';
-import 'package:sixam_mart/features/search/domain/models/recent_search_entry.dart';
-import 'package:sixam_mart/features/search/domain/models/search_suggestion_model.dart';
-import 'package:sixam_mart/features/search/domain/models/top_category_model.dart';
-import 'package:sixam_mart/features/search/domain/models/trending_search_model.dart';
-import 'package:sixam_mart/features/store/domain/models/store_model.dart';
-import 'package:sixam_mart/interfaces/repository_interface.dart';
+import 'package:wekala_user/features/brands/domain/models/brands_model.dart';
+import 'package:wekala_user/features/search/domain/models/popular_categories_model.dart';
+import 'package:wekala_user/features/search/domain/models/recent_search_entry.dart';
+import 'package:wekala_user/features/search/domain/models/search_suggestion_model.dart';
+import 'package:wekala_user/features/search/domain/models/top_category_model.dart';
+import 'package:wekala_user/features/search/domain/models/trending_search_model.dart';
+import 'package:wekala_user/features/store/domain/models/store_model.dart';
+import 'package:wekala_user/interfaces/repository_interface.dart';
 
 abstract class SearchRepositoryInterface extends RepositoryInterface {
   Future<bool> saveSearchHistory(List<RecentSearchEntry> searchHistories, {String moduleKey = ''});

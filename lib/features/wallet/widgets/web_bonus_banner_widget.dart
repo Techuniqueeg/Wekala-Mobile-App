@@ -1,10 +1,10 @@
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/features/wallet/controllers/wallet_controller.dart';
-import 'package:sixam_mart/helper/date_converter.dart';
-import 'package:sixam_mart/helper/price_converter.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/images.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/features/wallet/controllers/wallet_controller.dart';
+import 'package:wekala_user/helper/date_converter.dart';
+import 'package:wekala_user/helper/price_converter.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/images.dart';
+import 'package:wekala_user/util/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';

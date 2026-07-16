@@ -1,5 +1,5 @@
-import 'package:sixam_mart/features/pro/domain/models/pro_active_offer_model.dart';
-import 'package:sixam_mart/helper/type_converter_helper.dart';
+import 'package:wekala_user/features/pro/domain/models/pro_active_offer_model.dart';
+import 'package:wekala_user/helper/type_converter_helper.dart';
 
 enum ProPlanType {
   freeTrial('free_trial'),

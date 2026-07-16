@@ -1,17 +1,17 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/common/widgets/hover/text_hover.dart';
-import 'package:sixam_mart/features/flash_sale/controllers/flash_sale_controller.dart';
-import 'package:sixam_mart/features/item/controllers/item_controller.dart';
-import 'package:sixam_mart/features/flash_sale/domain/models/flash_sale_model.dart';
-import 'package:sixam_mart/helper/responsive_helper.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/styles.dart';
-import 'package:sixam_mart/common/widgets/cart_count_view.dart';
-import 'package:sixam_mart/common/widgets/custom_image.dart';
-import 'package:sixam_mart/common/widgets/discount_tag.dart';
-import 'package:sixam_mart/common/widgets/organic_tag.dart';
+import 'package:wekala_user/common/widgets/hover/text_hover.dart';
+import 'package:wekala_user/features/flash_sale/controllers/flash_sale_controller.dart';
+import 'package:wekala_user/features/item/controllers/item_controller.dart';
+import 'package:wekala_user/features/flash_sale/domain/models/flash_sale_model.dart';
+import 'package:wekala_user/helper/responsive_helper.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/styles.dart';
+import 'package:wekala_user/common/widgets/cart_count_view.dart';
+import 'package:wekala_user/common/widgets/custom_image.dart';
+import 'package:wekala_user/common/widgets/discount_tag.dart';
+import 'package:wekala_user/common/widgets/organic_tag.dart';
 
 class FlashSaleCard extends StatefulWidget {
   final List<ActiveProducts> activeProducts;

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/common/models/restaurant_offer_chip.dart';
-import 'package:sixam_mart/features/search/domain/models/food_item.dart';
-import 'package:sixam_mart/features/redesign_feature/global_widgets/restaurant_item_card.dart';
-import 'package:sixam_mart/features/redesign_feature/global_widgets/restaurant_summary_row.dart';
-import 'package:sixam_mart/features/store/domain/models/store_model.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/gaps.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/common/models/restaurant_offer_chip.dart';
+import 'package:wekala_user/features/search/domain/models/food_item.dart';
+import 'package:wekala_user/features/redesign_feature/global_widgets/restaurant_item_card.dart';
+import 'package:wekala_user/features/redesign_feature/global_widgets/restaurant_summary_row.dart';
+import 'package:wekala_user/features/store/domain/models/store_model.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/gaps.dart';
+import 'package:wekala_user/util/styles.dart';
 
 class StoreOfferGroupData {
   final Store store;

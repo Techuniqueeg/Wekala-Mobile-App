@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/features/order/controllers/order_controller.dart';
-import 'package:sixam_mart/features/order/domain/models/order_model.dart';
-import 'package:sixam_mart/helper/date_converter.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/images.dart';
-import 'package:sixam_mart/util/styles.dart';
-import 'package:sixam_mart/common/widgets/custom_image.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/features/order/controllers/order_controller.dart';
+import 'package:wekala_user/features/order/domain/models/order_model.dart';
+import 'package:wekala_user/helper/date_converter.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/images.dart';
+import 'package:wekala_user/util/styles.dart';
+import 'package:wekala_user/common/widgets/custom_image.dart';
 
 class OrderBannerViewWidget extends StatelessWidget {
   final OrderModel order;
@@ -32,7 +32,7 @@ class OrderBannerViewWidget extends StatelessWidget {
                 ))),
                 Expanded(flex: 2,
                 child: Column(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  SizedBox(height: Dimensions.paddingSizeExtraLarge),
+                  const SizedBox(height: Dimensions.paddingSizeExtraLarge),
                   Text('your_food_will_delivered_within'.tr, style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeDefault)),
                   const SizedBox(height: Dimensions.paddingSizeExtraSmall),
 

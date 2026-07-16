@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
-import 'package:sixam_mart/api/api_client.dart';
-import 'package:sixam_mart/features/redesign_feature/common/models/new_item_model.dart';
-import 'package:sixam_mart/features/offer/domain/repositories/offer_repository_interface.dart';
-import 'package:sixam_mart/features/store/domain/models/store_model.dart';
-import 'package:sixam_mart/util/app_constants.dart';
+import 'package:wekala_user/api/api_client.dart';
+import 'package:wekala_user/features/redesign_feature/common/models/new_item_model.dart';
+import 'package:wekala_user/features/offer/domain/repositories/offer_repository_interface.dart';
+import 'package:wekala_user/features/store/domain/models/store_model.dart';
+import 'package:wekala_user/util/app_constants.dart';
 
 class OfferRepository implements OfferRepositoryInterface {
   final ApiClient apiClient;

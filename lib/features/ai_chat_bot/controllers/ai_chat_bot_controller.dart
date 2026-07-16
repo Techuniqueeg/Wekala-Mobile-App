@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/features/ai_chat_bot/domain/models/ai_chat_conversation_model.dart';
-import 'package:sixam_mart/features/ai_chat_bot/domain/models/ai_chat_message_model.dart';
-import 'package:sixam_mart/features/ai_chat_bot/domain/services/ai_chat_bot_service_interface.dart';
+import 'package:wekala_user/features/ai_chat_bot/domain/models/ai_chat_conversation_model.dart';
+import 'package:wekala_user/features/ai_chat_bot/domain/models/ai_chat_message_model.dart';
+import 'package:wekala_user/features/ai_chat_bot/domain/services/ai_chat_bot_service_interface.dart';
 
 class AiChatBotController extends GetxController implements GetxService {
   final AiChatBotServiceInterface aiChatBotServiceInterface;

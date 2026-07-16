@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/features/home/controllers/home_controller.dart';
-import 'package:sixam_mart/features/home/domain/models/top_offer_model.dart';
-import 'package:sixam_mart/features/redesign_feature/dashboard/widgets/single_deal_widget.dart';
-import 'package:sixam_mart/features/offer/offer_screen.dart';
-import 'package:sixam_mart/helper/price_converter.dart';
+import 'package:wekala_user/features/home/controllers/home_controller.dart';
+import 'package:wekala_user/features/home/domain/models/top_offer_model.dart';
+import 'package:wekala_user/features/redesign_feature/dashboard/widgets/single_deal_widget.dart';
+import 'package:wekala_user/features/offer/offer_screen.dart';
+import 'package:wekala_user/helper/price_converter.dart';
 
 enum TopOfferVariant { food, shop, grocery }
 

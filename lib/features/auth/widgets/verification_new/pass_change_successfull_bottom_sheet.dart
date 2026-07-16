@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/util/dimensions.dart';
+import 'package:wekala_user/util/dimensions.dart';
 
 class PasswordChangedBottomSheet extends StatelessWidget {
   const PasswordChangedBottomSheet({super.key});

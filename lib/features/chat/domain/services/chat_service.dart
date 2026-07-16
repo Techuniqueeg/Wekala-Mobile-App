@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:sixam_mart/api/api_client.dart';
-import 'package:sixam_mart/features/chat/domain/models/conversation_model.dart';
-import 'package:sixam_mart/features/chat/domain/repositories/chat_repository_interface.dart';
-import 'package:sixam_mart/features/chat/domain/services/chat_service_interface.dart';
-import 'package:sixam_mart/features/chat/enums/user_type_enum.dart';
+import 'package:wekala_user/api/api_client.dart';
+import 'package:wekala_user/features/chat/domain/models/conversation_model.dart';
+import 'package:wekala_user/features/chat/domain/repositories/chat_repository_interface.dart';
+import 'package:wekala_user/features/chat/domain/services/chat_service_interface.dart';
+import 'package:wekala_user/features/chat/enums/user_type_enum.dart';
 
 class ChatService implements ChatServiceInterface {
   final ChatRepositoryInterface chatRepositoryInterface;

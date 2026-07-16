@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:sixam_mart/common/enums/data_source_enum.dart';
-import 'package:sixam_mart/features/rental_module/home/domain/models/vehicle_details_model.dart';
-import 'package:sixam_mart/features/rental_module/home/domain/services/taxi_home_service_interface.dart';
+import 'package:wekala_user/common/enums/data_source_enum.dart';
+import 'package:wekala_user/features/rental_module/home/domain/models/vehicle_details_model.dart';
+import 'package:wekala_user/features/rental_module/home/domain/services/taxi_home_service_interface.dart';
 
 class TaxiHomeController extends GetxController implements GetxService {
   final TaxiHomeServiceInterface taxiHomeServiceInterface;

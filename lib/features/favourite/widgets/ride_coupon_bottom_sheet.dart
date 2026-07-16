@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/common/widgets/custom_image.dart';
-import 'package:sixam_mart/features/ride_share_module/ride_home/domain/models/ride_coupon_model.dart';
-import 'package:sixam_mart/helper/price_converter.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/common/widgets/custom_image.dart';
+import 'package:wekala_user/features/ride_share_module/ride_home/domain/models/ride_coupon_model.dart';
+import 'package:wekala_user/helper/price_converter.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/styles.dart';
 class RideCouponBottomSheet extends StatelessWidget {
   final Coupon coupon;
   const RideCouponBottomSheet({super.key, required this.coupon});

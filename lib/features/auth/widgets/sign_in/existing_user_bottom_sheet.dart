@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/common/models/response_model.dart';
-import 'package:sixam_mart/common/widgets/custom_button.dart';
-import 'package:sixam_mart/common/widgets/custom_image.dart';
-import 'package:sixam_mart/common/widgets/custom_snackbar.dart';
-import 'package:sixam_mart/features/auth/controllers/auth_controller.dart';
-import 'package:sixam_mart/features/auth/domain/enum/centralize_login_enum.dart';
-import 'package:sixam_mart/features/auth/domain/models/auth_response_model.dart';
-import 'package:sixam_mart/features/auth/domain/models/social_log_in_body.dart';
-import 'package:sixam_mart/features/auth/screens/new_user_setup_screen.dart';
-import 'package:sixam_mart/features/location/controllers/location_controller.dart';
-import 'package:sixam_mart/helper/address_helper.dart';
-import 'package:sixam_mart/helper/responsive_helper.dart';
-import 'package:sixam_mart/helper/route_helper.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/images.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/common/models/response_model.dart';
+import 'package:wekala_user/common/widgets/custom_button.dart';
+import 'package:wekala_user/common/widgets/custom_image.dart';
+import 'package:wekala_user/common/widgets/custom_snackbar.dart';
+import 'package:wekala_user/features/auth/controllers/auth_controller.dart';
+import 'package:wekala_user/features/auth/domain/enum/centralize_login_enum.dart';
+import 'package:wekala_user/features/auth/domain/models/auth_response_model.dart';
+import 'package:wekala_user/features/auth/domain/models/social_log_in_body.dart';
+import 'package:wekala_user/features/auth/screens/new_user_setup_screen.dart';
+import 'package:wekala_user/features/location/controllers/location_controller.dart';
+import 'package:wekala_user/helper/address_helper.dart';
+import 'package:wekala_user/helper/responsive_helper.dart';
+import 'package:wekala_user/helper/route_helper.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/images.dart';
+import 'package:wekala_user/util/styles.dart';
 
 class ExistingUserBottomSheet extends StatelessWidget {
   final IsExistUser userModel;

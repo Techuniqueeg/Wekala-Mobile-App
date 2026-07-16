@@ -1,7 +1,7 @@
-import 'package:sixam_mart/common/enums/data_source_enum.dart';
-import 'package:sixam_mart/features/item/domain/models/basic_medicine_model.dart';
-import 'package:sixam_mart/features/item/domain/models/item_review_model.dart';
-import 'package:sixam_mart/interfaces/repository_interface.dart';
+import 'package:wekala_user/common/enums/data_source_enum.dart';
+import 'package:wekala_user/features/item/domain/models/basic_medicine_model.dart';
+import 'package:wekala_user/features/item/domain/models/item_review_model.dart';
+import 'package:wekala_user/interfaces/repository_interface.dart';
 
 abstract class ItemRepositoryInterface implements RepositoryInterface {
   @override

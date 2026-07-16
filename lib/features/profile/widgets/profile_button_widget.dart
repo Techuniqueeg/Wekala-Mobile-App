@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/styles.dart';
 import 'package:flutter/material.dart';
 
 class ProfileButtonWidget extends StatelessWidget {
@@ -52,7 +52,7 @@ class ProfileButtonWidget extends StatelessWidget {
                 )),
                 const SizedBox(width: Dimensions.paddingSizeSmall),
 
-                Icon(Icons.keyboard_arrow_down, size: 15),
+                const Icon(Icons.keyboard_arrow_down, size: 15),
               ],
             ),
           ) : const SizedBox(),

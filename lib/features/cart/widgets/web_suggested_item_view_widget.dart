@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/features/cart/controllers/cart_controller.dart';
-import 'package:sixam_mart/features/home/widgets/web/widgets/arrow_icon_button.dart';
-import 'package:sixam_mart/features/language/controllers/language_controller.dart';
-import 'package:sixam_mart/helper/responsive_helper.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/features/store/controllers/store_controller.dart';
-import 'package:sixam_mart/features/cart/domain/models/cart_model.dart';
-import 'package:sixam_mart/features/item/domain/models/item_model.dart';
-import 'package:sixam_mart/util/styles.dart';
-import 'package:sixam_mart/common/widgets/item_widget.dart';
+import 'package:wekala_user/features/cart/controllers/cart_controller.dart';
+import 'package:wekala_user/features/home/widgets/web/widgets/arrow_icon_button.dart';
+import 'package:wekala_user/features/language/controllers/language_controller.dart';
+import 'package:wekala_user/helper/responsive_helper.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/features/store/controllers/store_controller.dart';
+import 'package:wekala_user/features/cart/domain/models/cart_model.dart';
+import 'package:wekala_user/features/item/domain/models/item_model.dart';
+import 'package:wekala_user/util/styles.dart';
+import 'package:wekala_user/common/widgets/item_widget.dart';
 
 class WebSuggestedItemViewWidget extends StatefulWidget {
   final List<CartModel> cartList;

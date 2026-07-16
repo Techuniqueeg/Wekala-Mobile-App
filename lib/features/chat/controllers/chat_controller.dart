@@ -1,17 +1,17 @@
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:sixam_mart/features/chat/domain/models/conversation_model.dart';
-import 'package:sixam_mart/features/chat/enums/user_type_enum.dart';
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/features/profile/controllers/profile_controller.dart';
-import 'package:sixam_mart/api/api_client.dart';
-import 'package:sixam_mart/features/notification/domain/models/notification_body_model.dart';
-import 'package:sixam_mart/features/chat/domain/models/chat_model.dart';
-import 'package:sixam_mart/helper/date_converter.dart';
-import 'package:sixam_mart/helper/responsive_helper.dart';
-import 'package:sixam_mart/common/widgets/custom_snackbar.dart';
-import 'package:sixam_mart/features/chat/domain/services/chat_service_interface.dart';
+import 'package:wekala_user/features/chat/domain/models/conversation_model.dart';
+import 'package:wekala_user/features/chat/enums/user_type_enum.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/features/profile/controllers/profile_controller.dart';
+import 'package:wekala_user/api/api_client.dart';
+import 'package:wekala_user/features/notification/domain/models/notification_body_model.dart';
+import 'package:wekala_user/features/chat/domain/models/chat_model.dart';
+import 'package:wekala_user/helper/date_converter.dart';
+import 'package:wekala_user/helper/responsive_helper.dart';
+import 'package:wekala_user/common/widgets/custom_snackbar.dart';
+import 'package:wekala_user/features/chat/domain/services/chat_service_interface.dart';
 
 class ChatController extends GetxController implements GetxService {
   final ChatServiceInterface chatServiceInterface;

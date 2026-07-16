@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/util/styles.dart';
 
 class AnimatedSearchHintText extends StatefulWidget {
   final String prefixText;

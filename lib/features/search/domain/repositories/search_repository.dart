@@ -2,17 +2,17 @@ import 'dart:convert';
 
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sixam_mart/api/api_client.dart';
-import 'package:sixam_mart/features/brands/domain/models/brands_model.dart';
-import 'package:sixam_mart/features/item/domain/models/item_model.dart';
-import 'package:sixam_mart/features/search/domain/models/popular_categories_model.dart';
-import 'package:sixam_mart/features/search/domain/models/recent_search_entry.dart';
-import 'package:sixam_mart/features/search/domain/models/search_suggestion_model.dart';
-import 'package:sixam_mart/features/search/domain/models/top_category_model.dart';
-import 'package:sixam_mart/features/search/domain/models/trending_search_model.dart';
-import 'package:sixam_mart/features/search/domain/repositories/search_repository_interface.dart';
-import 'package:sixam_mart/features/store/domain/models/store_model.dart';
-import 'package:sixam_mart/util/app_constants.dart';
+import 'package:wekala_user/api/api_client.dart';
+import 'package:wekala_user/features/brands/domain/models/brands_model.dart';
+import 'package:wekala_user/features/item/domain/models/item_model.dart';
+import 'package:wekala_user/features/search/domain/models/popular_categories_model.dart';
+import 'package:wekala_user/features/search/domain/models/recent_search_entry.dart';
+import 'package:wekala_user/features/search/domain/models/search_suggestion_model.dart';
+import 'package:wekala_user/features/search/domain/models/top_category_model.dart';
+import 'package:wekala_user/features/search/domain/models/trending_search_model.dart';
+import 'package:wekala_user/features/search/domain/repositories/search_repository_interface.dart';
+import 'package:wekala_user/features/store/domain/models/store_model.dart';
+import 'package:wekala_user/util/app_constants.dart';
 
 class SearchRepository implements SearchRepositoryInterface {
   final ApiClient apiClient;

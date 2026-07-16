@@ -3,19 +3,19 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/features/order/controllers/order_controller.dart';
-import 'package:sixam_mart/features/smart_banner/controllers/smart_banner_controller.dart';
-import 'package:sixam_mart/features/pro/controllers/pro_controller.dart';
-import 'package:sixam_mart/features/profile/controllers/profile_controller.dart';
-import 'package:sixam_mart/features/store/controllers/store_controller.dart';
-import 'package:sixam_mart/features/redesign_feature/dashboard/widgets/banner_slider.dart';
-import 'package:sixam_mart/features/redesign_feature/dashboard/widgets/last_orders_section_widget.dart';
-import 'package:sixam_mart/features/redesign_feature/dashboard/widgets/search_header_widget.dart';
-import 'package:sixam_mart/features/redesign_feature/dashboard/widgets/top_picks_near_you_widget.dart';
-import 'package:sixam_mart/features/redesign_feature/home/screens/preference_screen.dart';
-import 'package:sixam_mart/features/redesign_feature/home/widgets/home_new_module_section_widget.dart';
-import 'package:sixam_mart/features/redesign_feature/home/widgets/home_smart_banner_widget.dart';
-import 'package:sixam_mart/util/dimensions.dart';
+import 'package:wekala_user/features/order/controllers/order_controller.dart';
+import 'package:wekala_user/features/smart_banner/controllers/smart_banner_controller.dart';
+import 'package:wekala_user/features/pro/controllers/pro_controller.dart';
+import 'package:wekala_user/features/profile/controllers/profile_controller.dart';
+import 'package:wekala_user/features/store/controllers/store_controller.dart';
+import 'package:wekala_user/features/redesign_feature/dashboard/widgets/banner_slider.dart';
+import 'package:wekala_user/features/redesign_feature/dashboard/widgets/last_orders_section_widget.dart';
+import 'package:wekala_user/features/redesign_feature/dashboard/widgets/search_header_widget.dart';
+import 'package:wekala_user/features/redesign_feature/dashboard/widgets/top_picks_near_you_widget.dart';
+import 'package:wekala_user/features/redesign_feature/home/screens/preference_screen.dart';
+import 'package:wekala_user/features/redesign_feature/home/widgets/home_new_module_section_widget.dart';
+import 'package:wekala_user/features/redesign_feature/home/widgets/home_smart_banner_widget.dart';
+import 'package:wekala_user/util/dimensions.dart';
 import 'package:sliver_tools/sliver_tools.dart';
 
 class HomeNewScreen extends StatefulWidget {

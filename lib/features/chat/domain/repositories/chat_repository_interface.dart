@@ -1,5 +1,5 @@
-import 'package:sixam_mart/api/api_client.dart';
-import 'package:sixam_mart/interfaces/repository_interface.dart';
+import 'package:wekala_user/api/api_client.dart';
+import 'package:wekala_user/interfaces/repository_interface.dart';
 
 abstract class ChatRepositoryInterface extends RepositoryInterface {
   @override

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/common/widgets/custom_drop_down_button.dart';
-import 'package:sixam_mart/features/auth/controllers/store_registration_controller.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/common/widgets/custom_drop_down_button.dart';
+import 'package:wekala_user/features/auth/controllers/store_registration_controller.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/styles.dart';
 
 class PickupZoneWidget extends StatelessWidget {
   const PickupZoneWidget({super.key});

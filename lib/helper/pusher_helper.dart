@@ -2,15 +2,15 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:dart_pusher_channels/dart_pusher_channels.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/features/auth/controllers/auth_controller.dart';
-import 'package:sixam_mart/features/ride_share_module/common/controllers/map_controller.dart';
-import 'package:sixam_mart/features/ride_share_module/common/widgets/confirmation_trip_dialog.dart';
-import 'package:sixam_mart/features/ride_share_module/ride_order/controllers/ride_controller.dart';
-import 'package:sixam_mart/features/ride_share_module/ride_order/screens/ride_order_complete_screen.dart';
-import 'package:sixam_mart/features/ride_share_module/ride_payment/screens/ride_payment_screen.dart';
-import 'package:sixam_mart/features/ride_share_module/safety_alert/controllers/safety_alert_controller.dart';
-import 'package:sixam_mart/util/app_constants.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/features/auth/controllers/auth_controller.dart';
+import 'package:wekala_user/features/ride_share_module/common/controllers/map_controller.dart';
+import 'package:wekala_user/features/ride_share_module/common/widgets/confirmation_trip_dialog.dart';
+import 'package:wekala_user/features/ride_share_module/ride_order/controllers/ride_controller.dart';
+import 'package:wekala_user/features/ride_share_module/ride_order/screens/ride_order_complete_screen.dart';
+import 'package:wekala_user/features/ride_share_module/ride_payment/screens/ride_payment_screen.dart';
+import 'package:wekala_user/features/ride_share_module/safety_alert/controllers/safety_alert_controller.dart';
+import 'package:wekala_user/util/app_constants.dart';
 import '../features/ride_share_module/ride_location/screens/map_screen.dart';
 
 

@@ -1,17 +1,17 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
-import 'package:sixam_mart/api/api_client.dart';
-import 'package:sixam_mart/api/local_client.dart';
-import 'package:sixam_mart/common/enums/data_source_enum.dart';
-import 'package:sixam_mart/common/widgets/custom_snackbar.dart';
-import 'package:sixam_mart/features/item/domain/models/basic_medicine_model.dart';
-import 'package:sixam_mart/features/item/domain/models/common_condition_model.dart';
-import 'package:sixam_mart/features/item/domain/models/item_model.dart';
-import 'package:sixam_mart/features/item/domain/models/item_review_model.dart';
-import 'package:sixam_mart/features/item/domain/repositories/item_repository_interface.dart';
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/util/app_constants.dart';
+import 'package:wekala_user/api/api_client.dart';
+import 'package:wekala_user/api/local_client.dart';
+import 'package:wekala_user/common/enums/data_source_enum.dart';
+import 'package:wekala_user/common/widgets/custom_snackbar.dart';
+import 'package:wekala_user/features/item/domain/models/basic_medicine_model.dart';
+import 'package:wekala_user/features/item/domain/models/common_condition_model.dart';
+import 'package:wekala_user/features/item/domain/models/item_model.dart';
+import 'package:wekala_user/features/item/domain/models/item_review_model.dart';
+import 'package:wekala_user/features/item/domain/repositories/item_repository_interface.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/util/app_constants.dart';
 
 class ItemRepository implements ItemRepositoryInterface {
   final ApiClient apiClient;

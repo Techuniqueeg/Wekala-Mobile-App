@@ -2,15 +2,15 @@ import 'dart:convert';
 
 import 'package:get/get_connect.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sixam_mart/api/api_client.dart';
-import 'package:sixam_mart/features/cart/domain/models/all_carts_model.dart';
-import 'package:sixam_mart/features/cart/domain/models/cart_model.dart';
-import 'package:sixam_mart/features/cart/domain/models/online_cart_model.dart';
-import 'package:sixam_mart/features/cart/domain/repositories/cart_repository_interface.dart';
-import 'package:sixam_mart/features/checkout/domain/models/place_order_body_model.dart';
-import 'package:sixam_mart/helper/auth_helper.dart';
-import 'package:sixam_mart/helper/module_helper.dart';
-import 'package:sixam_mart/util/app_constants.dart';
+import 'package:wekala_user/api/api_client.dart';
+import 'package:wekala_user/features/cart/domain/models/all_carts_model.dart';
+import 'package:wekala_user/features/cart/domain/models/cart_model.dart';
+import 'package:wekala_user/features/cart/domain/models/online_cart_model.dart';
+import 'package:wekala_user/features/cart/domain/repositories/cart_repository_interface.dart';
+import 'package:wekala_user/features/checkout/domain/models/place_order_body_model.dart';
+import 'package:wekala_user/helper/auth_helper.dart';
+import 'package:wekala_user/helper/module_helper.dart';
+import 'package:wekala_user/util/app_constants.dart';
 
 class CartRepository implements CartRepositoryInterface<OnlineCart> {
   final ApiClient apiClient;

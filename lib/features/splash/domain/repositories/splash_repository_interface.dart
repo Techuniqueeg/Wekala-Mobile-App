@@ -1,6 +1,6 @@
-import 'package:sixam_mart/common/enums/data_source_enum.dart';
-import 'package:sixam_mart/common/models/module_model.dart';
-import 'package:sixam_mart/interfaces/repository_interface.dart';
+import 'package:wekala_user/common/enums/data_source_enum.dart';
+import 'package:wekala_user/common/models/module_model.dart';
+import 'package:wekala_user/interfaces/repository_interface.dart';
 
 import '../models/app_download_section_model.dart';
 

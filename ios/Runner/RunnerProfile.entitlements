@@ -10,7 +10,8 @@
 	</array>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>6ammart-web.6amtech.com</string>
+		<string>applinks:elwekalaa.com</string>
+		<string>applinks:www.elwekalaa.com</string>
 	</array>
 </dict>
 </plist>

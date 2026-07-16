@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/common/widgets/custom_asset_image_widget.dart';
-import 'package:sixam_mart/common/widgets/web_menu_bar.dart';
-import 'package:sixam_mart/features/auth/controllers/auth_controller.dart';
-import 'package:sixam_mart/features/location/controllers/location_controller.dart';
-import 'package:sixam_mart/features/onboard/controllers/onboard_controller.dart';
-import 'package:sixam_mart/features/onboard/domain/repository/onboard_repository.dart';
-import 'package:sixam_mart/features/onboard/domain/service/onboard_service.dart';
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/helper/address_helper.dart';
-import 'package:sixam_mart/helper/responsive_helper.dart';
-import 'package:sixam_mart/helper/route_helper.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/images.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/common/widgets/custom_asset_image_widget.dart';
+import 'package:wekala_user/common/widgets/web_menu_bar.dart';
+import 'package:wekala_user/features/auth/controllers/auth_controller.dart';
+import 'package:wekala_user/features/location/controllers/location_controller.dart';
+import 'package:wekala_user/features/onboard/controllers/onboard_controller.dart';
+import 'package:wekala_user/features/onboard/domain/repository/onboard_repository.dart';
+import 'package:wekala_user/features/onboard/domain/service/onboard_service.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/helper/address_helper.dart';
+import 'package:wekala_user/helper/responsive_helper.dart';
+import 'package:wekala_user/helper/route_helper.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/images.dart';
+import 'package:wekala_user/util/styles.dart';
 
 class OnBoardingNewScreen extends StatefulWidget {
   const OnBoardingNewScreen({super.key});

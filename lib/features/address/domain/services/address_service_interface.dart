@@ -1,5 +1,5 @@
-import 'package:sixam_mart/common/models/response_model.dart';
-import 'package:sixam_mart/features/address/domain/models/address_model.dart';
+import 'package:wekala_user/common/models/response_model.dart';
+import 'package:wekala_user/features/address/domain/models/address_model.dart';
 
 abstract class AddressServiceInterface{
   Future<List<AddressModel>?> getAllAddress();

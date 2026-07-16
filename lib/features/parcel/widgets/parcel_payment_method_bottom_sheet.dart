@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:just_the_tooltip/just_the_tooltip.dart';
-import 'package:sixam_mart/common/widgets/custom_ink_well.dart';
-import 'package:sixam_mart/features/order/controllers/order_controller.dart';
-import 'package:sixam_mart/features/parcel/controllers/parcel_controller.dart';
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/features/profile/controllers/profile_controller.dart';
-import 'package:sixam_mart/features/checkout/controllers/checkout_controller.dart';
-import 'package:sixam_mart/helper/price_converter.dart';
-import 'package:sixam_mart/helper/responsive_helper.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/styles.dart';
-import 'package:sixam_mart/common/widgets/custom_button.dart';
-import 'package:sixam_mart/common/widgets/custom_image.dart';
-import 'package:sixam_mart/features/payment/widgets/offline_payment_button.dart';
+import 'package:wekala_user/common/widgets/custom_ink_well.dart';
+import 'package:wekala_user/features/order/controllers/order_controller.dart';
+import 'package:wekala_user/features/parcel/controllers/parcel_controller.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/features/profile/controllers/profile_controller.dart';
+import 'package:wekala_user/features/checkout/controllers/checkout_controller.dart';
+import 'package:wekala_user/helper/price_converter.dart';
+import 'package:wekala_user/helper/responsive_helper.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/styles.dart';
+import 'package:wekala_user/common/widgets/custom_button.dart';
+import 'package:wekala_user/common/widgets/custom_image.dart';
+import 'package:wekala_user/features/payment/widgets/offline_payment_button.dart';
 
 class ParcelPaymentMethodBottomSheet extends StatefulWidget {
   final bool isCashOnDeliveryActive;
@@ -85,7 +85,7 @@ class _ParcelPaymentMethodBottomSheetState extends State<ParcelPaymentMethodBott
                     walletView(parcelController),
 
                     widget.isCashOnDeliveryActive ? paymentButtonView(
-                      padding: EdgeInsets.only(bottom: Dimensions.paddingSizeDefault),
+                      padding: const EdgeInsets.only(bottom: Dimensions.paddingSizeDefault),
                       title: 'cash_on_delivery'.tr,
                       isSelected: parcelController.paymentIndex == 0,
                       disablePayments: false,

@@ -1,5 +1,5 @@
-import 'package:sixam_mart/common/models/response_model.dart';
-import 'package:sixam_mart/features/verification/domein/models/verification_data_model.dart';
+import 'package:wekala_user/common/models/response_model.dart';
+import 'package:wekala_user/features/verification/domein/models/verification_data_model.dart';
 
 abstract class VerificationServiceInterface{
   Future<ResponseModel> forgetPassword({String? phone, String? email});

@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:sixam_mart/helper/phone_verification_helper.dart';
+import 'package:wekala_user/helper/phone_verification_helper.dart';
 
 
 class FormValidation {

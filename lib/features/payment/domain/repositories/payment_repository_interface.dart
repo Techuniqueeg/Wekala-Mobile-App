@@ -1,4 +1,4 @@
-import 'package:sixam_mart/interfaces/repository_interface.dart';
+import 'package:wekala_user/interfaces/repository_interface.dart';
 
 abstract class PaymentRepositoryInterface extends RepositoryInterface {
   Future<bool> saveOfflineInfo(String data, String? guestId);

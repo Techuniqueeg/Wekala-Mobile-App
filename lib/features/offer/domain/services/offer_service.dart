@@ -1,7 +1,7 @@
-import 'package:sixam_mart/features/redesign_feature/common/models/new_item_model.dart';
-import 'package:sixam_mart/features/offer/domain/repositories/offer_repository_interface.dart';
-import 'package:sixam_mart/features/offer/domain/services/offer_service_interface.dart';
-import 'package:sixam_mart/features/store/domain/models/store_model.dart';
+import 'package:wekala_user/features/redesign_feature/common/models/new_item_model.dart';
+import 'package:wekala_user/features/offer/domain/repositories/offer_repository_interface.dart';
+import 'package:wekala_user/features/offer/domain/services/offer_service_interface.dart';
+import 'package:wekala_user/features/store/domain/models/store_model.dart';
 
 class OfferService implements OfferServiceInterface {
   final OfferRepositoryInterface offerRepositoryInterface;

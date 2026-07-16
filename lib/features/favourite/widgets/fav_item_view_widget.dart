@@ -1,8 +1,8 @@
-import 'package:sixam_mart/features/favourite/controllers/favourite_controller.dart';
-import 'package:sixam_mart/helper/responsive_helper.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/common/widgets/footer_view.dart';
-import 'package:sixam_mart/common/widgets/item_view.dart';
+import 'package:wekala_user/features/favourite/controllers/favourite_controller.dart';
+import 'package:wekala_user/helper/responsive_helper.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/common/widgets/footer_view.dart';
+import 'package:wekala_user/common/widgets/item_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

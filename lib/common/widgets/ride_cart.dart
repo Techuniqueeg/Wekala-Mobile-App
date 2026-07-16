@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/features/ride_share_module/ride_order/controllers/ride_controller.dart';
-import 'package:sixam_mart/util/images.dart';
+import 'package:wekala_user/features/ride_share_module/ride_order/controllers/ride_controller.dart';
+import 'package:wekala_user/util/images.dart';
 class RideCart extends StatelessWidget {
   const RideCart({super.key});
 

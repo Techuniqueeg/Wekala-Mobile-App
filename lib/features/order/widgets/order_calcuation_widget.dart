@@ -1,21 +1,21 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/common/widgets/custom_asset_image_widget.dart';
-import 'package:sixam_mart/common/widgets/custom_card.dart';
-import 'package:sixam_mart/features/order/controllers/order_controller.dart';
-import 'package:sixam_mart/features/order/domain/models/order_model.dart';
-import 'package:sixam_mart/features/order/widgets/order_item_widget.dart';
-import 'package:sixam_mart/features/order/widgets/support_reason_bottom_sheet.dart';
-import 'package:sixam_mart/features/parcel/widgets/details_widget.dart';
-// import 'package:sixam_mart/features/pro/domain/models/pro_active_offer_model.dart';
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/helper/auth_helper.dart';
-import 'package:sixam_mart/helper/price_converter.dart';
-import 'package:sixam_mart/helper/responsive_helper.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/images.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/common/widgets/custom_asset_image_widget.dart';
+import 'package:wekala_user/common/widgets/custom_card.dart';
+import 'package:wekala_user/features/order/controllers/order_controller.dart';
+import 'package:wekala_user/features/order/domain/models/order_model.dart';
+import 'package:wekala_user/features/order/widgets/order_item_widget.dart';
+import 'package:wekala_user/features/order/widgets/support_reason_bottom_sheet.dart';
+import 'package:wekala_user/features/parcel/widgets/details_widget.dart';
+// import 'package:wekala_user/features/pro/domain/models/pro_active_offer_model.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/helper/auth_helper.dart';
+import 'package:wekala_user/helper/price_converter.dart';
+import 'package:wekala_user/helper/responsive_helper.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/images.dart';
+import 'package:wekala_user/util/styles.dart';
 
 class OrderCalculationWidget extends StatelessWidget {
   final OrderController orderController;

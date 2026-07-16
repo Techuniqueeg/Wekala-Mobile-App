@@ -1,8 +1,8 @@
-import 'package:sixam_mart/features/cart/domain/models/online_cart_model.dart';
-import 'package:sixam_mart/features/category/domain/models/category_model.dart';
-import 'package:sixam_mart/features/item/domain/models/item_model.dart';
-import 'package:sixam_mart/features/store/domain/models/store_model.dart';
-import 'package:sixam_mart/util/app_constants.dart';
+import 'package:wekala_user/features/cart/domain/models/online_cart_model.dart';
+import 'package:wekala_user/features/category/domain/models/category_model.dart';
+import 'package:wekala_user/features/item/domain/models/item_model.dart';
+import 'package:wekala_user/features/store/domain/models/store_model.dart';
+import 'package:wekala_user/util/app_constants.dart';
 
 class AiChatMessageModel {
   int? totalSize;

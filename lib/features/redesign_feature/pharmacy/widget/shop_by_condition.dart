@@ -2,14 +2,14 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/common/widgets/custom_ink_well.dart';
-import 'package:sixam_mart/common/widgets/title_widget.dart';
-import 'package:sixam_mart/features/item/controllers/item_controller.dart';
-import 'package:sixam_mart/features/item/domain/models/item_model.dart';
-import 'package:sixam_mart/features/redesign_feature/dashboard/widgets/sliver_gap.dart';
-import 'package:sixam_mart/features/redesign_feature/pharmacy/widget/madicine_card.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/common/widgets/custom_ink_well.dart';
+import 'package:wekala_user/common/widgets/title_widget.dart';
+import 'package:wekala_user/features/item/controllers/item_controller.dart';
+import 'package:wekala_user/features/item/domain/models/item_model.dart';
+import 'package:wekala_user/features/redesign_feature/dashboard/widgets/sliver_gap.dart';
+import 'package:wekala_user/features/redesign_feature/pharmacy/widget/madicine_card.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/styles.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 import 'package:sliver_tools/sliver_tools.dart';
 

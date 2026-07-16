@@ -2,25 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
-import 'package:sixam_mart/common/models/module_model.dart';
-import 'package:sixam_mart/common/models/restaurant_offer_chip.dart';
-import 'package:sixam_mart/common/widgets/paginated_list_view.dart';
-import 'package:sixam_mart/features/item/domain/models/item_model.dart';
-import 'package:sixam_mart/features/redesign_feature/dashboard/widgets/common_widget/featured_store_card.dart';
-import 'package:sixam_mart/features/redesign_feature/dashboard/widgets/common_widget/food_item_card.dart';
-import 'package:sixam_mart/features/search/domain/models/food_item.dart';
-import 'package:sixam_mart/features/redesign_feature/global_widgets/exclusive_deal_card.dart';
-import 'package:sixam_mart/features/redesign_feature/global_widgets/restaurant_item_card.dart';
-import 'package:sixam_mart/features/redesign_feature/global_widgets/restaurant_summary_row.dart';
-import 'package:sixam_mart/features/search/controllers/search_controller.dart'
+import 'package:wekala_user/common/models/module_model.dart';
+import 'package:wekala_user/common/models/restaurant_offer_chip.dart';
+import 'package:wekala_user/common/widgets/paginated_list_view.dart';
+import 'package:wekala_user/features/item/domain/models/item_model.dart';
+import 'package:wekala_user/features/redesign_feature/dashboard/widgets/common_widget/featured_store_card.dart';
+import 'package:wekala_user/features/redesign_feature/dashboard/widgets/common_widget/food_item_card.dart';
+import 'package:wekala_user/features/search/domain/models/food_item.dart';
+import 'package:wekala_user/features/redesign_feature/global_widgets/exclusive_deal_card.dart';
+import 'package:wekala_user/features/redesign_feature/global_widgets/restaurant_item_card.dart';
+import 'package:wekala_user/features/redesign_feature/global_widgets/restaurant_summary_row.dart';
+import 'package:wekala_user/features/search/controllers/search_controller.dart'
     as search;
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/features/store/domain/models/store_model.dart';
-import 'package:sixam_mart/helper/route_helper.dart';
-import 'package:sixam_mart/util/app_constants.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/gaps.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/features/store/domain/models/store_model.dart';
+import 'package:wekala_user/helper/route_helper.dart';
+import 'package:wekala_user/util/app_constants.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/gaps.dart';
+import 'package:wekala_user/util/styles.dart';
 
 enum _SearchFilter { all, items, stores }
 

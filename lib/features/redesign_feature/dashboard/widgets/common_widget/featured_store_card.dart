@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
-import 'package:sixam_mart/common/widgets/add_favourite_view.dart';
-import 'package:sixam_mart/common/widgets/custom_image.dart';
-import 'package:sixam_mart/common/widgets/custom_ink_well.dart';
-import 'package:sixam_mart/common/widgets/not_available_widget.dart';
-import 'package:sixam_mart/features/category/controllers/category_controller.dart';
-import 'package:sixam_mart/features/redesign_feature/dashboard/widgets/offer_card_widget.dart';
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/images.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/common/widgets/add_favourite_view.dart';
+import 'package:wekala_user/common/widgets/custom_image.dart';
+import 'package:wekala_user/common/widgets/custom_ink_well.dart';
+import 'package:wekala_user/common/widgets/not_available_widget.dart';
+import 'package:wekala_user/features/category/controllers/category_controller.dart';
+import 'package:wekala_user/features/redesign_feature/dashboard/widgets/offer_card_widget.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/images.dart';
+import 'package:wekala_user/util/styles.dart';
 
 import '../../../../store/domain/models/store_model.dart';
 

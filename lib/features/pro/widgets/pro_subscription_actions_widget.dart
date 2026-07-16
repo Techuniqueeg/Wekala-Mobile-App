@@ -1,12 +1,12 @@
-import 'package:sixam_mart/common/widgets/confirmation_dialog.dart';
-import 'package:sixam_mart/common/widgets/custom_snackbar.dart';
-import 'package:sixam_mart/features/pro/controllers/pro_controller.dart';
-import 'package:sixam_mart/features/pro/domain/models/pro_plan_model.dart';
-import 'package:sixam_mart/features/pro/widgets/pro_payment_bottom_sheet_widget.dart';
-import 'package:sixam_mart/helper/responsive_helper.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/images.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/common/widgets/confirmation_dialog.dart';
+import 'package:wekala_user/common/widgets/custom_snackbar.dart';
+import 'package:wekala_user/features/pro/controllers/pro_controller.dart';
+import 'package:wekala_user/features/pro/domain/models/pro_plan_model.dart';
+import 'package:wekala_user/features/pro/widgets/pro_payment_bottom_sheet_widget.dart';
+import 'package:wekala_user/helper/responsive_helper.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/images.dart';
+import 'package:wekala_user/util/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,7 +17,7 @@ class ProSubscriptionActionsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color buttonColor =  Color(0xffA16BFF);
+    const Color buttonColor =  Color(0xffA16BFF);
     final bool hasPlans = plans != null && plans!.isNotEmpty;
 
     return GetBuilder<ProController>(builder: (proController) {

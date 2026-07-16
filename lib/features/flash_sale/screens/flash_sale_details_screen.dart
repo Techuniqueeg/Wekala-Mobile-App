@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
-import 'package:sixam_mart/features/flash_sale/controllers/flash_sale_controller.dart';
-import 'package:sixam_mart/helper/responsive_helper.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/common/widgets/custom_app_bar.dart';
-import 'package:sixam_mart/common/widgets/footer_view.dart';
-import 'package:sixam_mart/common/widgets/paginated_list_view.dart';
-import 'package:sixam_mart/features/flash_sale/widgets/flash_product_card_widget.dart';
-import 'package:sixam_mart/features/flash_sale/widgets/flash_sale_header_banner.dart';
+import 'package:wekala_user/features/flash_sale/controllers/flash_sale_controller.dart';
+import 'package:wekala_user/helper/responsive_helper.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/common/widgets/custom_app_bar.dart';
+import 'package:wekala_user/common/widgets/footer_view.dart';
+import 'package:wekala_user/common/widgets/paginated_list_view.dart';
+import 'package:wekala_user/features/flash_sale/widgets/flash_product_card_widget.dart';
+import 'package:wekala_user/features/flash_sale/widgets/flash_sale_header_banner.dart';
 
 class FlashSaleDetailsScreen extends StatefulWidget {
   final int id;

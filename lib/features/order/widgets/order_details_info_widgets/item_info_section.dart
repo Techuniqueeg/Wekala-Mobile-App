@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
-import 'package:sixam_mart/features/order/domain/models/order_details_model.dart';
-import 'package:sixam_mart/features/order/widgets/collapsible_header.dart';
-import 'package:sixam_mart/helper/price_converter.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/features/order/domain/models/order_details_model.dart';
+import 'package:wekala_user/features/order/widgets/collapsible_header.dart';
+import 'package:wekala_user/helper/price_converter.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/styles.dart';
 
 class ItemInfoSection extends StatefulWidget {
   final List<OrderDetailsModel> orderDetails;

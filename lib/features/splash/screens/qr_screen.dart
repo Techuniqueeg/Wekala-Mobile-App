@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/features/splash/helpers/qr_redirect_stub.dart'
-    if (dart.library.js_interop) 'package:sixam_mart/features/splash/helpers/qr_redirect_web.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/features/splash/helpers/qr_redirect_stub.dart'
+    if (dart.library.js_interop) 'package:wekala_user/features/splash/helpers/qr_redirect_web.dart';
 
 class QrScreen extends StatefulWidget {
   const QrScreen({super.key});
@@ -35,7 +35,7 @@ class _QrScreenState extends State<QrScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         child: CircularProgressIndicator(),
       ),);

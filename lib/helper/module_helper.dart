@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/common/models/module_model.dart';
-import 'package:sixam_mart/common/models/config_model.dart';
-import 'package:sixam_mart/util/app_constants.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/common/models/module_model.dart';
+import 'package:wekala_user/common/models/config_model.dart';
+import 'package:wekala_user/util/app_constants.dart';
 
 class ModuleHelper {
 

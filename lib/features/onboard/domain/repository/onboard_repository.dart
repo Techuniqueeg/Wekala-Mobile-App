@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:sixam_mart/features/onboard/domain/repository/onboard_repository_interface.dart';
-import 'package:sixam_mart/features/onboard/domain/models/onboarding_model.dart';
-import 'package:sixam_mart/util/images.dart';
+import 'package:wekala_user/features/onboard/domain/repository/onboard_repository_interface.dart';
+import 'package:wekala_user/features/onboard/domain/models/onboarding_model.dart';
+import 'package:wekala_user/util/images.dart';
 
 class OnboardRepository implements OnboardRepositoryInterface {
 

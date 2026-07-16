@@ -2,7 +2,7 @@ import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:phone_numbers_parser/phone_numbers_parser.dart';
-import 'package:sixam_mart/features/location/controllers/location_controller.dart';
+import 'package:wekala_user/features/location/controllers/location_controller.dart';
 
 import '../features/splash/controllers/splash_controller.dart';
 

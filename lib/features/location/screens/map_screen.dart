@@ -1,22 +1,22 @@
 import 'package:geolocator/geolocator.dart';
-import 'package:sixam_mart/common/controllers/theme_controller.dart';
-import 'package:sixam_mart/common/widgets/custom_snackbar.dart';
-import 'package:sixam_mart/common/widgets/footer_view.dart';
-import 'package:sixam_mart/features/address/domain/models/address_model.dart';
-import 'package:sixam_mart/features/location/controllers/location_controller.dart';
-import 'package:sixam_mart/features/location/widgets/permission_dialog_widget.dart';
-import 'package:sixam_mart/helper/address_helper.dart';
-import 'package:sixam_mart/helper/marker_helper.dart';
-import 'package:sixam_mart/helper/responsive_helper.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/images.dart';
-import 'package:sixam_mart/util/styles.dart';
-import 'package:sixam_mart/common/widgets/custom_app_bar.dart';
+import 'package:wekala_user/common/controllers/theme_controller.dart';
+import 'package:wekala_user/common/widgets/custom_snackbar.dart';
+import 'package:wekala_user/common/widgets/footer_view.dart';
+import 'package:wekala_user/features/address/domain/models/address_model.dart';
+import 'package:wekala_user/features/location/controllers/location_controller.dart';
+import 'package:wekala_user/features/location/widgets/permission_dialog_widget.dart';
+import 'package:wekala_user/helper/address_helper.dart';
+import 'package:wekala_user/helper/marker_helper.dart';
+import 'package:wekala_user/helper/responsive_helper.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/images.dart';
+import 'package:wekala_user/util/styles.dart';
+import 'package:wekala_user/common/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/common/widgets/menu_drawer.dart';
-import 'package:sixam_mart/features/order/widgets/address_details_widget.dart';
+import 'package:wekala_user/common/widgets/menu_drawer.dart';
+import 'package:wekala_user/features/order/widgets/address_details_widget.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class MapScreen extends StatefulWidget {

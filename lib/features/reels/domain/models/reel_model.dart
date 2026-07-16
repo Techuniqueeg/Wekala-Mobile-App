@@ -1,4 +1,4 @@
-import 'package:sixam_mart/util/app_constants.dart';
+import 'package:wekala_user/util/app_constants.dart';
 
 class ReelModel {
   int? reelId;

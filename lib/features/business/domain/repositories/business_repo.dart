@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
-import 'package:sixam_mart/api/api_client.dart';
-import 'package:sixam_mart/features/business/domain/models/business_plan_body.dart';
-import 'package:sixam_mart/features/business/domain/models/package_model.dart';
-import 'package:sixam_mart/features/business/domain/repositories/business_repo_interface.dart';
-import 'package:sixam_mart/helper/route_helper.dart';
-import 'package:sixam_mart/util/app_constants.dart';
+import 'package:wekala_user/api/api_client.dart';
+import 'package:wekala_user/features/business/domain/models/business_plan_body.dart';
+import 'package:wekala_user/features/business/domain/models/package_model.dart';
+import 'package:wekala_user/features/business/domain/repositories/business_repo_interface.dart';
+import 'package:wekala_user/helper/route_helper.dart';
+import 'package:wekala_user/util/app_constants.dart';
 import 'package:universal_html/html.dart' as html;
 
 class BusinessRepo implements BusinessRepoInterface<dynamic> {

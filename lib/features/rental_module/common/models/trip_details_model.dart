@@ -1,4 +1,4 @@
-import 'package:sixam_mart/features/pro/domain/models/pro_active_offer_model.dart';
+import 'package:wekala_user/features/pro/domain/models/pro_active_offer_model.dart';
 
 class TripDetailsModel {
   int? id;

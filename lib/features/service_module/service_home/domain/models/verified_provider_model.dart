@@ -1,4 +1,4 @@
-import 'package:sixam_mart/features/service_module/common/models/service_provider_model.dart';
+import 'package:wekala_user/features/service_module/common/models/service_provider_model.dart';
 
 class VerifiedProviderModel {
   int? totalSize;

@@ -1,7 +1,7 @@
 import 'package:get/get_connect/http/src/response/response.dart';
-import 'package:sixam_mart/common/enums/data_source_enum.dart';
-import 'package:sixam_mart/features/parcel/domain/models/parcel_cancellation_reasons_model.dart';
-import 'package:sixam_mart/interfaces/repository_interface.dart';
+import 'package:wekala_user/common/enums/data_source_enum.dart';
+import 'package:wekala_user/features/parcel/domain/models/parcel_cancellation_reasons_model.dart';
+import 'package:wekala_user/interfaces/repository_interface.dart';
 
 abstract class ParcelRepositoryInterface<T> implements RepositoryInterface {
   @override

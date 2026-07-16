@@ -1,9 +1,9 @@
-import 'package:sixam_mart/api/api_client.dart';
-import 'package:sixam_mart/features/pro/domain/models/pro_active_offer_model.dart';
-import 'package:sixam_mart/features/pro/domain/models/pro_faq_model.dart';
-import 'package:sixam_mart/features/pro/domain/models/pro_plan_model.dart';
-import 'package:sixam_mart/features/pro/domain/repositories/pro_repository_interface.dart';
-import 'package:sixam_mart/util/app_constants.dart';
+import 'package:wekala_user/api/api_client.dart';
+import 'package:wekala_user/features/pro/domain/models/pro_active_offer_model.dart';
+import 'package:wekala_user/features/pro/domain/models/pro_faq_model.dart';
+import 'package:wekala_user/features/pro/domain/models/pro_plan_model.dart';
+import 'package:wekala_user/features/pro/domain/repositories/pro_repository_interface.dart';
+import 'package:wekala_user/util/app_constants.dart';
 import 'package:get/get_connect.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

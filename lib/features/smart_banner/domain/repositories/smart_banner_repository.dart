@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
-import 'package:sixam_mart/api/api_client.dart';
-import 'package:sixam_mart/features/smart_banner/domain/models/smart_banner_model.dart';
-import 'package:sixam_mart/features/smart_banner/domain/repositories/smart_banner_repository_interface.dart';
-import 'package:sixam_mart/util/app_constants.dart';
+import 'package:wekala_user/api/api_client.dart';
+import 'package:wekala_user/features/smart_banner/domain/models/smart_banner_model.dart';
+import 'package:wekala_user/features/smart_banner/domain/repositories/smart_banner_repository_interface.dart';
+import 'package:wekala_user/util/app_constants.dart';
 
 class SmartBannerRepository implements SmartBannerRepositoryInterface {
   final ApiClient apiClient;

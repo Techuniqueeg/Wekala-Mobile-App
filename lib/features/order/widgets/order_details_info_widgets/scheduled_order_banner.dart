@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/get_utils.dart';
-import 'package:sixam_mart/features/order/domain/models/order_model.dart';
-import 'package:sixam_mart/helper/date_converter.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/features/order/domain/models/order_model.dart';
+import 'package:wekala_user/helper/date_converter.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/styles.dart';
 
 class ScheduledOrderBanner extends StatelessWidget {
   final OrderModel order;

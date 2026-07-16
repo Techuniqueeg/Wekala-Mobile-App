@@ -1,19 +1,19 @@
-import 'package:sixam_mart/features/auth/widgets/auth_dialog_widget.dart';
-import 'package:sixam_mart/features/profile/controllers/profile_controller.dart';
-import 'package:sixam_mart/features/profile/domain/models/userinfo_model.dart';
-import 'package:sixam_mart/features/verification/controllers/verification_controller.dart';
-import 'package:sixam_mart/helper/validate_check.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/images.dart';
-import 'package:sixam_mart/common/widgets/custom_app_bar.dart';
-import 'package:sixam_mart/common/widgets/custom_button.dart';
-import 'package:sixam_mart/common/widgets/custom_snackbar.dart';
-import 'package:sixam_mart/common/widgets/custom_text_field.dart';
+import 'package:wekala_user/features/auth/widgets/auth_dialog_widget.dart';
+import 'package:wekala_user/features/profile/controllers/profile_controller.dart';
+import 'package:wekala_user/features/profile/domain/models/userinfo_model.dart';
+import 'package:wekala_user/features/verification/controllers/verification_controller.dart';
+import 'package:wekala_user/helper/validate_check.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/images.dart';
+import 'package:wekala_user/common/widgets/custom_app_bar.dart';
+import 'package:wekala_user/common/widgets/custom_button.dart';
+import 'package:wekala_user/common/widgets/custom_snackbar.dart';
+import 'package:wekala_user/common/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/helper/responsive_helper.dart';
-import 'package:sixam_mart/helper/route_helper.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/helper/responsive_helper.dart';
+import 'package:wekala_user/helper/route_helper.dart';
+import 'package:wekala_user/util/styles.dart';
 
 class NewPassScreen extends StatefulWidget {
   final String? resetToken;
@@ -54,7 +54,7 @@ class _NewPassScreenState extends State<NewPassScreen> {
           ) : null,
           child: Column(
             children: [
-              SizedBox(height: Dimensions.paddingSizeExtraSmall),
+              const SizedBox(height: Dimensions.paddingSizeExtraSmall),
               ResponsiveHelper.isDesktop(context) ? Align(
                 alignment: Alignment.topRight,
                 child: GestureDetector(

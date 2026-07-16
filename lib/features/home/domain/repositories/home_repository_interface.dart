@@ -1,6 +1,6 @@
-import 'package:sixam_mart/features/home/domain/models/cashback_model.dart';
-import 'package:sixam_mart/features/home/domain/models/top_offer_model.dart';
-import 'package:sixam_mart/interfaces/repository_interface.dart';
+import 'package:wekala_user/features/home/domain/models/cashback_model.dart';
+import 'package:wekala_user/features/home/domain/models/top_offer_model.dart';
+import 'package:wekala_user/interfaces/repository_interface.dart';
 
 abstract class HomeRepositoryInterface<T> implements RepositoryInterface {
   Future<CashBackModel?> getCashBackData(double amount);

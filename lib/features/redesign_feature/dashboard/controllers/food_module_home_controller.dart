@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:get/get.dart';
-import 'package:sixam_mart/features/category/controllers/category_controller.dart';
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/features/category/controllers/category_controller.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
 
 class FoodModuleController extends GetxController {
   final String searchTitle;

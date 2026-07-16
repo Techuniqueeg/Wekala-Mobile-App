@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:sixam_mart/features/redesign_feature/dashboard/widgets/single_deal_widget.dart';
+import 'package:wekala_user/features/redesign_feature/dashboard/widgets/single_deal_widget.dart';
 
 class MakeAMedicineList extends StatelessWidget {
   const MakeAMedicineList({super.key});

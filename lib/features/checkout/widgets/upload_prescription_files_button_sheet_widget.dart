@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:sixam_mart/common/widgets/confirmation_dialog.dart';
-import 'package:sixam_mart/common/widgets/custom_image.dart';
-import 'package:sixam_mart/features/checkout/controllers/checkout_controller.dart';
-import 'package:sixam_mart/features/checkout/domain/models/saved_prescription_model.dart';
-import 'package:sixam_mart/features/checkout/widgets/prescription_preview_widget.dart';
-import 'package:sixam_mart/helper/auth_helper.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/images.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/common/widgets/confirmation_dialog.dart';
+import 'package:wekala_user/common/widgets/custom_image.dart';
+import 'package:wekala_user/features/checkout/controllers/checkout_controller.dart';
+import 'package:wekala_user/features/checkout/domain/models/saved_prescription_model.dart';
+import 'package:wekala_user/features/checkout/widgets/prescription_preview_widget.dart';
+import 'package:wekala_user/helper/auth_helper.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/images.dart';
+import 'package:wekala_user/util/styles.dart';
 
 class UploadPrescriptionFilesButtonSheetWidget extends StatelessWidget {
   final bool isReplacement;

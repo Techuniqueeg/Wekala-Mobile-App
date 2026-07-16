@@ -1,5 +1,5 @@
-import 'package:sixam_mart/features/cart/domain/models/cart_model.dart';
-import 'package:sixam_mart/features/cart/domain/models/online_cart_model.dart';
+import 'package:wekala_user/features/cart/domain/models/cart_model.dart';
+import 'package:wekala_user/features/cart/domain/models/online_cart_model.dart';
 
 class AllCartsModel {
   AllCartsStore? _store;

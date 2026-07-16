@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/features/cart/controllers/cart_controller.dart';
-import 'package:sixam_mart/features/cart/domain/models/all_carts_model.dart';
-import 'package:sixam_mart/features/item/domain/models/item_model.dart';
-import 'package:sixam_mart/features/redesign_feature/global_widgets/exclusive_deal_card.dart';
-import 'package:sixam_mart/features/store/controllers/store_controller.dart';
-import 'package:sixam_mart/features/store/widgets/bottom_add_to_cart_widget.dart';
-import 'package:sixam_mart/helper/responsive_helper.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/styles.dart';
-import 'package:sixam_mart/common/widgets/footer_view.dart';
-import 'package:sixam_mart/common/widgets/paginated_list_view.dart';
-import 'package:sixam_mart/common/widgets/veg_filter_widget.dart';
+import 'package:wekala_user/features/cart/controllers/cart_controller.dart';
+import 'package:wekala_user/features/cart/domain/models/all_carts_model.dart';
+import 'package:wekala_user/features/item/domain/models/item_model.dart';
+import 'package:wekala_user/features/redesign_feature/global_widgets/exclusive_deal_card.dart';
+import 'package:wekala_user/features/store/controllers/store_controller.dart';
+import 'package:wekala_user/features/store/widgets/bottom_add_to_cart_widget.dart';
+import 'package:wekala_user/helper/responsive_helper.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/styles.dart';
+import 'package:wekala_user/common/widgets/footer_view.dart';
+import 'package:wekala_user/common/widgets/paginated_list_view.dart';
+import 'package:wekala_user/common/widgets/veg_filter_widget.dart';
 
 class StoreItemSearchScreen extends StatefulWidget {
   final String? storeID;

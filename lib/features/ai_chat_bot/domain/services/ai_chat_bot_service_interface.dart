@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:sixam_mart/features/ai_chat_bot/domain/models/ai_chat_conversation_model.dart';
-import 'package:sixam_mart/features/ai_chat_bot/domain/models/ai_chat_message_model.dart';
+import 'package:wekala_user/features/ai_chat_bot/domain/models/ai_chat_conversation_model.dart';
+import 'package:wekala_user/features/ai_chat_bot/domain/models/ai_chat_message_model.dart';
 
 abstract class AiChatBotServiceInterface {
   Future<AiChatConversationModel?> getConversationList({required int offset, int limit = 20});

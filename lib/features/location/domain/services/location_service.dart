@@ -5,19 +5,19 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:sixam_mart/features/location/domain/models/prediction_model.dart';
-import 'package:sixam_mart/features/address/domain/models/address_model.dart';
-import 'package:sixam_mart/features/location/domain/models/zone_response_model.dart';
-import 'package:sixam_mart/features/location/domain/repositories/location_repository_interface.dart';
-import 'package:sixam_mart/features/location/domain/services/location_service_interface.dart';
-import 'package:sixam_mart/features/location/screens/pick_map_screen.dart';
-import 'package:sixam_mart/features/location/widgets/permission_dialog_widget.dart';
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/helper/address_helper.dart';
-import 'package:sixam_mart/helper/responsive_helper.dart';
-import 'package:sixam_mart/helper/route_helper.dart';
-import 'package:sixam_mart/util/app_constants.dart';
-import 'package:sixam_mart/common/widgets/custom_snackbar.dart';
+import 'package:wekala_user/features/location/domain/models/prediction_model.dart';
+import 'package:wekala_user/features/address/domain/models/address_model.dart';
+import 'package:wekala_user/features/location/domain/models/zone_response_model.dart';
+import 'package:wekala_user/features/location/domain/repositories/location_repository_interface.dart';
+import 'package:wekala_user/features/location/domain/services/location_service_interface.dart';
+import 'package:wekala_user/features/location/screens/pick_map_screen.dart';
+import 'package:wekala_user/features/location/widgets/permission_dialog_widget.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/helper/address_helper.dart';
+import 'package:wekala_user/helper/responsive_helper.dart';
+import 'package:wekala_user/helper/route_helper.dart';
+import 'package:wekala_user/util/app_constants.dart';
+import 'package:wekala_user/common/widgets/custom_snackbar.dart';
 
 class LocationService implements LocationServiceInterface{
   final LocationRepositoryInterface locationRepoInterface;
@@ -132,22 +132,34 @@ class LocationService implements LocationServiceInterface{
   }
 
   @override
-  Future<List<PredictionModel>> searchLocation(String text) async {
-    List<PredictionModel> predictionList = [];
-    Response response = await locationRepoInterface.searchLocation(text);
-    if (response.statusCode == 200) {
-      predictionList = [];
-      try {
-        response.body['suggestions'].forEach((prediction) => predictionList.add(PredictionModel.fromJson(prediction)));
-      } catch (e) {
-        log('$e');
+Future<List<PredictionModel>> searchLocation(String text) async {
+  List<PredictionModel> predictionList = [];
+
+  Response response = await locationRepoInterface.searchLocation(text);
+
+  if (response.statusCode == 200) {
+    try {
+      if (response.body is List) {
+        // API رجع [] مباشرة
+        predictionList = (response.body as List)
+            .map((e) => PredictionModel.fromJson(e))
+            .toList();
+      } 
+      else if (response.body is Map && response.body['suggestions'] != null) {
+        // API القديم
+        predictionList = (response.body['suggestions'] as List)
+            .map((e) => PredictionModel.fromJson(e))
+            .toList();
       }
-    } else {
-      showCustomSnackBar(response.body['error_message'] ?? response.bodyString);
+    } catch (e) {
+      log('Search location parse error: $e');
     }
-    return predictionList;
+  } else {
+    showCustomSnackBar(response.body['error_message'] ?? response.bodyString);
   }
 
+  return predictionList;
+}
   @override
   void checkLocationPermission(Function onTap) async {
     LocationPermission permission = await Geolocator.checkPermission();

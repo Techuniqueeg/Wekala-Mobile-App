@@ -1,12 +1,12 @@
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:sixam_mart/common/models/response_model.dart';
-import 'package:sixam_mart/api/api_client.dart';
-import 'package:sixam_mart/features/profile/domain/models/update_profile_response_model.dart';
-import 'package:sixam_mart/features/profile/domain/models/update_user_model.dart';
-import 'package:sixam_mart/features/profile/domain/models/userinfo_model.dart';
-import 'package:sixam_mart/features/profile/domain/repositories/profile_repository_interface.dart';
-import 'package:sixam_mart/util/app_constants.dart';
+import 'package:wekala_user/common/models/response_model.dart';
+import 'package:wekala_user/api/api_client.dart';
+import 'package:wekala_user/features/profile/domain/models/update_profile_response_model.dart';
+import 'package:wekala_user/features/profile/domain/models/update_user_model.dart';
+import 'package:wekala_user/features/profile/domain/models/userinfo_model.dart';
+import 'package:wekala_user/features/profile/domain/repositories/profile_repository_interface.dart';
+import 'package:wekala_user/util/app_constants.dart';
 
 class ProfileRepository implements ProfileRepositoryInterface {
   final ApiClient apiClient;

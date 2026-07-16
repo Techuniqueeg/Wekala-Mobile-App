@@ -1,26 +1,26 @@
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:sixam_mart/common/models/module_model.dart';
-import 'package:sixam_mart/common/models/ongoing_order_model.dart';
-import 'package:sixam_mart/common/models/response_model.dart';
-import 'package:sixam_mart/common/widgets/confirmation_dialog.dart';
-import 'package:sixam_mart/common/widgets/custom_snackbar.dart';
-import 'package:sixam_mart/features/cart/controllers/cart_controller.dart';
-import 'package:sixam_mart/features/cart/domain/models/all_carts_model.dart';
-import 'package:sixam_mart/features/checkout/domain/models/payment_model.dart';
-import 'package:sixam_mart/features/order/domain/models/last_order_model.dart';
-import 'package:sixam_mart/features/order/domain/models/monthly_order_model.dart';
-import 'package:sixam_mart/features/order/domain/models/order_cancellation_body.dart';
-import 'package:sixam_mart/features/order/domain/models/order_details_model.dart';
-import 'package:sixam_mart/features/order/domain/models/order_model.dart';
-import 'package:sixam_mart/features/order/domain/models/reorder_response_model.dart';
-import 'package:sixam_mart/features/order/domain/services/order_service_interface.dart';
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/helper/route_helper.dart';
-import 'package:sixam_mart/helper/auth_helper.dart';
-import 'package:sixam_mart/util/images.dart';
+import 'package:wekala_user/common/models/module_model.dart';
+import 'package:wekala_user/common/models/ongoing_order_model.dart';
+import 'package:wekala_user/common/models/response_model.dart';
+import 'package:wekala_user/common/widgets/confirmation_dialog.dart';
+import 'package:wekala_user/common/widgets/custom_snackbar.dart';
+import 'package:wekala_user/features/cart/controllers/cart_controller.dart';
+import 'package:wekala_user/features/cart/domain/models/all_carts_model.dart';
+import 'package:wekala_user/features/checkout/domain/models/payment_model.dart';
+import 'package:wekala_user/features/order/domain/models/last_order_model.dart';
+import 'package:wekala_user/features/order/domain/models/monthly_order_model.dart';
+import 'package:wekala_user/features/order/domain/models/order_cancellation_body.dart';
+import 'package:wekala_user/features/order/domain/models/order_details_model.dart';
+import 'package:wekala_user/features/order/domain/models/order_model.dart';
+import 'package:wekala_user/features/order/domain/models/reorder_response_model.dart';
+import 'package:wekala_user/features/order/domain/services/order_service_interface.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/helper/route_helper.dart';
+import 'package:wekala_user/helper/auth_helper.dart';
+import 'package:wekala_user/util/images.dart';
 
-export 'package:sixam_mart/features/order/domain/services/order_service_interface.dart' show OrderListType;
+export 'package:wekala_user/features/order/domain/services/order_service_interface.dart' show OrderListType;
 
 class OrderController extends GetxController implements GetxService {
   final OrderServiceInterface orderServiceInterface;

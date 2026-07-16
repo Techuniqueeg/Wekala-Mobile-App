@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
-import 'package:sixam_mart/features/item/controllers/item_controller.dart';
-import 'package:sixam_mart/features/item/domain/models/basic_medicine_model.dart';
-import 'package:sixam_mart/features/item/domain/models/item_model.dart';
-import 'package:sixam_mart/features/home/widgets/web/widgets/arrow_icon_button.dart';
-import 'package:sixam_mart/features/home/widgets/web/widgets/medicine_item_card.dart';
-import 'package:sixam_mart/helper/responsive_helper.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/features/item/controllers/item_controller.dart';
+import 'package:wekala_user/features/item/domain/models/basic_medicine_model.dart';
+import 'package:wekala_user/features/item/domain/models/item_model.dart';
+import 'package:wekala_user/features/home/widgets/web/widgets/arrow_icon_button.dart';
+import 'package:wekala_user/features/home/widgets/web/widgets/medicine_item_card.dart';
+import 'package:wekala_user/helper/responsive_helper.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/styles.dart';
 
 class WebBasicMedicineNearbyViewWidget extends StatefulWidget {
   const WebBasicMedicineNearbyViewWidget({super.key});

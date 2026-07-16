@@ -1,13 +1,13 @@
-import 'package:sixam_mart/features/location/controllers/location_controller.dart';
-import 'package:sixam_mart/features/location/domain/models/prediction_model.dart';
-import 'package:sixam_mart/features/parcel/controllers/parcel_controller.dart';
-import 'package:sixam_mart/features/ride_share_module/ride_location/controllers/search_location_controller.dart';
-import 'package:sixam_mart/util/dimensions.dart';
+import 'package:wekala_user/features/location/controllers/location_controller.dart';
+import 'package:wekala_user/features/location/domain/models/prediction_model.dart';
+import 'package:wekala_user/features/parcel/controllers/parcel_controller.dart';
+import 'package:wekala_user/features/ride_share_module/ride_location/controllers/search_location_controller.dart';
+import 'package:wekala_user/util/dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/util/styles.dart';
 
 class LocationSearchDialogWidget extends StatefulWidget {
   final GoogleMapController? mapController;
@@ -57,9 +57,12 @@ class _LocationSearchDialogWidgetState extends State<LocationSearchDialogWidget>
 
   @override
   Widget build(BuildContext context) {
-    if (_searchController.isAttached && !_searchController.isOpen) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (_searchController.isAttached && !_searchController.isOpen) {
       _searchController.text = widget.pickedLocation ?? '';
-    }
+    }    
+    },)
+;
     return GetBuilder<LocationController>(
       builder: (locationController) {
         return SearchAnchor(

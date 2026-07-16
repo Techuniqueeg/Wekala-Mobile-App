@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:just_the_tooltip/just_the_tooltip.dart';
-import 'package:sixam_mart/common/models/config_model.dart';
-import 'package:sixam_mart/features/cart/domain/models/cart_model.dart';
-import 'package:sixam_mart/features/checkout/controllers/checkout_controller.dart';
-import 'package:sixam_mart/features/checkout/widgets/time_slot_bottom_sheet.dart';
-import 'package:sixam_mart/features/checkout/widgets_new/custom_card_checkout.dart';
-import 'package:sixam_mart/helper/auth_helper.dart';
-import 'package:sixam_mart/helper/date_converter.dart';
-import 'package:sixam_mart/helper/responsive_helper.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/common/models/config_model.dart';
+import 'package:wekala_user/features/cart/domain/models/cart_model.dart';
+import 'package:wekala_user/features/checkout/controllers/checkout_controller.dart';
+import 'package:wekala_user/features/checkout/widgets/time_slot_bottom_sheet.dart';
+import 'package:wekala_user/features/checkout/widgets_new/custom_card_checkout.dart';
+import 'package:wekala_user/helper/auth_helper.dart';
+import 'package:wekala_user/helper/date_converter.dart';
+import 'package:wekala_user/helper/responsive_helper.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/styles.dart';
 
 class TimeSlotSection extends StatelessWidget {
   final int? storeId;

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/common/widgets/custom_image.dart';
-import 'package:sixam_mart/features/language/controllers/language_controller.dart';
-import 'package:sixam_mart/features/parcel/controllers/parcel_controller.dart';
-import 'package:sixam_mart/features/parcel/widgets/get_service_video_widget.dart';
-import 'package:sixam_mart/features/redesign_feature/global_widgets/bottom_sheet_header_widget.dart';
-import 'package:sixam_mart/features/redesign_feature/parcel/screens/parcel_category_screen.dart';
-import 'package:sixam_mart/helper/responsive_helper.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/common/widgets/custom_image.dart';
+import 'package:wekala_user/features/language/controllers/language_controller.dart';
+import 'package:wekala_user/features/parcel/controllers/parcel_controller.dart';
+import 'package:wekala_user/features/parcel/widgets/get_service_video_widget.dart';
+import 'package:wekala_user/features/redesign_feature/global_widgets/bottom_sheet_header_widget.dart';
+import 'package:wekala_user/features/redesign_feature/parcel/screens/parcel_category_screen.dart';
+import 'package:wekala_user/helper/responsive_helper.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/styles.dart';
 
 class EasiestWayToGetServicesBottomSheet extends StatelessWidget {
   const EasiestWayToGetServicesBottomSheet({super.key});

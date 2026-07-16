@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/styles.dart';
 
 /// Modern floating snackbar (replaces the old Fluttertoast). Same signature as
 /// before so every existing call site keeps working — `getXSnackBar` is accepted
@@ -10,9 +10,13 @@ void showCustomSnackBar(String? message, {bool isError = true, bool getXSnackBar
   if (message == null || message.isEmpty) return;
 
   // Replace any visible/queued snackbar so messages don't stack up.
+try {
   if (Get.isSnackbarOpen) {
     Get.closeAllSnackbars();
   }
+} catch (e) {
+  debugPrint('Snackbar error: $e');
+}
 
   final Color background = isError ? const Color(0xFFD32F2F) : const Color(0xFF039D55);
 

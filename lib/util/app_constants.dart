@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
-import 'package:sixam_mart/common/models/choose_us_model.dart';
-import 'package:sixam_mart/features/language/domain/models/language_model.dart';
-import 'package:sixam_mart/util/images.dart';
+import 'package:wekala_user/common/models/choose_us_model.dart';
+import 'package:wekala_user/features/language/domain/models/language_model.dart';
+import 'package:wekala_user/util/images.dart';
 
 class AppConstants {
-  static const String appName = '6amMart';
+  static const String appName = 'Wekala';
   static const double appVersion = 4.0; ///Flutter sdk 3.44.2
 
   static const String fontFamily = 'DMSans';
@@ -12,10 +12,10 @@ class AppConstants {
   static const int balanceInputLen = 10;
   static const String webHostedUrl = 'https://6ammart-react.6amtech.com';
   static const bool stopPolylineAnimation = false;
-  static const String googleServerClientId = '491987943015-agln6biv84krpnngdphj87jkko7r9lb8.apps.googleusercontent.com';
+  static const String googleServerClientId = '478237197563-6s8vi58eojhdu4lqbusm6lrcbse12kfa.apps.googleusercontent.com';
   static const String pusherBroadcustUrl = '/api/v1/broadcasting/user-auth';
 
-  static const String baseUrl = 'http://elwekalaa.com';
+  static const String baseUrl = 'https://elwekalaa.com';
   static const String categoryUri = '/api/v1/categories';
   static const String topCategoriesUri = '/api/v1/categories/top';
   static const String trendingSearchesUri = '/api/v1/trending-searches';
@@ -339,47 +339,47 @@ class AppConstants {
   /// Shared Key
   static const String savedRoute = 'savedRoute';
   static const String renewBottomSheetShown = 'sixam_mart_renew_bottomsheet_shown';
-  static const String theme = '6ammart_theme';
-  static const String token = '6ammart_token';
-  static const String countryCode = '6ammart_country_code';
-  static const String languageCode = '6ammart_language_code';
+  static const String theme = 'wekala_theme';
+  static const String token = 'wekala_token';
+  static const String countryCode = 'wekala_country_code';
+  static const String languageCode = 'wekala_language_code';
   static const String cacheCountryCode = 'cache_country_code';
   static const String cacheLanguageCode = 'cache_language_code';
-  static const String cartList = '6ammart_cart_list';
-  static const String userPassword = '6ammart_user_password';
-  static const String userAddress = '6ammart_user_address';
-  static const String userNumber = '6ammart_user_number';
-  static const String userCountryCode = '6ammart_user_country_code';
-  static const String otpUserNumber = '6ammart_otp_user_number';
-  static const String otpUserCountryCode = '6ammart_otp_user_country_code';
-  static const String notification = '6ammart_notification';
+  static const String cartList = 'wekala_cart_list';
+  static const String userPassword = 'wekala_user_password';
+  static const String userAddress = 'wekala_user_address';
+  static const String userNumber = 'wekala_user_number';
+  static const String userCountryCode = 'wekala_user_country_code';
+  static const String otpUserNumber = 'wekala_otp_user_number';
+  static const String otpUserCountryCode = 'wekala_otp_user_country_code';
+  static const String notification = 'wekala_notification';
   static const String notificationIdList = 'notification_id_list';
-  static const String searchHistory = '6ammart_search_history';
-  static const String intro = '6ammart_intro';
-  static const String notificationCount = '6ammart_notification_count';
-  static const String dmTipIndex = '6ammart_dm_tip_index';
-  static const String earnPoint = '6ammart_earn_point';
-  static const String acceptCookies = '6ammart_accept_cookies';
-  static const String suggestedLocation = '6ammart_suggested_location';
-  static const String walletAccessToken = '6ammart_wallet_access_token';
-  static const String guestId = '6ammart_guest_id';
-  static const String guestNumber = '6ammart_guest_number';
-  static const String referBottomSheet = '6ammart_reffer_bottomsheet_show';
-  static const String paymentIncompleteBottomSheet = '6ammart_payment_incomplete_bottomsheet';
-  static const String dmRegisterSuccess = '6ammart_dm_registration_success';
-  static const String isRestaurantRegister = '6ammart_store_registration';
-  static const String suggestLogin = '6ammart_login_suggestion';
+  static const String searchHistory = 'wekala_search_history';
+  static const String intro = 'wekala_intro';
+  static const String notificationCount = 'wekala_notification_count';
+  static const String dmTipIndex = 'wekala_dm_tip_index';
+  static const String earnPoint = 'wekala_earn_point';
+  static const String acceptCookies = 'wekala_accept_cookies';
+  static const String suggestedLocation = 'wekala_suggested_location';
+  static const String walletAccessToken = 'wekala_wallet_access_token';
+  static const String guestId = 'wekala_guest_id';
+  static const String guestNumber = 'wekala_guest_number';
+  static const String referBottomSheet = 'wekala_reffer_bottomsheet_show';
+  static const String paymentIncompleteBottomSheet = 'wekala_payment_incomplete_bottomsheet';
+  static const String dmRegisterSuccess = 'wekala_dm_registration_success';
+  static const String isRestaurantRegister = 'wekala_store_registration';
+  static const String suggestLogin = 'wekala_login_suggestion';
 
   ///taxi
-  static const String taxiSearchHistory = '6ammart_taxi_search_history';
-  static const String taxiSearchAddressHistory = '6ammart_taxi_search_address_history';
+  static const String taxiSearchHistory = 'wekala_taxi_search_history';
+  static const String taxiSearchAddressHistory = 'wekala_taxi_search_address_history';
 
   ///parcel
-  static const String parcelRecentAddresses = '6ammart_parcel_recent_addresses';
+  static const String parcelRecentAddresses = 'wekala_parcel_recent_addresses';
   static const int parcelRecentAddressesMax = 10;
 
   ///recent delivery addresses (saved on successful checkout order)
-  static const String recentDeliveryAddresses = '6ammart_recent_delivery_addresses';
+  static const String recentDeliveryAddresses = 'wekala_recent_delivery_addresses';
   static const int recentDeliveryAddressesMax = 10;
 
   static const String prescriptionMediaLibrary = 'prescription_media_library';
@@ -396,7 +396,7 @@ class AppConstants {
   static const String maintenanceModeTopic = 'maintenance_mode_user_app';
 
   ///Ride Share
-  static const String rideSearchAddressHistory = '6ammart_ride_search_address_history';
+  static const String rideSearchAddressHistory = 'wekala_ride_search_address_history';
   static const String paymentType = 'paymentType';
   static const String paymentMethod = 'payment_method';
 

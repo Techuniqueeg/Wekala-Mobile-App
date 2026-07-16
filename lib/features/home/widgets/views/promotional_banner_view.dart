@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
-import 'package:sixam_mart/features/banner/controllers/banner_controller.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/common/widgets/custom_image.dart';
+import 'package:wekala_user/features/banner/controllers/banner_controller.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/common/widgets/custom_image.dart';
 
 class PromotionalBannerView extends StatelessWidget {
   const PromotionalBannerView({super.key});

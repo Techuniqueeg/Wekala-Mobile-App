@@ -1,5 +1,5 @@
 
-import 'package:sixam_mart/features/ride_share_module/ride_location/domain/models/ride_details_model.dart';
+import 'package:wekala_user/features/ride_share_module/ride_location/domain/models/ride_details_model.dart';
 
 class RideModel {
   int? totalSize;

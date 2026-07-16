@@ -1,13 +1,13 @@
-import 'package:sixam_mart/common/widgets/card_design/store_card_with_distance.dart';
-import 'package:sixam_mart/common/widgets/web_item_widget.dart';
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/features/item/domain/models/item_model.dart';
-import 'package:sixam_mart/features/home/widgets/web/widgets/store_card_widget.dart';
-import 'package:sixam_mart/helper/responsive_helper.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/common/widgets/no_data_screen.dart';
-import 'package:sixam_mart/common/widgets/item_shimmer.dart';
-import 'package:sixam_mart/common/widgets/item_widget.dart';
+import 'package:wekala_user/common/widgets/card_design/store_card_with_distance.dart';
+import 'package:wekala_user/common/widgets/web_item_widget.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/features/item/domain/models/item_model.dart';
+import 'package:wekala_user/features/home/widgets/web/widgets/store_card_widget.dart';
+import 'package:wekala_user/helper/responsive_helper.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/common/widgets/no_data_screen.dart';
+import 'package:wekala_user/common/widgets/item_shimmer.dart';
+import 'package:wekala_user/common/widgets/item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

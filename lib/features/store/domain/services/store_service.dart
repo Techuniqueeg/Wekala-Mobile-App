@@ -1,18 +1,18 @@
 import 'package:get/get.dart';
-import 'package:sixam_mart/common/enums/data_source_enum.dart';
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/features/store/domain/models/cart_suggested_item_model.dart';
-import 'package:sixam_mart/features/store/domain/models/store_category_items_model.dart';
-import 'package:sixam_mart/features/item/domain/models/item_model.dart';
-import 'package:sixam_mart/common/models/module_model.dart';
-import 'package:sixam_mart/features/store/domain/models/recommended_product_model.dart';
-import 'package:sixam_mart/features/store/domain/models/store_banner_model.dart';
-import 'package:sixam_mart/features/store/domain/models/store_model.dart';
-import 'package:sixam_mart/features/location/domain/models/zone_response_model.dart';
-import 'package:sixam_mart/features/store/domain/repositories/store_repository_interface.dart';
-import 'package:sixam_mart/features/store/domain/services/store_service_interface.dart';
-import 'package:sixam_mart/helper/address_helper.dart';
-import 'package:sixam_mart/util/app_constants.dart';
+import 'package:wekala_user/common/enums/data_source_enum.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/features/store/domain/models/cart_suggested_item_model.dart';
+import 'package:wekala_user/features/store/domain/models/store_category_items_model.dart';
+import 'package:wekala_user/features/item/domain/models/item_model.dart';
+import 'package:wekala_user/common/models/module_model.dart';
+import 'package:wekala_user/features/store/domain/models/recommended_product_model.dart';
+import 'package:wekala_user/features/store/domain/models/store_banner_model.dart';
+import 'package:wekala_user/features/store/domain/models/store_model.dart';
+import 'package:wekala_user/features/location/domain/models/zone_response_model.dart';
+import 'package:wekala_user/features/store/domain/repositories/store_repository_interface.dart';
+import 'package:wekala_user/features/store/domain/services/store_service_interface.dart';
+import 'package:wekala_user/helper/address_helper.dart';
+import 'package:wekala_user/util/app_constants.dart';
 
 class StoreService implements StoreServiceInterface {
   final StoreRepositoryInterface storeRepositoryInterface;

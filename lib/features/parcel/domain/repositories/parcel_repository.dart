@@ -1,16 +1,16 @@
 import 'dart:convert';
 import 'package:get/get.dart';
-import 'package:sixam_mart/api/api_client.dart';
-import 'package:sixam_mart/api/local_client.dart';
-import 'package:sixam_mart/common/enums/data_source_enum.dart';
-import 'package:sixam_mart/features/parcel/domain/models/parcel_cancellation_reasons_model.dart';
-import 'package:sixam_mart/features/parcel/domain/models/parcel_category_model.dart';
-import 'package:sixam_mart/features/parcel/domain/models/parcel_instruction_model.dart';
-import 'package:sixam_mart/features/parcel/domain/models/video_content_model.dart';
-import 'package:sixam_mart/features/parcel/domain/models/why_choose_model.dart';
-import 'package:sixam_mart/features/parcel/domain/repositories/parcel_repository_interface.dart';
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/util/app_constants.dart';
+import 'package:wekala_user/api/api_client.dart';
+import 'package:wekala_user/api/local_client.dart';
+import 'package:wekala_user/common/enums/data_source_enum.dart';
+import 'package:wekala_user/features/parcel/domain/models/parcel_cancellation_reasons_model.dart';
+import 'package:wekala_user/features/parcel/domain/models/parcel_category_model.dart';
+import 'package:wekala_user/features/parcel/domain/models/parcel_instruction_model.dart';
+import 'package:wekala_user/features/parcel/domain/models/video_content_model.dart';
+import 'package:wekala_user/features/parcel/domain/models/why_choose_model.dart';
+import 'package:wekala_user/features/parcel/domain/repositories/parcel_repository_interface.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/util/app_constants.dart';
 
 class ParcelRepository implements ParcelRepositoryInterface {
   final ApiClient apiClient;

@@ -4,14 +4,14 @@ import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
-import 'package:sixam_mart/common/widgets/title_widget.dart';
-import 'package:sixam_mart/features/home/widgets/components/item_that_you_love_card_widget.dart';
-import 'package:sixam_mart/features/home/widgets/components/review_item_card_widget.dart';
-import 'package:sixam_mart/features/item/controllers/item_controller.dart';
-import 'package:sixam_mart/features/item/domain/models/item_model.dart';
-import 'package:sixam_mart/helper/responsive_helper.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/common/widgets/title_widget.dart';
+import 'package:wekala_user/features/home/widgets/components/item_that_you_love_card_widget.dart';
+import 'package:wekala_user/features/home/widgets/components/review_item_card_widget.dart';
+import 'package:wekala_user/features/item/controllers/item_controller.dart';
+import 'package:wekala_user/features/item/domain/models/item_model.dart';
+import 'package:wekala_user/helper/responsive_helper.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/styles.dart';
 
 class ItemThatYouLoveView extends StatefulWidget {
   final bool forShop ;

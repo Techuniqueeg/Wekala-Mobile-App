@@ -1,13 +1,13 @@
-import 'package:sixam_mart/features/auth/widgets/auth_dialog_widget.dart';
-import 'package:sixam_mart/features/order/controllers/order_controller.dart';
-import 'package:sixam_mart/helper/responsive_helper.dart';
-import 'package:sixam_mart/helper/route_helper.dart';
-import 'package:sixam_mart/util/images.dart';
-import 'package:sixam_mart/util/styles.dart';
-import 'package:sixam_mart/common/widgets/custom_button.dart';
+import 'package:wekala_user/features/auth/widgets/auth_dialog_widget.dart';
+import 'package:wekala_user/features/order/controllers/order_controller.dart';
+import 'package:wekala_user/helper/responsive_helper.dart';
+import 'package:wekala_user/helper/route_helper.dart';
+import 'package:wekala_user/util/images.dart';
+import 'package:wekala_user/util/styles.dart';
+import 'package:wekala_user/common/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/common/widgets/footer_view.dart';
+import 'package:wekala_user/common/widgets/footer_view.dart';
 
 class NotLoggedInScreen extends StatelessWidget {
   final Function(bool success) callBack;

@@ -1,6 +1,6 @@
 
-import 'package:sixam_mart/api/api_client.dart';
-import 'package:sixam_mart/features/rental_module/vendor/domain/repositories/verified_provider_repository_interface.dart';
+import 'package:wekala_user/api/api_client.dart';
+import 'package:wekala_user/features/rental_module/vendor/domain/repositories/verified_provider_repository_interface.dart';
 
 
 class VerifiedProviderRepository implements VerifiedProviderRepositoryInterface {

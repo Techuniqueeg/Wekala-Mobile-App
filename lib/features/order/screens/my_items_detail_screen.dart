@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/common/models/module_model.dart';
-import 'package:sixam_mart/common/widgets/custom_app_bar.dart';
-import 'package:sixam_mart/common/widgets/custom_button.dart';
-import 'package:sixam_mart/common/widgets/custom_image.dart';
-import 'package:sixam_mart/features/order/controllers/order_controller.dart';
-import 'package:sixam_mart/features/order/domain/models/monthly_order_model.dart';
-import 'package:sixam_mart/features/order/widgets/monthly_item_tile.dart';
-import 'package:sixam_mart/features/order/widgets/monthly_order_actions.dart';
-import 'package:sixam_mart/features/order/widgets/monthly_order_menu_button.dart';
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/helper/price_converter.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/common/models/module_model.dart';
+import 'package:wekala_user/common/widgets/custom_app_bar.dart';
+import 'package:wekala_user/common/widgets/custom_button.dart';
+import 'package:wekala_user/common/widgets/custom_image.dart';
+import 'package:wekala_user/features/order/controllers/order_controller.dart';
+import 'package:wekala_user/features/order/domain/models/monthly_order_model.dart';
+import 'package:wekala_user/features/order/widgets/monthly_item_tile.dart';
+import 'package:wekala_user/features/order/widgets/monthly_order_actions.dart';
+import 'package:wekala_user/features/order/widgets/monthly_order_menu_button.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/helper/price_converter.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/styles.dart';
 
 class MyItemsDetailScreen extends StatelessWidget {
   final MonthlyOrder order;

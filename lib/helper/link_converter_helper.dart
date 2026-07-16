@@ -1,10 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/features/auth/screens/sign_up_screen.dart';
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/helper/auth_helper.dart';
-import 'package:sixam_mart/helper/route_helper.dart';
-import 'package:sixam_mart/util/app_constants.dart';
+import 'package:wekala_user/features/auth/screens/sign_up_screen.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/helper/auth_helper.dart';
+import 'package:wekala_user/helper/route_helper.dart';
+import 'package:wekala_user/util/app_constants.dart';
 
 class LinkConverter{
 

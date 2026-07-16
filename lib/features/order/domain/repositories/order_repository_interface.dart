@@ -1,13 +1,13 @@
 import 'package:get/get_connect/http/src/response/response.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:sixam_mart/common/models/ongoing_order_model.dart';
-import 'package:sixam_mart/features/checkout/domain/models/payment_model.dart';
-import 'package:sixam_mart/features/order/domain/models/last_order_model.dart';
-import 'package:sixam_mart/features/order/domain/models/monthly_order_model.dart';
-import 'package:sixam_mart/features/order/domain/models/order_model.dart';
-import 'package:sixam_mart/features/order/domain/models/reorder_response_model.dart';
-import 'package:sixam_mart/features/order/domain/services/order_service_interface.dart';
-import 'package:sixam_mart/interfaces/repository_interface.dart';
+import 'package:wekala_user/common/models/ongoing_order_model.dart';
+import 'package:wekala_user/features/checkout/domain/models/payment_model.dart';
+import 'package:wekala_user/features/order/domain/models/last_order_model.dart';
+import 'package:wekala_user/features/order/domain/models/monthly_order_model.dart';
+import 'package:wekala_user/features/order/domain/models/order_model.dart';
+import 'package:wekala_user/features/order/domain/models/reorder_response_model.dart';
+import 'package:wekala_user/features/order/domain/services/order_service_interface.dart';
+import 'package:wekala_user/interfaces/repository_interface.dart';
 
 abstract class OrderRepositoryInterface extends RepositoryInterface {
   @override

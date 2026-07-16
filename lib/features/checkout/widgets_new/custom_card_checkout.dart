@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sixam_mart/util/dimensions.dart';
+import 'package:wekala_user/util/dimensions.dart';
 class CustomCardCheckout extends StatelessWidget {
   final Widget child;
   final EdgeInsetsGeometry? padding;

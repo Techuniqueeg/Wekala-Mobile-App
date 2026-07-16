@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/common/widgets/custom_button.dart';
-import 'package:sixam_mart/common/widgets/custom_snackbar.dart';
-import 'package:sixam_mart/features/auth/controllers/auth_controller.dart';
-import 'package:sixam_mart/features/auth/widgets/auth_dialog_widget.dart';
-import 'package:sixam_mart/features/checkout/widgets/payment_method_bottom_sheet.dart';
-import 'package:sixam_mart/features/order/controllers/order_controller.dart';
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/helper/auth_helper.dart';
-import 'package:sixam_mart/helper/price_converter.dart';
-import 'package:sixam_mart/helper/responsive_helper.dart';
-import 'package:sixam_mart/helper/route_helper.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/images.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/common/widgets/custom_button.dart';
+import 'package:wekala_user/common/widgets/custom_snackbar.dart';
+import 'package:wekala_user/features/auth/controllers/auth_controller.dart';
+import 'package:wekala_user/features/auth/widgets/auth_dialog_widget.dart';
+import 'package:wekala_user/features/checkout/widgets/payment_method_bottom_sheet.dart';
+import 'package:wekala_user/features/order/controllers/order_controller.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/helper/auth_helper.dart';
+import 'package:wekala_user/helper/price_converter.dart';
+import 'package:wekala_user/helper/responsive_helper.dart';
+import 'package:wekala_user/helper/route_helper.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/images.dart';
+import 'package:wekala_user/util/styles.dart';
 
 class DigitalPaymentFailedScreen extends StatefulWidget {
   final String orderId;
@@ -43,14 +43,14 @@ class _DigitalPaymentFailedScreenState extends State<DigitalPaymentFailedScreen>
         decoration: BoxDecoration(
           color: Theme.of(context).cardColor,
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(Dimensions.radiusLarge),
-            topRight: Radius.circular(Dimensions.radiusLarge),
+            topLeft: const Radius.circular(Dimensions.radiusLarge),
+            topRight: const Radius.circular(Dimensions.radiusLarge),
             bottomRight: Radius.circular(ResponsiveHelper.isDesktop(Get.context) ? Dimensions.radiusLarge : 0),
             bottomLeft: Radius.circular(ResponsiveHelper.isDesktop(Get.context) ? Dimensions.radiusLarge : 0),
           ),
         ),
         child: Stack(children: [
-          PaymentIncompleteView(),
+          const PaymentIncompleteView(),
 
           Positioned(
             top: 0,

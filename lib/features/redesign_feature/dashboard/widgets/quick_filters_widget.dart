@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/features/dashboard/screens/dashboard_screen.dart';
-import 'package:sixam_mart/features/redesign_feature/home/screens/all_stores_screen.dart';
-import 'package:sixam_mart/features/offer/offer_screen.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/images.dart';
-import 'package:sixam_mart/util/styles.dart';
+import 'package:wekala_user/features/dashboard/screens/dashboard_screen.dart';
+import 'package:wekala_user/features/redesign_feature/home/screens/all_stores_screen.dart';
+import 'package:wekala_user/features/offer/offer_screen.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/images.dart';
+import 'package:wekala_user/util/styles.dart';
 
 class QuickFiltersWidget extends StatelessWidget {
   final bool? isPadding;

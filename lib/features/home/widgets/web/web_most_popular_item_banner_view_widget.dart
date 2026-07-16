@@ -1,10 +1,10 @@
-import 'package:sixam_mart/common/widgets/hover/text_hover.dart';
-import 'package:sixam_mart/features/item/controllers/campaign_controller.dart';
-import 'package:sixam_mart/features/item/domain/models/basic_campaign_model.dart';
-import 'package:sixam_mart/helper/route_helper.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/common/widgets/custom_image.dart';
-import 'package:sixam_mart/features/home/widgets/web/widgets/arrow_icon_button.dart';
+import 'package:wekala_user/common/widgets/hover/text_hover.dart';
+import 'package:wekala_user/features/item/controllers/campaign_controller.dart';
+import 'package:wekala_user/features/item/domain/models/basic_campaign_model.dart';
+import 'package:wekala_user/helper/route_helper.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/common/widgets/custom_image.dart';
+import 'package:wekala_user/features/home/widgets/web/widgets/arrow_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';

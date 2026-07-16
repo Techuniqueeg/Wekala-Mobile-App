@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:sixam_mart/features/ride_share_module/ride_location/domain/models/ride_details_model.dart';
-import 'package:sixam_mart/features/splash/controllers/splash_controller.dart';
-import 'package:sixam_mart/helper/date_converter.dart';
+import 'package:wekala_user/features/ride_share_module/ride_location/domain/models/ride_details_model.dart';
+import 'package:wekala_user/features/splash/controllers/splash_controller.dart';
+import 'package:wekala_user/helper/date_converter.dart';
 
 class RideHelper {
   static bool isShowSafetyFeature(RideDetails tripDetails){

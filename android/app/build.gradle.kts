@@ -5,6 +5,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("dev.flutter.flutter-gradle-plugin")
+
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
 }
@@ -16,7 +17,7 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    namespace = "com.sixamtech.sixam_mart_user"
+    namespace = "com.wekala.user"
     compileSdk = 36
     ndkVersion = flutter.ndkVersion
 
@@ -31,7 +32,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.sixamtech.sixam_mart_user"
+        applicationId = "com.wekala.user"
         minSdk = flutter.minSdkVersion
         targetSdk = 36
         versionCode = flutter.versionCode

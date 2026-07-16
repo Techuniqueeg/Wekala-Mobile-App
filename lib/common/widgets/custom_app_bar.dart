@@ -1,11 +1,11 @@
-import 'package:sixam_mart/features/cart/screens/global_cart_screen.dart';
-import 'package:sixam_mart/helper/responsive_helper.dart';
-import 'package:sixam_mart/helper/route_helper.dart';
-import 'package:sixam_mart/util/dimensions.dart';
-import 'package:sixam_mart/util/styles.dart';
-import 'package:sixam_mart/common/widgets/cart_widget.dart';
-import 'package:sixam_mart/common/widgets/veg_filter_widget.dart';
-import 'package:sixam_mart/common/widgets/web_menu_bar.dart';
+import 'package:wekala_user/features/cart/screens/global_cart_screen.dart';
+import 'package:wekala_user/helper/responsive_helper.dart';
+import 'package:wekala_user/helper/route_helper.dart';
+import 'package:wekala_user/util/dimensions.dart';
+import 'package:wekala_user/util/styles.dart';
+import 'package:wekala_user/common/widgets/cart_widget.dart';
+import 'package:wekala_user/common/widgets/veg_filter_widget.dart';
+import 'package:wekala_user/common/widgets/web_menu_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

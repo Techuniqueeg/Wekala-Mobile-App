@@ -1,13 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sixam_mart/features/language/controllers/language_controller.dart';
+import 'package:wekala_user/features/language/controllers/language_controller.dart';
 
 const kLogTag = "[demandium]";
 const kLogEnable = true;
 DateTime? loginClickTime;
 
-printLog(dynamic data) {
+void printLog(dynamic data) {
   if (kLogEnable) {
     if (kDebugMode) {
       print("$kLogTag${data.toString()}");
