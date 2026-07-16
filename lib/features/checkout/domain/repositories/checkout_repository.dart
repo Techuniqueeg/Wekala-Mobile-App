@@ -24,7 +24,7 @@ class CheckoutRepository implements CheckoutRepositoryInterface {
     int mostDmTipAmount = 0;
     Response response = await apiClient.getData(AppConstants.mostTipsUri);
     if (response.statusCode == 200) {
-      mostDmTipAmount = response.body['most_tips_amount'];
+      mostDmTipAmount = response.body['most_tips_amount']??0;
     }
     return mostDmTipAmount;
   }
@@ -159,9 +159,12 @@ class CheckoutRepository implements CheckoutRepositoryInterface {
     Response response = await apiClient.getData(AppConstants.offlineMethodListUri);
     if (response.statusCode == 200) {
       offlineMethodList = [];
-      response.body.forEach((method) => offlineMethodList!.add(OfflineMethodModel.fromJson(method)));
-    }
-    return offlineMethodList;
+      final List methods = response.body['data']??[];
+
+      offlineMethodList = methods
+          .map((e) => OfflineMethodModel.fromJson(e))
+          .toList();}
+          return offlineMethodList;
   }
 
   @override

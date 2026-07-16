@@ -13,12 +13,11 @@ class ApiChecker {
       });
     }else if (response.statusCode == 429) {
 
-    if (!Get.isSnackbarOpen) {
       showCustomSnackBar(
         'There are too many requests; try again in a little while.',
         getXSnackBar: getXSnackBar,
       );
-    }
+
 
   } else {
 

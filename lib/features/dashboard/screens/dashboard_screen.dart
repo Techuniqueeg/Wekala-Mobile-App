@@ -61,7 +61,7 @@ class DashboardScreen extends StatefulWidget {
 class DashboardScreenState extends State<DashboardScreen> {
   PageController? _pageController;
   int _pageIndex = 0;
-  late List<Widget> _screens;
+  List<Widget> _screens = [];
   final GlobalKey<ScaffoldMessengerState> _scaffoldKey = GlobalKey();
   bool _canExit = GetPlatform.isWeb ? true : false;
 
@@ -216,10 +216,8 @@ class DashboardScreenState extends State<DashboardScreen> {
   @override
   void dispose() {
     _secondaryAnimation?.removeListener(_onCoverChanged);
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      HomeStatusBarTint.active.value = false;
-    });
-
+    HomeStatusBarTint.active.value = false;
+    _pageController?.dispose();
     super.dispose();
   }
 
@@ -238,7 +236,9 @@ class DashboardScreenState extends State<DashboardScreen> {
                 Get.find<HomeController>().saveIsStoreRegistrationSharedPref(
                   false,
                 );
-                setState(() {});
+                if (mounted) {
+                  setState(() {});
+                }
               })
             : showModalBottomSheet(
                 context: Get.context!,
@@ -252,7 +252,9 @@ class DashboardScreenState extends State<DashboardScreen> {
                 Get.find<HomeController>().saveIsStoreRegistrationSharedPref(
                   false,
                 );
-                setState(() {});
+                if (mounted) {
+                  setState(() {});
+                }
               });
       });
     }
@@ -271,7 +273,9 @@ class DashboardScreenState extends State<DashboardScreen> {
           builder: (con) => const AddressBottomSheetWidget(),
         ).then((value) {
           Get.find<LocationController>().showSuggestedLocation(false);
-          setState(() {});
+          if (mounted) {
+            setState(() {});
+          }
         });
       });
     }
@@ -338,7 +342,7 @@ class DashboardScreenState extends State<DashboardScreen> {
             builder: (orderController) {
               List<OrderData> runningOrder =
                   orderController.ongoingOrderModel != null
-                  ? orderController.ongoingOrderModel!.data!
+                  ? orderController.ongoingOrderModel!.data ?? []
                   : [];
 
               return SafeArea(
