@@ -28,9 +28,21 @@ class PaymentScreen extends StatefulWidget {
   final int? createUserId;
   final bool isProSubscription;
   final bool isRenew;
-  const PaymentScreen({super.key, required this.orderModel, required this.isCashOnDelivery, this.addFundUrl, required this.paymentMethod,
-    required this.guestId, required this.contactNumber, this.storeId, this.subscriptionUrl, this.createAccount = false, this.createUserId,
-    this.isProSubscription = false, this.isRenew = false});
+  const PaymentScreen({
+    super.key,
+    required this.orderModel,
+    required this.isCashOnDelivery,
+    this.addFundUrl,
+    required this.paymentMethod,
+    required this.guestId,
+    required this.contactNumber,
+    this.storeId,
+    this.subscriptionUrl,
+    this.createAccount = false,
+    this.createUserId,
+    this.isProSubscription = false,
+    this.isRenew = false,
+  });
 
   @override
   PaymentScreenState createState() => PaymentScreenState();
@@ -48,14 +60,23 @@ class PaymentScreenState extends State<PaymentScreen> {
   void initState() {
     super.initState();
 
-    if(widget.addFundUrl == '' && widget.addFundUrl!.isEmpty && widget.subscriptionUrl == '' && widget.subscriptionUrl!.isEmpty){
-      selectedUrl = '${AppConstants.baseUrl}/payment-mobile?customer_id=${widget.orderModel.userId == 0 ? widget.guestId : widget.orderModel.userId}&order_id=${widget.orderModel.id}&payment_method=${widget.paymentMethod}';
-    } else if(widget.subscriptionUrl != '' && widget.subscriptionUrl!.isNotEmpty){
+    final bool hasAddFundUrl =
+        widget.addFundUrl != null && widget.addFundUrl!.isNotEmpty;
+
+    final bool hasSubscriptionUrl =
+        widget.subscriptionUrl != null && widget.subscriptionUrl!.isNotEmpty;
+
+    if (!hasAddFundUrl && !hasSubscriptionUrl) {
+      selectedUrl =
+          '${AppConstants.baseUrl}/payment-mobile'
+          '?customer_id=${widget.orderModel.userId == 0 ? widget.guestId : widget.orderModel.userId}'
+          '&order_id=${widget.orderModel.id}'
+          '&payment_method=${widget.paymentMethod}';
+    } else if (hasSubscriptionUrl) {
       selectedUrl = widget.subscriptionUrl!;
-    } else{
+    } else {
       selectedUrl = widget.addFundUrl!;
     }
-
     if (kDebugMode) {
       print('==========url=======> $selectedUrl');
     }
@@ -64,74 +85,111 @@ class PaymentScreenState extends State<PaymentScreen> {
   }
 
   void _initData() async {
+    final bool hasAddFundUrl =
+        widget.addFundUrl != null && widget.addFundUrl!.isNotEmpty;
 
-    if(widget.addFundUrl == '' && widget.addFundUrl!.isEmpty && widget.subscriptionUrl == '' && widget.subscriptionUrl!.isEmpty){
-      for(ZoneData zData in AddressHelper.getUserAddressFromSharedPref()!.zoneData!) {
-        for(Modules m in zData.modules!) {
-          if(m.id == Get.find<SplashController>().module?.id) {
-            _maximumCodOrderAmount = m.pivot!.maximumCodOrderAmount;
+    final bool hasSubscriptionUrl =
+        widget.subscriptionUrl != null && widget.subscriptionUrl!.isNotEmpty;
+
+    if (!hasAddFundUrl && !hasSubscriptionUrl) {
+      for (ZoneData zData
+          in AddressHelper.getUserAddressFromSharedPref()?.zoneData ?? []) {
+        for (Modules m in zData.modules ?? []) {
+          if (m.id == Get.find<SplashController>().module?.id) {
+            _maximumCodOrderAmount = m.pivot?.maximumCodOrderAmount;
             break;
           }
         }
       }
     }
-
     browser = MyInAppBrowser(
-      orderID: widget.orderModel.id.toString(), orderType: widget.orderModel.orderType,
-      orderAmount: widget.orderModel.orderAmount, maxCodOrderAmount: _maximumCodOrderAmount,
-      isCashOnDelivery: widget.isCashOnDelivery, addFundUrl: widget.addFundUrl,
-      contactNumber: widget.contactNumber, storeId: widget.storeId,
-      subscriptionUrl: widget.subscriptionUrl, createAccount: widget.createAccount,
-      guestId: widget.guestId, isProSubscription: widget.isProSubscription, isRenew: widget.isRenew,
+      orderID: widget.orderModel.id.toString(),
+      orderType: widget.orderModel.orderType,
+      orderAmount: widget.orderModel.orderAmount,
+      maxCodOrderAmount: _maximumCodOrderAmount,
+      isCashOnDelivery: widget.isCashOnDelivery,
+      addFundUrl: widget.addFundUrl,
+      contactNumber: widget.contactNumber,
+      storeId: widget.storeId,
+      subscriptionUrl: widget.subscriptionUrl,
+      createAccount: widget.createAccount,
+      guestId: widget.guestId,
+      isProSubscription: widget.isProSubscription,
+      isRenew: widget.isRenew,
     );
 
-    if(GetPlatform.isAndroid){
+    if (GetPlatform.isAndroid) {
       await InAppWebViewController.setWebContentsDebuggingEnabled(kDebugMode);
 
-      bool swAvailable = await WebViewFeature.isFeatureSupported(WebViewFeature.SERVICE_WORKER_BASIC_USAGE);
-      bool swInterceptAvailable = await WebViewFeature.isFeatureSupported(WebViewFeature.SERVICE_WORKER_SHOULD_INTERCEPT_REQUEST);
+      bool swAvailable = await WebViewFeature.isFeatureSupported(
+        WebViewFeature.SERVICE_WORKER_BASIC_USAGE,
+      );
+      bool swInterceptAvailable = await WebViewFeature.isFeatureSupported(
+        WebViewFeature.SERVICE_WORKER_SHOULD_INTERCEPT_REQUEST,
+      );
 
       if (swAvailable && swInterceptAvailable) {
-        ServiceWorkerController serviceWorkerController = ServiceWorkerController.instance();
-        await serviceWorkerController.setServiceWorkerClient(ServiceWorkerClient(
-          shouldInterceptRequest: (request) async {
-            if (kDebugMode) {
-              print(request);
-            }
-            return null;
-          },
-        ));
+        ServiceWorkerController serviceWorkerController =
+            ServiceWorkerController.instance();
+        await serviceWorkerController.setServiceWorkerClient(
+          ServiceWorkerClient(
+            shouldInterceptRequest: (request) async {
+              if (kDebugMode) {
+                print(request);
+              }
+              return null;
+            },
+          ),
+        );
       }
     }
 
     await browser.openUrlRequest(
       urlRequest: URLRequest(url: WebUri(selectedUrl)),
       settings: InAppBrowserClassSettings(
-        webViewSettings: InAppWebViewSettings(useShouldOverrideUrlLoading: true, useOnLoadResource: true),
-        browserSettings: InAppBrowserSettings(hideUrlBar: true, hideToolbarTop: GetPlatform.isAndroid),
+        webViewSettings: InAppWebViewSettings(
+          useShouldOverrideUrlLoading: true,
+          useOnLoadResource: true,
+        ),
+        browserSettings: InAppBrowserSettings(
+          hideUrlBar: true,
+          hideToolbarTop: GetPlatform.isAndroid,
+        ),
       ),
     );
-
   }
 
   @override
   Widget build(BuildContext context) {
     return PopScope(
       canPop: false,
-      onPopInvokedWithResult: (didPop, result) {
-        _exitApp().then((value) => value!);
+      onPopInvokedWithResult: (didPop, result) async {
+        final value = await _exitApp();
+
+        if (value == true) {
+          return;
+        }
       },
       child: Scaffold(
         backgroundColor: Theme.of(context).primaryColor,
-        appBar: CustomAppBar(title: 'payment'.tr, onBackPressed: () => _exitApp()),
+        appBar: CustomAppBar(
+          title: 'payment'.tr,
+          onBackPressed: () => _exitApp(),
+        ),
         body: Center(
           child: SizedBox(
             width: Dimensions.webMaxWidth,
             child: Stack(
               children: [
-                _isLoading ? Center(
-                  child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).primaryColor)),
-                ) : const SizedBox.shrink(),
+                _isLoading
+                    ? Center(
+                        child: CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            Theme.of(context).primaryColor,
+                          ),
+                        ),
+                      )
+                    : const SizedBox.shrink(),
               ],
             ),
           ),
@@ -141,17 +199,31 @@ class PaymentScreenState extends State<PaymentScreen> {
   }
 
   Future<bool?> _exitApp() async {
-    if((widget.addFundUrl == null || widget.addFundUrl!.isEmpty) && (widget.subscriptionUrl == '' && widget.subscriptionUrl!.isEmpty)){
-      return Get.dialog(PaymentFailedDialog(
-        orderID: widget.orderModel.id.toString(), orderAmount: widget.orderModel.orderAmount,
-        maxCodOrderAmount: _maximumCodOrderAmount, orderType: widget.orderModel.orderType,
-        isCashOnDelivery: widget.isCashOnDelivery, guestId: widget.createAccount ? widget.createUserId.toString() : widget.guestId,
-      ));
-    } else{
-      return Get.dialog(FundPaymentDialogWidget(isSubscription: widget.subscriptionUrl != null && widget.subscriptionUrl!.isNotEmpty));
-    }
-  }
+    final bool hasAddFundUrl =
+        widget.addFundUrl != null && widget.addFundUrl!.isNotEmpty;
 
+    final bool hasSubscriptionUrl =
+        widget.subscriptionUrl != null && widget.subscriptionUrl!.isNotEmpty;
+
+    if (!hasAddFundUrl && !hasSubscriptionUrl) {
+      return Get.dialog(
+        PaymentFailedDialog(
+          orderID: widget.orderModel.id.toString(),
+          orderAmount: widget.orderModel.orderAmount,
+          maxCodOrderAmount: _maximumCodOrderAmount,
+          orderType: widget.orderModel.orderType,
+          isCashOnDelivery: widget.isCashOnDelivery,
+          guestId: widget.createAccount
+              ? widget.createUserId.toString()
+              : widget.guestId,
+        ),
+      );
+    }
+
+    return Get.dialog(
+      FundPaymentDialogWidget(isSubscription: hasSubscriptionUrl),
+    );
+  }
 }
 
 class MyInAppBrowser extends InAppBrowser {
@@ -170,11 +242,22 @@ class MyInAppBrowser extends InAppBrowser {
   final bool isRenew;
 
   MyInAppBrowser({
-    super.windowId, super.initialUserScripts,
-    required this.orderID, required this.orderType, required this.orderAmount,
-    required this.maxCodOrderAmount, required this.isCashOnDelivery,
-    this.addFundUrl, this.subscriptionUrl, this.contactNumber, this.storeId,
-    required this.createAccount, required this.guestId, this.isProSubscription = false, this.isRenew = false});
+    super.windowId,
+    super.initialUserScripts,
+    required this.orderID,
+    required this.orderType,
+    required this.orderAmount,
+    required this.maxCodOrderAmount,
+    required this.isCashOnDelivery,
+    this.addFundUrl,
+    this.subscriptionUrl,
+    this.contactNumber,
+    this.storeId,
+    required this.createAccount,
+    required this.guestId,
+    this.isProSubscription = false,
+    this.isRenew = false,
+  });
 
   final bool _canRedirect = true;
 
@@ -191,13 +274,20 @@ class MyInAppBrowser extends InAppBrowser {
       print("\n\nStarted: $url\n\n");
     }
     Get.find<OrderController>().paymentRedirect(
-      url: url.toString(), canRedirect: _canRedirect, onClose: () => close(),
-      addFundUrl: addFundUrl, orderID: orderID, contactNumber: contactNumber, storeId: storeId,
-      subscriptionUrl: subscriptionUrl, createAccount: createAccount, guestId: guestId, isProSubscription: isProSubscription, isRenew: isRenew,
+      url: url.toString(),
+      canRedirect: _canRedirect,
+      onClose: () => close(),
+      addFundUrl: addFundUrl,
+      orderID: orderID,
+      contactNumber: contactNumber,
+      storeId: storeId,
+      subscriptionUrl: subscriptionUrl,
+      createAccount: createAccount,
+      guestId: guestId,
+      isProSubscription: isProSubscription,
+      isRenew: isRenew,
     );
-
   }
-
 
   @override
   Future onLoadStop(url) async {
@@ -206,9 +296,18 @@ class MyInAppBrowser extends InAppBrowser {
       print("\n\nStopped: $url\n\n");
     }
     Get.find<OrderController>().paymentRedirect(
-      url: url.toString(), canRedirect: _canRedirect, onClose: () => close(),
-      addFundUrl: addFundUrl, orderID: orderID, contactNumber: contactNumber, storeId: storeId,
-      subscriptionUrl: subscriptionUrl, createAccount: createAccount, guestId: guestId, isProSubscription: isProSubscription, isRenew: isRenew,
+      url: url.toString(),
+      canRedirect: _canRedirect,
+      onClose: () => close(),
+      addFundUrl: addFundUrl,
+      orderID: orderID,
+      contactNumber: contactNumber,
+      storeId: storeId,
+      subscriptionUrl: subscriptionUrl,
+      createAccount: createAccount,
+      guestId: guestId,
+      isProSubscription: isProSubscription,
+      isRenew: isRenew,
     );
   }
 
@@ -254,12 +353,22 @@ class MyInAppBrowser extends InAppBrowser {
   }
 
   @override
-  Future<NavigationActionPolicy> shouldOverrideUrlLoading(navigationAction) async {
+  Future<NavigationActionPolicy> shouldOverrideUrlLoading(
+    navigationAction,
+  ) async {
     if (kDebugMode) {
       print("\n\nOverride ${navigationAction.request.url}\n\n");
     }
     Uri uri = navigationAction.request.url!;
-    if (!["http", "https", "file", "chrome", "data", "javascript", "about"].contains(uri.scheme)) {
+    if (![
+      "http",
+      "https",
+      "file",
+      "chrome",
+      "data",
+      "javascript",
+      "about",
+    ].contains(uri.scheme)) {
       launchUrl(uri, mode: LaunchMode.externalApplication);
       return NavigationActionPolicy.CANCEL;
     }
@@ -269,7 +378,9 @@ class MyInAppBrowser extends InAppBrowser {
   @override
   void onLoadResource(resource) {
     if (kDebugMode) {
-      print("Started at: ${resource.startTime}ms ---> duration: ${resource.duration}ms ${resource.url ?? ''}");
+      print(
+        "Started at: ${resource.startTime}ms ---> duration: ${resource.duration}ms ${resource.url ?? ''}",
+      );
     }
   }
 
@@ -283,6 +394,4 @@ class MyInAppBrowser extends InAppBrowser {
    """);
     }
   }
-
-
 }

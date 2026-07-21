@@ -19,12 +19,12 @@ void showCustomSnackBar(
 
   // Replace any visible/queued snackbar so messages don't stack up.
   try {
-    if (Get.isSnackbarOpen) {
-      Get.closeAllSnackbars();
-    }
-  } catch (e) {
-    debugPrint('Snackbar error: $e');
+  if (Get.isSnackbarOpen) {
+    Get.closeCurrentSnackbar();
   }
+} catch (e) {
+  debugPrint('Snackbar close error: $e');
+}
 
   final Color background = isError
       ? const Color(0xFFD32F2F)

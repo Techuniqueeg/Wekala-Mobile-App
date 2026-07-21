@@ -215,10 +215,12 @@ class OrderDetailsNewScreenState extends State<OrderDetailsNewScreen> {
     return PopScope(
       canPop: Navigator.canPop(context),
       onPopInvokedWithResult: (didPop, result) async {
+        if (didPop) return;
+
         if (widget.fromNotification || widget.fromOfflinePayment) {
-          Get.offAllNamed(RouteHelper.getInitialRoute());
-        } else {
-          return;
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            Get.offAllNamed(RouteHelper.getInitialRoute());
+          });
         }
       },
       child: GetBuilder<OrderController>(builder: (orderController) {

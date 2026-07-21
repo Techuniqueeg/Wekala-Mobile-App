@@ -52,7 +52,9 @@ class CheckoutController extends GetxController implements GetxService {
 
   static const int maxPrescriptionFileCount = 5;
   static const int maxPrescriptionSaveBatchCount = 5;
-  final int fileSize = Get.find<SplashController>().configModel?.validationConfig?.maxFileSize??2;
+  final int fileSize =
+      Get.find<SplashController>().configModel?.validationConfig?.maxFileSize ??
+      2;
   late int maxPrescriptionFileSizeInBytes = (fileSize * 1024 * 1024);
 
   final TextEditingController couponController = TextEditingController();
@@ -61,17 +63,25 @@ class CheckoutController extends GetxController implements GetxService {
   final TextEditingController houseController = TextEditingController();
   final TextEditingController floorController = TextEditingController();
   final TextEditingController tipController = TextEditingController();
-  final TextEditingController contactPersonNameController = TextEditingController();
-  final TextEditingController contactPersonNumberController = TextEditingController();
-  final TextEditingController contactPersonAddressController = TextEditingController();
+  final TextEditingController contactPersonNameController =
+      TextEditingController();
+  final TextEditingController contactPersonNumberController =
+      TextEditingController();
+  final TextEditingController contactPersonAddressController =
+      TextEditingController();
   final FocusNode nameNode = FocusNode();
   final FocusNode phoneNode = FocusNode();
   final FocusNode streetNode = FocusNode();
   final FocusNode houseNode = FocusNode();
   final FocusNode floorNode = FocusNode();
 
-  String? countryDialCode = Get.find<AuthController>().getUserCountryCode().isNotEmpty ? Get.find<AuthController>().getUserCountryCode()
-      : CountryCode.fromCountryCode(Get.find<SplashController>().configModel!.country!).dialCode ?? Get.find<LocalizationController>().locale.countryCode;
+  String? countryDialCode =
+      Get.find<AuthController>().getUserCountryCode().isNotEmpty
+      ? Get.find<AuthController>().getUserCountryCode()
+      : CountryCode.fromCountryCode(
+              Get.find<SplashController>().configModel!.country!,
+            ).dialCode ??
+            Get.find<LocalizationController>().locale.countryCode;
 
   bool _isLoading = false;
   bool get isLoading => _isLoading;
@@ -94,7 +104,9 @@ class CheckoutController extends GetxController implements GetxService {
     final String t = _preferableTime.trim();
     if (t.isEmpty) return true;
     final String lower = t.toLowerCase();
-    return lower == 'instance' || lower == 'instant'.tr.toLowerCase() || lower == 'instance'.tr.toLowerCase();
+    return lower == 'instance' ||
+        lower == 'instant'.tr.toLowerCase() ||
+        lower == 'instance'.tr.toLowerCase();
   }
 
   List<OfflineMethodModel>? _offlineMethodList;
@@ -150,7 +162,8 @@ class CheckoutController extends GetxController implements GetxService {
       _pickedPrescriptionSavedImageNames;
 
   List<bool> _pickedPrescriptionFromMediaLibrary = [];
-  List<bool> get pickedPrescriptionFromMediaLibrary => _pickedPrescriptionFromMediaLibrary;
+  List<bool> get pickedPrescriptionFromMediaLibrary =>
+      _pickedPrescriptionFromMediaLibrary;
 
   double? _extraCharge;
   double? get extraCharge => _extraCharge;
@@ -215,7 +228,8 @@ class CheckoutController extends GetxController implements GetxService {
     update();
   }
 
-  List<String> getMonthlyReorderPolicy() => checkoutServiceInterface.getMonthlyReorderPolicy();
+  List<String> getMonthlyReorderPolicy() =>
+      checkoutServiceInterface.getMonthlyReorderPolicy();
 
   bool _isFirstTime = true;
   bool get isFirstTime => _isFirstTime;
@@ -233,7 +247,7 @@ class CheckoutController extends GetxController implements GetxService {
   SurgePriceModel? _surgePrice;
   SurgePriceModel? get surgePrice => _surgePrice;
 
-  bool  _isFirstTimeCodActive = true;
+  bool _isFirstTimeCodActive = true;
   bool get isFirstTimeCodActive => _isFirstTimeCodActive;
 
   String? _saverDeliveryType = 'standard';
@@ -246,11 +260,11 @@ class CheckoutController extends GetxController implements GetxService {
   Modules? get saverModule => _saverModule;
 
   DeliveryOptions? get selectedSaverDeliveryOption {
-    if(_saverModule?.deliveryOptions == null) {
+    if (_saverModule?.deliveryOptions == null) {
       return null;
     }
-    for(final deliveryOption in _saverModule!.deliveryOptions!) {
-      if(deliveryOption.deliveryType == _saverDeliveryType) {
+    for (final deliveryOption in _saverModule!.deliveryOptions!) {
+      if (deliveryOption.deliveryType == _saverDeliveryType) {
         return deliveryOption;
       }
     }
@@ -258,13 +272,13 @@ class CheckoutController extends GetxController implements GetxService {
   }
 
   double getSaverDeliveryChargeAdjustment({DeliveryOptions? deliveryOption}) {
-    if(deliveryOption == null) {
+    if (deliveryOption == null) {
       return 0;
     }
-    if(deliveryOption.extraCharge != null) {
+    if (deliveryOption.extraCharge != null) {
       return deliveryOption.extraCharge!;
     }
-    if(deliveryOption.reduceCharge != null) {
+    if (deliveryOption.reduceCharge != null) {
       return -deliveryOption.reduceCharge!;
     }
     return 0;
@@ -277,17 +291,22 @@ class CheckoutController extends GetxController implements GetxService {
 
   void _setSaverDeliveryData() {
     try {
-      _saverZoneData = AddressHelper.getUserAddressFromSharedPref()?.zoneData?.firstWhere((zone) => zone.id == _store?.zoneId);
+      _saverZoneData = AddressHelper.getUserAddressFromSharedPref()?.zoneData
+          ?.firstWhere((zone) => zone.id == _store?.zoneId);
     } catch (_) {
       _saverZoneData = null;
     }
     try {
-      _saverModule = _saverZoneData?.modules?.firstWhere((module) => module.id == _store?.moduleId);
+      _saverModule = _saverZoneData?.modules?.firstWhere(
+        (module) => module.id == _store?.moduleId,
+      );
     } catch (_) {
       _saverModule = null;
     }
-    if(_saverModule != null && (_saverModule!.additionalDeliveryOptionStatus ?? false)) {
-      _saverDeliveryType = _saverModule?.deliveryOptions?.first.deliveryType ?? 'standard';
+    if (_saverModule != null &&
+        (_saverModule!.additionalDeliveryOptionStatus ?? false)) {
+      _saverDeliveryType =
+          _saverModule?.deliveryOptions?.first.deliveryType ?? 'standard';
     } else {
       _saverDeliveryType = 'standard';
     }
@@ -312,7 +331,7 @@ class CheckoutController extends GetxController implements GetxService {
     _exchangeAmount = value;
   }
 
-  void initAdditionData(){
+  void initAdditionData() {
     noteController.clear();
     _selectedInstruction = -1;
   }
@@ -320,7 +339,10 @@ class CheckoutController extends GetxController implements GetxService {
   Future<void> initCheckoutData(int? storeId) async {
     Get.find<CouponController>().removeCouponData(false);
 
-    _store = await Get.find<StoreController>().getStoreDetails(Store(id: storeId), false);
+    _store = await Get.find<StoreController>().getStoreDetails(
+      Store(id: storeId),
+      false,
+    );
 
     _setSaverDeliveryData();
 
@@ -332,62 +354,65 @@ class CheckoutController extends GetxController implements GetxService {
         guestId: AuthHelper.getGuestId(),
       );
 
-      if(Get.find<SplashController>().module == null) {
+      if (Get.find<SplashController>().module == null) {
         await Get.find<SplashController>().getModules();
 
         int i = 0;
-        for(i = 0; i < Get.find<SplashController>().moduleList!.length; i++){
-          if(_store!.moduleId == Get.find<SplashController>().moduleList![i].id){
+        for (i = 0; i < Get.find<SplashController>().moduleList!.length; i++) {
+          if (_store!.moduleId ==
+              Get.find<SplashController>().moduleList![i].id) {
             break;
           }
         }
-        Get.find<SplashController>().setModule(Get.find<SplashController>().moduleList![i]);
+        Get.find<SplashController>().setModule(
+          Get.find<SplashController>().moduleList![i],
+        );
       }
 
       initializeTimeSlot(_store!);
     }
   }
 
-  void showTipsField(){
+  void showTipsField() {
     _canShowTipsField = !_canShowTipsField;
     update();
   }
 
-  Future<void> addTips(double tips)async {
+  Future<void> addTips(double tips) async {
     _tips = tips;
     update();
   }
 
-  void expandedUpdate(bool status){
+  void expandedUpdate(bool status) {
     _isExpanded = status;
     update();
   }
 
   void setPaymentMethod(int index, {bool isUpdate = true}) {
     _paymentMethodIndex = index;
-    if(_isFirstTimeCodActive) updateFirstTimeCodActive(isActive: false);
-    if(isUpdate){
+    if (_isFirstTimeCodActive) updateFirstTimeCodActive(isActive: false);
+    if (isUpdate) {
       update();
     }
   }
 
-  void changeDigitalPaymentName(String name, {bool willUpdate = true}){
+  void changeDigitalPaymentName(String name, {bool willUpdate = true}) {
     _digitalPaymentName = name;
-    if(willUpdate) {
+    if (willUpdate) {
       update();
     }
   }
 
   void setOrderType(String? type, {bool notify = true}) {
     _orderType = type;
-    if(notify) {
+    if (notify) {
       update();
     }
   }
 
-  void changePartialPayment({bool isUpdate = true}){
+  void changePartialPayment({bool isUpdate = true}) {
     _isPartialPay = !_isPartialPay;
-    if(isUpdate) {
+    if (isUpdate) {
       update();
     }
   }
@@ -397,31 +422,31 @@ class CheckoutController extends GetxController implements GetxService {
     update();
   }
 
-  void setGuestAddress(AddressModel? address, {bool isUpdate = true}){
+  void setGuestAddress(AddressModel? address, {bool isUpdate = true}) {
     _guestAddress = address;
     contactPersonAddressController.text = address?.address ?? '';
-    if(isUpdate) {
+    if (isUpdate) {
       update();
     }
   }
 
-  Future<void> getDmTipMostTapped()async {
+  Future<void> getDmTipMostTapped() async {
     _mostDmTipAmount = await checkoutServiceInterface.getDmTipMostTapped();
     update();
   }
 
-  void setPreferenceTimeForView(String time, {bool isUpdate = true}){
+  void setPreferenceTimeForView(String time, {bool isUpdate = true}) {
     _preferableTime = time;
     // Saver delivery options apply only to instant delivery — clear the selection when scheduling.
-    if(!isInstantDelivery) {
+    if (!isInstantDelivery) {
       _saverDeliveryType = 'standard';
     }
-    if(isUpdate) {
+    if (isUpdate) {
       update();
     }
   }
 
-  Future<List<OfflineMethodModel>?> getOfflineMethodList()async {
+  Future<List<OfflineMethodModel>?> getOfflineMethodList() async {
     _offlineMethodList = null;
     _offlineMethodList = await checkoutServiceInterface.getOfflineMethodList();
     update();
@@ -431,17 +456,17 @@ class CheckoutController extends GetxController implements GetxService {
   void updateTips(int index, {bool notify = true}) {
     _selectedTips = index;
     final String tipValue = AppConstants.tips[index];
-    if(tipValue == '0' || tipValue == 'custom') {
+    if (tipValue == '0' || tipValue == 'custom') {
       _tips = 0;
-    }else {
+    } else {
       _tips = double.parse(tipValue);
     }
-    if(notify) {
+    if (notify) {
       update();
     }
   }
 
-  void saveSharedPrefDmTipIndex(String i){
+  void saveSharedPrefDmTipIndex(String i) {
     checkoutServiceInterface.saveSharedPrefDmTipIndex(i);
   }
 
@@ -449,7 +474,7 @@ class CheckoutController extends GetxController implements GetxService {
     return checkoutServiceInterface.getSharedPrefDmTipIndex();
   }
 
-  void setTotalAmount(double amount){
+  void setTotalAmount(double amount) {
     _viewTotalPrice = amount;
   }
 
@@ -468,47 +493,83 @@ class CheckoutController extends GetxController implements GetxService {
   }
 
   Future<void> initializeTimeSlot(Store store) async {
-    _timeSlots = await checkoutServiceInterface.initializeTimeSlot(store, Get.find<SplashController>().configModel!.scheduleOrderSlotDuration!);
-    _allTimeSlots = await checkoutServiceInterface.initializeTimeSlot(store, Get.find<SplashController>().configModel!.scheduleOrderSlotDuration!);
+    _timeSlots = await checkoutServiceInterface.initializeTimeSlot(
+      store,
+      Get.find<SplashController>().configModel!.scheduleOrderSlotDuration!,
+    );
+    _allTimeSlots = await checkoutServiceInterface.initializeTimeSlot(
+      store,
+      Get.find<SplashController>().configModel!.scheduleOrderSlotDuration!,
+    );
 
-    _validateSlot(_allTimeSlots!, 0, store.orderPlaceToScheduleInterval, notify: false);
+    if (_allTimeSlots != null) {
+      _validateSlot(
+        _allTimeSlots!,
+        0,
+        store.orderPlaceToScheduleInterval,
+        notify: false,
+      );
+    }
   }
 
-  void _validateSlot(List<TimeSlotModel> slots, int dateIndex, int? interval, {bool notify = true}) {
-    _timeSlots = checkoutServiceInterface.validateTimeSlot(slots, dateIndex, interval, Get.find<SplashController>().configModel!.moduleConfig!.module!.orderPlaceToScheduleInterval!);
+  void _validateSlot(
+    List<TimeSlotModel> slots,
+    int dateIndex,
+    int? interval, {
+    bool notify = true,
+  }) {
+    _timeSlots = checkoutServiceInterface.validateTimeSlot(
+      slots,
+      dateIndex,
+      interval,
+      Get.find<SplashController>()
+          .configModel!
+          .moduleConfig!
+          .module!
+          .orderPlaceToScheduleInterval!,
+    );
 
-    if(notify) {
+    if (notify) {
       update();
     }
   }
 
-  void pickPrescriptionImage({required bool isRemove, required bool isCamera}) async {
-    if(isRemove) {
+  void pickPrescriptionImage({
+    required bool isRemove,
+    required bool isCamera,
+  }) async {
+    if (isRemove) {
       _pickedPrescriptions = [];
       _pickedPrescriptionSavedImageNames = [];
       _pickedPrescriptionFromMediaLibrary = [];
-    }else {
+    } else {
       final fileValidator = FileValidationHelper();
-      XFile? xFile = await ImagePicker().pickImage(source: isCamera ? ImageSource.camera : ImageSource.gallery, imageQuality: 50);
-      if(xFile != null) {
-
+      XFile? xFile = await ImagePicker().pickImage(
+        source: isCamera ? ImageSource.camera : ImageSource.gallery,
+        imageQuality: 50,
+      );
+      if (xFile != null) {
         final bool isValid = await fileValidator.isFileUnder2MB(xFile);
 
-        if(isValid == false) {
+        if (isValid == false) {
           showCustomSnackBar('please_upload_lower_size_file'.tr);
           update();
           return;
         }
-        if(_pickedPrescriptions.length >= maxPrescriptionFileCount) {
+        if (_pickedPrescriptions.length >= maxPrescriptionFileCount) {
           showCustomSnackBar('you_have_reached_your_maximum_limit'.tr);
           update();
           return;
         }
 
         final String signature = await _getPrescriptionSignature(xFile);
-        final Set<String> existingSignatures = await _getPrescriptionSignatureSet(_pickedPrescriptions, _pickedPrescriptionSavedImageNames);
+        final Set<String> existingSignatures =
+            await _getPrescriptionSignatureSet(
+              _pickedPrescriptions,
+              _pickedPrescriptionSavedImageNames,
+            );
 
-        if(existingSignatures.contains(signature)) {
+        if (existingSignatures.contains(signature)) {
           showCustomSnackBar('This prescription image is already added.');
         } else {
           _pickedPrescriptions.add(xFile);
@@ -520,31 +581,41 @@ class CheckoutController extends GetxController implements GetxService {
     }
   }
 
-  Future<List<XFile>?> pickMultiplePrescriptionImages({int? maxSelectable}) async {
-    final int effectiveLimit = (maxSelectable ?? maxPrescriptionSaveBatchCount) <= maxPrescriptionSaveBatchCount
+  Future<List<XFile>?> pickMultiplePrescriptionImages({
+    int? maxSelectable,
+  }) async {
+    final int effectiveLimit =
+        (maxSelectable ?? maxPrescriptionSaveBatchCount) <=
+            maxPrescriptionSaveBatchCount
         ? (maxSelectable ?? maxPrescriptionSaveBatchCount)
         : maxPrescriptionSaveBatchCount;
 
-    if(effectiveLimit <= 0) {
+    if (effectiveLimit <= 0) {
       showCustomSnackBar('you_have_reached_your_maximum_limit'.tr);
       return [];
     }
 
     List<XFile> xFiles;
-    if(effectiveLimit == 1) {
-      final XFile? file = await ImagePicker().pickImage(source: ImageSource.gallery, imageQuality: 100);
+    if (effectiveLimit == 1) {
+      final XFile? file = await ImagePicker().pickImage(
+        source: ImageSource.gallery,
+        imageQuality: 100,
+      );
       xFiles = file != null ? [file] : [];
     } else {
-      xFiles = await ImagePicker().pickMultiImage(imageQuality: 100, limit: effectiveLimit);
+      xFiles = await ImagePicker().pickMultiImage(
+        imageQuality: 100,
+        limit: effectiveLimit,
+      );
     }
 
-    if(xFiles.isEmpty) return xFiles;
+    if (xFiles.isEmpty) return xFiles;
 
     final fileValidator = FileValidationHelper();
 
     final List<XFile> validFiles = [];
     bool hasOversizeFile = false;
-    for(final XFile file in xFiles) {
+    for (final XFile file in xFiles) {
       final bool isValid = await fileValidator.isFileUnder2MB(file);
       if (isValid) {
         validFiles.add(file);
@@ -553,57 +624,93 @@ class CheckoutController extends GetxController implements GetxService {
       }
     }
 
-
     print("hasOversizeFile: $hasOversizeFile");
 
-    if(hasOversizeFile) {
+    if (hasOversizeFile) {
       showCustomSnackBar('max_file_size_2mb'.tr);
     }
     return validFiles;
   }
 
-  Future<void> addPrescriptionImages(List<XFile> xFiles, {bool isAutoSaved = false, List<String?>? savedImageNames, List<bool>? mediaLibraryFlags}) async {
-    if(xFiles.isEmpty) {
+  Future<void> addPrescriptionImages(
+    List<XFile> xFiles, {
+    bool isAutoSaved = false,
+    List<String?>? savedImageNames,
+    List<bool>? mediaLibraryFlags,
+  }) async {
+    if (xFiles.isEmpty) {
       return;
     }
 
-    final List<String?> incomingSavedNames = savedImageNames != null && savedImageNames.length == xFiles.length
-        ? List<String?>.from(savedImageNames) : List<String?>.filled(xFiles.length, null);
-    final List<bool> incomingMediaLibraryFlags = mediaLibraryFlags != null && mediaLibraryFlags.length == xFiles.length
-        ? List<bool>.from(mediaLibraryFlags) : List<bool>.filled(xFiles.length, false);
+    final List<String?> incomingSavedNames =
+        savedImageNames != null && savedImageNames.length == xFiles.length
+        ? List<String?>.from(savedImageNames)
+        : List<String?>.filled(xFiles.length, null);
+    final List<bool> incomingMediaLibraryFlags =
+        mediaLibraryFlags != null && mediaLibraryFlags.length == xFiles.length
+        ? List<bool>.from(mediaLibraryFlags)
+        : List<bool>.filled(xFiles.length, false);
 
-    final Set<String> existingSignatures = await _getPrescriptionSignatureSet(_pickedPrescriptions, _pickedPrescriptionSavedImageNames);
-
-    final ({List<XFile> files, List<String?> savedNames, List<bool> mediaLibraryFlags, int skippedCount}) uniquePayload = await _getUniquePrescriptionPayload(
-      xFiles, incomingSavedNames, incomingMediaLibraryFlags, existingSignatures: existingSignatures,
+    final Set<String> existingSignatures = await _getPrescriptionSignatureSet(
+      _pickedPrescriptions,
+      _pickedPrescriptionSavedImageNames,
     );
 
-    if(uniquePayload.files.isEmpty) {
+    final ({
+      List<XFile> files,
+      List<String?> savedNames,
+      List<bool> mediaLibraryFlags,
+      int skippedCount,
+    })
+    uniquePayload = await _getUniquePrescriptionPayload(
+      xFiles,
+      incomingSavedNames,
+      incomingMediaLibraryFlags,
+      existingSignatures: existingSignatures,
+    );
+
+    if (uniquePayload.files.isEmpty) {
       showCustomSnackBar('This prescription image is already added.');
       return;
     }
 
     // Apply global count limits
-    final ({List<XFile> files, List<String?> savedNames, List<bool> mediaLibraryFlags, int trimmedCount}) limitedPayload = _limitPrescriptionPayload(
-        uniquePayload.files, uniquePayload.savedNames, uniquePayload.mediaLibraryFlags, availableSlots: maxPrescriptionFileCount - _pickedPrescriptions.length);
+    final ({
+      List<XFile> files,
+      List<String?> savedNames,
+      List<bool> mediaLibraryFlags,
+      int trimmedCount,
+    })
+    limitedPayload = _limitPrescriptionPayload(
+      uniquePayload.files,
+      uniquePayload.savedNames,
+      uniquePayload.mediaLibraryFlags,
+      availableSlots: maxPrescriptionFileCount - _pickedPrescriptions.length,
+    );
 
-    if(limitedPayload.files.isEmpty) {
+    if (limitedPayload.files.isEmpty) {
       showCustomSnackBar('you_have_reached_your_maximum_limit'.tr);
       return;
     }
 
-    if(uniquePayload.skippedCount > 0) {
-      showCustomSnackBar('Duplicate prescription image skipped.', isError: false);
+    if (uniquePayload.skippedCount > 0) {
+      showCustomSnackBar(
+        'Duplicate prescription image skipped.',
+        isError: false,
+      );
     }
-    if(limitedPayload.trimmedCount > 0) {
+    if (limitedPayload.trimmedCount > 0) {
       showCustomSnackBar('you_have_reached_your_maximum_limit'.tr);
     }
 
     // Identify which files need to be uploaded to the server
-    final List<XFile> filesToSave = await _getFilesNeedingMediaSave(limitedPayload.files, limitedPayload.savedNames);
+    final List<XFile> filesToSave = await _getFilesNeedingMediaSave(
+      limitedPayload.files,
+      limitedPayload.savedNames,
+    );
 
     List<String> newlySavedNames = [];
-    if(isAutoSaved && filesToSave.isNotEmpty) {
+    if (isAutoSaved && filesToSave.isNotEmpty) {
       _isPrescriptionUploading = true;
       _prescriptionUploadingCount = filesToSave.length;
       update();
@@ -618,39 +725,73 @@ class CheckoutController extends GetxController implements GetxService {
     _pickedPrescriptionSavedImageNames.addAll(
       _mergeSavedImageNames(limitedPayload.savedNames, newlySavedNames),
     );
-    _pickedPrescriptionFromMediaLibrary.addAll(limitedPayload.mediaLibraryFlags);
+    _pickedPrescriptionFromMediaLibrary.addAll(
+      limitedPayload.mediaLibraryFlags,
+    );
     update();
   }
 
-  Future<void> updatePrescriptionImages(List<XFile> xFiles, {bool isAutoSaved = false, List<String?>? savedImageNames, List<bool>? mediaLibraryFlags}) async {
-    final List<String?> incomingSavedNames = savedImageNames != null && savedImageNames.length == xFiles.length
-        ? List<String?>.from(savedImageNames) : List<String?>.filled(xFiles.length, null);
-    final List<bool> incomingMediaLibraryFlags = mediaLibraryFlags != null && mediaLibraryFlags.length == xFiles.length
-        ? List<bool>.from(mediaLibraryFlags) : List<bool>.filled(xFiles.length, false);
+  Future<void> updatePrescriptionImages(
+    List<XFile> xFiles, {
+    bool isAutoSaved = false,
+    List<String?>? savedImageNames,
+    List<bool>? mediaLibraryFlags,
+  }) async {
+    final List<String?> incomingSavedNames =
+        savedImageNames != null && savedImageNames.length == xFiles.length
+        ? List<String?>.from(savedImageNames)
+        : List<String?>.filled(xFiles.length, null);
+    final List<bool> incomingMediaLibraryFlags =
+        mediaLibraryFlags != null && mediaLibraryFlags.length == xFiles.length
+        ? List<bool>.from(mediaLibraryFlags)
+        : List<bool>.filled(xFiles.length, false);
 
-    final ({List<XFile> files, List<String?> savedNames, List<bool> mediaLibraryFlags, int skippedCount}) uniquePayload = await _getUniquePrescriptionPayload(
-      xFiles, incomingSavedNames, incomingMediaLibraryFlags,
+    final ({
+      List<XFile> files,
+      List<String?> savedNames,
+      List<bool> mediaLibraryFlags,
+      int skippedCount,
+    })
+    uniquePayload = await _getUniquePrescriptionPayload(
+      xFiles,
+      incomingSavedNames,
+      incomingMediaLibraryFlags,
     );
 
-    if(uniquePayload.files.isEmpty) {
+    if (uniquePayload.files.isEmpty) {
       showCustomSnackBar('At least one prescription image is required.');
       return;
     }
 
-    final ({List<XFile> files, List<String?> savedNames, List<bool> mediaLibraryFlags, int trimmedCount}) limitedPayload = _limitPrescriptionPayload(
-        uniquePayload.files, uniquePayload.savedNames, uniquePayload.mediaLibraryFlags);
+    final ({
+      List<XFile> files,
+      List<String?> savedNames,
+      List<bool> mediaLibraryFlags,
+      int trimmedCount,
+    })
+    limitedPayload = _limitPrescriptionPayload(
+      uniquePayload.files,
+      uniquePayload.savedNames,
+      uniquePayload.mediaLibraryFlags,
+    );
 
-    if(uniquePayload.skippedCount > 0) {
-      showCustomSnackBar('Duplicate prescription image skipped.', isError: false);
+    if (uniquePayload.skippedCount > 0) {
+      showCustomSnackBar(
+        'Duplicate prescription image skipped.',
+        isError: false,
+      );
     }
-    if(limitedPayload.trimmedCount > 0) {
+    if (limitedPayload.trimmedCount > 0) {
       showCustomSnackBar('you_have_reached_your_maximum_limit'.tr);
     }
 
-    final List<XFile> filesToSave = await _getFilesNeedingMediaSave(limitedPayload.files, limitedPayload.savedNames);
+    final List<XFile> filesToSave = await _getFilesNeedingMediaSave(
+      limitedPayload.files,
+      limitedPayload.savedNames,
+    );
 
     List<String> newlySavedNames = [];
-    if(isAutoSaved && filesToSave.isNotEmpty) {
+    if (isAutoSaved && filesToSave.isNotEmpty) {
       _isPrescriptionUploading = true;
       _prescriptionUploadingCount = filesToSave.length;
       update();
@@ -668,50 +809,82 @@ class CheckoutController extends GetxController implements GetxService {
     _pickedPrescriptionSavedImageNames.addAll(
       _mergeSavedImageNames(limitedPayload.savedNames, newlySavedNames),
     );
-    _pickedPrescriptionFromMediaLibrary.addAll(limitedPayload.mediaLibraryFlags);
+    _pickedPrescriptionFromMediaLibrary.addAll(
+      limitedPayload.mediaLibraryFlags,
+    );
     update();
   }
 
-  ({List<XFile> files, List<String?> savedNames, List<bool> mediaLibraryFlags, int trimmedCount}) _limitPrescriptionPayload(
-      List<XFile> files, List<String?> savedImageNames, List<bool> mediaLibraryFlags, {int availableSlots = maxPrescriptionFileCount}) {
+  ({
+    List<XFile> files,
+    List<String?> savedNames,
+    List<bool> mediaLibraryFlags,
+    int trimmedCount,
+  })
+  _limitPrescriptionPayload(
+    List<XFile> files,
+    List<String?> savedImageNames,
+    List<bool> mediaLibraryFlags, {
+    int availableSlots = maxPrescriptionFileCount,
+  }) {
     final int sanitizedAvailableSlots = availableSlots < 0 ? 0 : availableSlots;
-    if(files.length <= sanitizedAvailableSlots) {
-      return (files: files, savedNames: savedImageNames, mediaLibraryFlags: mediaLibraryFlags, trimmedCount: 0);
+    if (files.length <= sanitizedAvailableSlots) {
+      return (
+        files: files,
+        savedNames: savedImageNames,
+        mediaLibraryFlags: mediaLibraryFlags,
+        trimmedCount: 0,
+      );
     }
 
     return (
-    files: files.take(sanitizedAvailableSlots).toList(),
-    savedNames: savedImageNames.take(sanitizedAvailableSlots).toList(),
-    mediaLibraryFlags: mediaLibraryFlags.take(sanitizedAvailableSlots).toList(),
-    trimmedCount: files.length - sanitizedAvailableSlots,
+      files: files.take(sanitizedAvailableSlots).toList(),
+      savedNames: savedImageNames.take(sanitizedAvailableSlots).toList(),
+      mediaLibraryFlags: mediaLibraryFlags
+          .take(sanitizedAvailableSlots)
+          .toList(),
+      trimmedCount: files.length - sanitizedAvailableSlots,
     );
   }
 
-  Future<({List<XFile> files, List<String?> savedNames, List<bool> mediaLibraryFlags, int skippedCount})> _getUniquePrescriptionPayload(
-      List<XFile> xFiles,
-      List<String?> savedImageNames,
-      List<bool> mediaLibraryFlags, {
-        Set<String>? existingSignatures,
-      }) async {
-    final Set<String> signatures = existingSignatures != null ? <String>{...existingSignatures} : <String>{};
+  Future<
+    ({
+      List<XFile> files,
+      List<String?> savedNames,
+      List<bool> mediaLibraryFlags,
+      int skippedCount,
+    })
+  >
+  _getUniquePrescriptionPayload(
+    List<XFile> xFiles,
+    List<String?> savedImageNames,
+    List<bool> mediaLibraryFlags, {
+    Set<String>? existingSignatures,
+  }) async {
+    final Set<String> signatures = existingSignatures != null
+        ? <String>{...existingSignatures}
+        : <String>{};
     final List<XFile> uniqueFiles = [];
     final List<String?> uniqueSavedNames = [];
     final List<bool> uniqueMediaLibraryFlags = [];
     int skippedCount = 0;
 
-    for(int index = 0; index < xFiles.length; index++) {
+    for (int index = 0; index < xFiles.length; index++) {
       final XFile file = xFiles[index];
       final String? savedName = savedImageNames[index];
       final bool isFromMediaLibrary = mediaLibraryFlags[index];
 
       final String localSignature = await _getPrescriptionSignature(file);
-      final String? savedSignature = (savedName?.trim().isNotEmpty ?? false) ? await _getPrescriptionSignature(file, savedImageName: savedName) : null;
+      final String? savedSignature = (savedName?.trim().isNotEmpty ?? false)
+          ? await _getPrescriptionSignature(file, savedImageName: savedName)
+          : null;
 
-      if (signatures.contains(localSignature) || (savedSignature != null && signatures.contains(savedSignature))) {
+      if (signatures.contains(localSignature) ||
+          (savedSignature != null && signatures.contains(savedSignature))) {
         skippedCount++;
       } else {
         signatures.add(localSignature);
-        if(savedSignature != null) {
+        if (savedSignature != null) {
           signatures.add(savedSignature);
         }
         uniqueFiles.add(file);
@@ -720,46 +893,69 @@ class CheckoutController extends GetxController implements GetxService {
       }
     }
 
-    return (files: uniqueFiles, savedNames: uniqueSavedNames, mediaLibraryFlags: uniqueMediaLibraryFlags, skippedCount: skippedCount);
+    return (
+      files: uniqueFiles,
+      savedNames: uniqueSavedNames,
+      mediaLibraryFlags: uniqueMediaLibraryFlags,
+      skippedCount: skippedCount,
+    );
   }
 
-  Future<Set<String>> _getPrescriptionSignatureSet(List<XFile> files, List<String?> savedImageNames) async {
+  Future<Set<String>> _getPrescriptionSignatureSet(
+    List<XFile> files,
+    List<String?> savedImageNames,
+  ) async {
     final Set<String> signatures = <String>{};
-    for(int index = 0; index < files.length; index++) {
+    for (int index = 0; index < files.length; index++) {
       signatures.add(await _getPrescriptionSignature(files[index]));
 
-      if(index < savedImageNames.length && (savedImageNames[index]?.trim().isNotEmpty ?? false)) {
-        signatures.add(await _getPrescriptionSignature(
-          files[index],
-          savedImageName: savedImageNames[index],
-        ));
+      if (index < savedImageNames.length &&
+          (savedImageNames[index]?.trim().isNotEmpty ?? false)) {
+        signatures.add(
+          await _getPrescriptionSignature(
+            files[index],
+            savedImageName: savedImageNames[index],
+          ),
+        );
       }
     }
     return signatures;
   }
 
-  Future<String> _getPrescriptionSignature(XFile file, {String? savedImageName}) async {
+  Future<String> _getPrescriptionSignature(
+    XFile file, {
+    String? savedImageName,
+  }) async {
     final String normalizedSavedImageName = savedImageName?.trim() ?? '';
-    if(normalizedSavedImageName.isNotEmpty) {
+    if (normalizedSavedImageName.isNotEmpty) {
       return 'saved:${normalizedSavedImageName.toLowerCase()}';
     }
 
-    final String fileName = file.name.isNotEmpty ? file.name : path.basename(file.path);
+    final String fileName = file.name.isNotEmpty
+        ? file.name
+        : path.basename(file.path);
     final int fileLength = await file.length();
     final String extension = path.extension(fileName).toLowerCase();
 
-    if (fileName.contains('image_picker') || fileName.contains('scaled_') || fileName.length > 40) {
+    if (fileName.contains('image_picker') ||
+        fileName.contains('scaled_') ||
+        fileName.length > 40) {
       return 'local-size:$fileLength$extension';
     }
 
     return 'local:${fileName.toLowerCase()}:$fileLength';
   }
 
-  Future<List<XFile>> _getFilesNeedingMediaSave(List<XFile> files, List<String?> savedImageNames) async {
+  Future<List<XFile>> _getFilesNeedingMediaSave(
+    List<XFile> files,
+    List<String?> savedImageNames,
+  ) async {
     final List<XFile> filesToSave = [];
-    for(int index = 0; index < files.length; index++) {
-      final String savedImageName = index < savedImageNames.length ? savedImageNames[index]?.trim() ?? '' : '';
-      if(savedImageName.isNotEmpty) {
+    for (int index = 0; index < files.length; index++) {
+      final String savedImageName = index < savedImageNames.length
+          ? savedImageNames[index]?.trim() ?? ''
+          : '';
+      if (savedImageName.isNotEmpty) {
         continue;
       }
       filesToSave.add(files[index]);
@@ -768,36 +964,49 @@ class CheckoutController extends GetxController implements GetxService {
   }
 
   Future<List<String>> _saveToMediaLibrary(List<XFile> xFiles) async {
-    if(xFiles.isEmpty) {
+    if (xFiles.isEmpty) {
       return [];
     }
 
-    final Map<String, int> previousSavedNameCounts = _getSavedFileNameCounts(_savedPrescriptions);
+    final Map<String, int> previousSavedNameCounts = _getSavedFileNameCounts(
+      _savedPrescriptions,
+    );
     List<MultipartBody> savedImages = [];
-    for(XFile file in xFiles) {
+    for (XFile file in xFiles) {
       savedImages.add(MultipartBody('saved_images[]', file));
     }
 
-    Response response = await checkoutServiceInterface.storeSavedPrescriptionImages(savedImages);
+    Response response = await checkoutServiceInterface
+        .storeSavedPrescriptionImages(savedImages);
 
-    if(response.statusCode == 200){
+    if (response.statusCode == 200) {
       await getSavedPrescriptionImages(reload: true);
-      return _getNewlySavedFileNames(previousSavedNameCounts, _savedPrescriptions);
-    }else{
+      return _getNewlySavedFileNames(
+        previousSavedNameCounts,
+        _savedPrescriptions,
+      );
+    } else {
       showCustomSnackBar(response.body?['message'] ?? response.statusText);
       return [];
     }
   }
 
-  List<String?> _mergeSavedImageNames(List<String?> savedNames, List<String> newlySavedNames) {
-    if(newlySavedNames.isEmpty) {
+  List<String?> _mergeSavedImageNames(
+    List<String?> savedNames,
+    List<String> newlySavedNames,
+  ) {
+    if (newlySavedNames.isEmpty) {
       return List<String?>.from(savedNames);
     }
 
     final List<String?> mergedNames = List<String?>.from(savedNames);
     int newSavedIndex = 0;
-    for(int index = 0; index < mergedNames.length && newSavedIndex < newlySavedNames.length; index++) {
-      if(mergedNames[index]?.trim().isEmpty ?? true) {
+    for (
+      int index = 0;
+      index < mergedNames.length && newSavedIndex < newlySavedNames.length;
+      index++
+    ) {
+      if (mergedNames[index]?.trim().isEmpty ?? true) {
         mergedNames[index] = newlySavedNames[newSavedIndex];
         newSavedIndex++;
       }
@@ -805,37 +1014,43 @@ class CheckoutController extends GetxController implements GetxService {
     return mergedNames;
   }
 
-  Map<String, int> _getSavedFileNameCounts(List<SavedPrescriptionModel>? savedPrescriptions) {
+  Map<String, int> _getSavedFileNameCounts(
+    List<SavedPrescriptionModel>? savedPrescriptions,
+  ) {
     final Map<String, int> counts = <String, int>{};
-    if(savedPrescriptions == null) {
+    if (savedPrescriptions == null) {
       return counts;
     }
 
-    for(final SavedPrescriptionModel savedPrescription in savedPrescriptions) {
+    for (final SavedPrescriptionModel savedPrescription in savedPrescriptions) {
       final String fileName = savedPrescription.fileName?.trim() ?? '';
-      if(fileName.isNotEmpty) {
+      if (fileName.isNotEmpty) {
         counts[fileName] = (counts[fileName] ?? 0) + 1;
       }
     }
     return counts;
   }
 
-  List<String> _getNewlySavedFileNames(Map<String, int> previousCounts, List<SavedPrescriptionModel>? currentSavedPrescriptions) {
+  List<String> _getNewlySavedFileNames(
+    Map<String, int> previousCounts,
+    List<SavedPrescriptionModel>? currentSavedPrescriptions,
+  ) {
     final Map<String, int> remainingCounts = <String, int>{...previousCounts};
     final List<String> newFileNames = [];
 
-    if(currentSavedPrescriptions == null) {
+    if (currentSavedPrescriptions == null) {
       return newFileNames;
     }
 
-    for(final SavedPrescriptionModel savedPrescription in currentSavedPrescriptions) {
+    for (final SavedPrescriptionModel savedPrescription
+        in currentSavedPrescriptions) {
       final String fileName = savedPrescription.fileName?.trim() ?? '';
-      if(fileName.isEmpty) {
+      if (fileName.isEmpty) {
         continue;
       }
 
       final int existingCount = remainingCounts[fileName] ?? 0;
-      if(existingCount > 0) {
+      if (existingCount > 0) {
         remainingCounts[fileName] = existingCount - 1;
       } else {
         newFileNames.add(fileName);
@@ -845,26 +1060,27 @@ class CheckoutController extends GetxController implements GetxService {
     return newFileNames;
   }
 
-  Future<void> getSavedPrescriptionImages({bool reload = false})async {
-    if(_isSavedPrescriptionLoading) {
+  Future<void> getSavedPrescriptionImages({bool reload = false}) async {
+    if (_isSavedPrescriptionLoading) {
       return;
     }
 
-    if(!reload && _savedPrescriptions != null) {
+    if (!reload && _savedPrescriptions != null) {
       return;
     }
 
     _isSavedPrescriptionLoading = true;
     _savedPrescriptionErrorMessage = null;
-    if(reload){
+    if (reload) {
       _savedPrescriptions = null;
     }
     update();
 
-    final List<SavedPrescriptionModel>? savedFiles = await checkoutServiceInterface.getSavedPrescriptionImages();
-    if(savedFiles != null) {
+    final List<SavedPrescriptionModel>? savedFiles =
+        await checkoutServiceInterface.getSavedPrescriptionImages();
+    if (savedFiles != null) {
       _savedPrescriptions = savedFiles;
-    }else {
+    } else {
       _savedPrescriptions ??= [];
       _savedPrescriptionErrorMessage = 'unable_to_load_data'.tr;
     }
@@ -873,14 +1089,17 @@ class CheckoutController extends GetxController implements GetxService {
   }
 
   Future<bool> clearAllSavedPrescriptionImages() async {
-    if (_isSavedPrescriptionDeleting || _savedPrescriptions == null || _savedPrescriptions!.isEmpty) {
+    if (_isSavedPrescriptionDeleting ||
+        _savedPrescriptions == null ||
+        _savedPrescriptions!.isEmpty) {
       return false;
     }
 
     _isSavedPrescriptionDeleting = true;
     update();
 
-    final Response response = await checkoutServiceInterface.deleteSavedPrescriptionImages();
+    final Response response = await checkoutServiceInterface
+        .deleteSavedPrescriptionImages();
     _isSavedPrescriptionDeleting = false;
 
     if (response.statusCode == 200) {
@@ -894,39 +1113,57 @@ class CheckoutController extends GetxController implements GetxService {
     }
   }
 
-  Future<List<XFile>> getSelectedSavedPrescriptionFiles(List<int> indexes) async {
-    if (_savedPrescriptions == null || _savedPrescriptions!.isEmpty || indexes.isEmpty) {
+  Future<List<XFile>> getSelectedSavedPrescriptionFiles(
+    List<int> indexes,
+  ) async {
+    if (_savedPrescriptions == null ||
+        _savedPrescriptions!.isEmpty ||
+        indexes.isEmpty) {
       return [];
     }
 
     final List<XFile> files = [];
     for (final int index in indexes) {
-      if (index < 0 || index >= _savedPrescriptions!.length) {continue;}
+      if (index < 0 || index >= _savedPrescriptions!.length) {
+        continue;
+      }
 
-      final XFile? file = await _downloadSavedPrescriptionFile(_savedPrescriptions![index]);
-      if (file != null) {files.add(file);}
+      final XFile? file = await _downloadSavedPrescriptionFile(
+        _savedPrescriptions![index],
+      );
+      if (file != null) {
+        files.add(file);
+      }
     }
 
     return files;
   }
 
   List<String> getSelectedSavedPrescriptionNames(List<int> indexes) {
-    if (_savedPrescriptions == null || _savedPrescriptions!.isEmpty || indexes.isEmpty) {
+    if (_savedPrescriptions == null ||
+        _savedPrescriptions!.isEmpty ||
+        indexes.isEmpty) {
       return [];
     }
 
-    return indexes.where((index) => index >= 0 && index < _savedPrescriptions!.length).map((index)
-    => _savedPrescriptions![index].fileName ?? '').where((fileName) => fileName.isNotEmpty).toList();
+    return indexes
+        .where((index) => index >= 0 && index < _savedPrescriptions!.length)
+        .map((index) => _savedPrescriptions![index].fileName ?? '')
+        .where((fileName) => fileName.isNotEmpty)
+        .toList();
   }
 
-  Future<XFile?> _downloadSavedPrescriptionFile(SavedPrescriptionModel savedPrescription) async {
+  Future<XFile?> _downloadSavedPrescriptionFile(
+    SavedPrescriptionModel savedPrescription,
+  ) async {
     final String imageUrl = savedPrescription.imageFullUrl ?? '';
     if (imageUrl.isEmpty) {
       return null;
     }
 
     final String fileName =
-    savedPrescription.fileName?.trim().isNotEmpty == true ? savedPrescription.fileName!.trim()
+        savedPrescription.fileName?.trim().isNotEmpty == true
+        ? savedPrescription.fileName!.trim()
         : 'saved_prescription_${DateTime.now().millisecondsSinceEpoch}${path.extension(imageUrl)}';
     final String requestUrl = kIsWeb && imageUrl.startsWith('http')
         ? '${AppConstants.baseUrl}/image-proxy?url=${Uri.encodeComponent(imageUrl)}'
@@ -951,15 +1188,14 @@ class CheckoutController extends GetxController implements GetxService {
           mimeType = 'image/gif';
         }
 
-        return XFile.fromData(
-          bytes,
-          name: fileName,
-          mimeType: mimeType,
-        );
+        return XFile.fromData(bytes, name: fileName, mimeType: mimeType);
       }
 
       final Directory directory = await getTemporaryDirectory();
-      final String filePath = path.join( directory.path, '${DateTime.now().millisecondsSinceEpoch}_$fileName');
+      final String filePath = path.join(
+        directory.path,
+        '${DateTime.now().millisecondsSinceEpoch}_$fileName',
+      );
       final File file = File(filePath);
       await file.writeAsBytes(response.bodyBytes, flush: true);
       return XFile(file.path);
@@ -987,18 +1223,39 @@ class CheckoutController extends GetxController implements GetxService {
     return Get.find<StoreController>().isStoreOpenNow(active, schedules);
   }
 
-  Future<double?> getDistanceInKM(LatLng originLatLng, LatLng destinationLatLng) async {
+  Future<double?> getDistanceInKM(
+    LatLng originLatLng,
+    LatLng destinationLatLng,
+  ) async {
     _distance = -1;
-    Response response = await checkoutServiceInterface.getDistanceInMeter(originLatLng, destinationLatLng);
+    Response response = await checkoutServiceInterface.getDistanceInMeter(
+      originLatLng,
+      destinationLatLng,
+    );
     try {
       if (response.statusCode == 200) {
-        final double distanceMater = response.body['distanceMeters']?.toDouble();
+        final double distanceMater = response.body['distanceMeters']
+            ?.toDouble();
         _distance = distanceMater / 1000;
       } else {
-        _distance = Geolocator.distanceBetween(originLatLng.latitude, originLatLng.longitude, destinationLatLng.latitude, destinationLatLng.longitude) / 1000;
+        _distance =
+            Geolocator.distanceBetween(
+              originLatLng.latitude,
+              originLatLng.longitude,
+              destinationLatLng.latitude,
+              destinationLatLng.longitude,
+            ) /
+            1000;
       }
     } catch (e) {
-      _distance = Geolocator.distanceBetween(originLatLng.latitude, originLatLng.longitude, destinationLatLng.latitude, destinationLatLng.longitude) / 1000;
+      _distance =
+          Geolocator.distanceBetween(
+            originLatLng.latitude,
+            originLatLng.longitude,
+            destinationLatLng.latitude,
+            destinationLatLng.longitude,
+          ) /
+          1000;
     }
 
     await _getExtraCharge(_distance);
@@ -1019,30 +1276,38 @@ class CheckoutController extends GetxController implements GetxService {
 
   Future<bool> checkBalanceStatus(double totalPrice, double discount) async {
     totalPrice = (totalPrice - discount);
-    if(isPartialPay){
+    if (isPartialPay) {
       changePartialPayment();
     }
     setPaymentMethod(-1);
-    if((Get.find<ProfileController>().userInfoModel!.walletBalance! < totalPrice) && (Get.find<ProfileController>().userInfoModel!.walletBalance! != 0.0)){
-      Get.dialog(PartialPayDialogWidget(isPartialPay: true, totalPrice: totalPrice), useSafeArea: false,);
-    }else{
-      Get.dialog(PartialPayDialogWidget(isPartialPay: false, totalPrice: totalPrice), useSafeArea: false,);
+    if ((Get.find<ProfileController>().userInfoModel!.walletBalance! <
+            totalPrice) &&
+        (Get.find<ProfileController>().userInfoModel!.walletBalance! != 0.0)) {
+      Get.dialog(
+        PartialPayDialogWidget(isPartialPay: true, totalPrice: totalPrice),
+        useSafeArea: false,
+      );
+    } else {
+      Get.dialog(
+        PartialPayDialogWidget(isPartialPay: false, totalPrice: totalPrice),
+        useSafeArea: false,
+      );
     }
     update();
     return true;
   }
 
-  void selectOfflineBank(int index, {bool canUpdate = true}){
+  void selectOfflineBank(int index, {bool canUpdate = true}) {
     _selectedOfflineBankIndex = index;
-    if(canUpdate) {
+    if (canUpdate) {
       update();
     }
   }
 
-  void setInstruction(int index){
-    if(_selectedInstruction == index){
+  void setInstruction(int index) {
+    if (_selectedInstruction == index) {
       _selectedInstruction = -1;
-    }else {
+    } else {
       _selectedInstruction = index;
     }
     update();
@@ -1055,7 +1320,7 @@ class CheckoutController extends GetxController implements GetxService {
 
   void stopLoader({bool canUpdate = true}) {
     _isLoading = false;
-    if(canUpdate) {
+    if (canUpdate) {
       update();
     }
   }
@@ -1063,26 +1328,60 @@ class CheckoutController extends GetxController implements GetxService {
   /// Caches the delivery address locally (max 10, newest first) so it appears in
   /// the pick-location "Recent" tab. Only delivery orders with a real location are saved.
   void _saveRecentDeliveryAddress({
-    required String? orderType, required String? address, required String? latitude, required String? longitude,
-    String? addressType, String? contactPersonName, String? contactPersonNumber, String? streetNumber, String? house, String? floor,
+    required String? orderType,
+    required String? address,
+    required String? latitude,
+    required String? longitude,
+    String? addressType,
+    String? contactPersonName,
+    String? contactPersonNumber,
+    String? streetNumber,
+    String? house,
+    String? floor,
   }) {
-    if (orderType != 'delivery' || address == null || address.isEmpty || latitude == null || longitude == null) {
+    if (orderType != 'delivery' ||
+        address == null ||
+        address.isEmpty ||
+        latitude == null ||
+        longitude == null) {
       return;
     }
-    Get.find<LocationController>().addRecentAddress(AddressModel(
-      addressType: addressType, address: address, latitude: latitude, longitude: longitude, contactPersonName: contactPersonName,
-      contactPersonNumber: contactPersonNumber, streetNumber: streetNumber, house: house, floor: floor,
-    ));
+    Get.find<LocationController>().addRecentAddress(
+      AddressModel(
+        addressType: addressType,
+        address: address,
+        latitude: latitude,
+        longitude: longitude,
+        contactPersonName: contactPersonName,
+        contactPersonNumber: contactPersonNumber,
+        streetNumber: streetNumber,
+        house: house,
+        floor: floor,
+      ),
+    );
   }
 
-  Future<String> placeOrder(PlaceOrderBodyModel placeOrderBody, int? zoneID, double amount, double? maximumCodOrderAmount, bool fromCart,
-      bool isCashOnDeliveryActive, List<XFile>? orderAttachment, {bool isOfflinePay = false}) async {
+  Future<String> placeOrder(
+    PlaceOrderBodyModel placeOrderBody,
+    int? zoneID,
+    double amount,
+    double? maximumCodOrderAmount,
+    bool fromCart,
+    bool isCashOnDeliveryActive,
+    List<XFile>? orderAttachment, {
+    bool isOfflinePay = false,
+  }) async {
     List<MultipartBody>? multiParts = [];
     List<String> savedImages = [];
     final List<XFile> attachments = orderAttachment ?? [];
-    for(int index = 0; index < attachments.length; index++) {
-      final bool fromMediaLibrary = index < _pickedPrescriptionFromMediaLibrary.length && _pickedPrescriptionFromMediaLibrary[index];
-      final String savedImageName = index < _pickedPrescriptionSavedImageNames.length ? _pickedPrescriptionSavedImageNames[index]?.trim() ?? '' : '';
+    for (int index = 0; index < attachments.length; index++) {
+      final bool fromMediaLibrary =
+          index < _pickedPrescriptionFromMediaLibrary.length &&
+          _pickedPrescriptionFromMediaLibrary[index];
+      final String savedImageName =
+          index < _pickedPrescriptionSavedImageNames.length
+          ? _pickedPrescriptionSavedImageNames[index]?.trim() ?? ''
+          : '';
       if (fromMediaLibrary && savedImageName.isNotEmpty) {
         savedImages.add(savedImageName);
         continue;
@@ -1094,32 +1393,60 @@ class CheckoutController extends GetxController implements GetxService {
     update();
     String orderID = '';
     String userID = '';
-    Response response = await checkoutServiceInterface.placeOrder(placeOrderBody, multiParts, savedImages);
+    Response response = await checkoutServiceInterface.placeOrder(
+      placeOrderBody,
+      multiParts,
+      savedImages,
+    );
     _isLoading = false;
     if (response.statusCode == 200) {
       String? message = response.body['message'];
       orderID = response.body['order_id'].toString();
-      if(response.body['user_id'] != null) {
+      if (response.body['user_id'] != null) {
         userID = response.body['user_id'].toString();
       }
       Get.find<ItemController>().cartIndexSet();
 
       _saveRecentDeliveryAddress(
-        orderType: placeOrderBody.orderType, address: placeOrderBody.address,
-        latitude: placeOrderBody.latitude, longitude: placeOrderBody.longitude,
-        contactPersonName: placeOrderBody.contactPersonName, contactPersonNumber: placeOrderBody.contactPersonNumber,
-        streetNumber: placeOrderBody.streetNumber, house: placeOrderBody.house, floor: placeOrderBody.floor,
+        orderType: placeOrderBody.orderType,
+        address: placeOrderBody.address,
+        latitude: placeOrderBody.latitude,
+        longitude: placeOrderBody.longitude,
+        contactPersonName: placeOrderBody.contactPersonName,
+        contactPersonNumber: placeOrderBody.contactPersonNumber,
+        streetNumber: placeOrderBody.streetNumber,
+        house: placeOrderBody.house,
+        floor: placeOrderBody.floor,
       );
 
-      if(!isOfflinePay) {
-        callback(true, message, orderID, zoneID, amount, maximumCodOrderAmount, fromCart, isCashOnDeliveryActive, placeOrderBody.contactPersonNumber!, userID);
+      if (!isOfflinePay) {
+        callback(
+          true,
+          message,
+          orderID,
+          zoneID,
+          amount,
+          maximumCodOrderAmount,
+          fromCart,
+          isCashOnDeliveryActive,
+          placeOrderBody.contactPersonNumber!,
+          userID,
+        );
       } else {
         showCustomSnackBar('order_placed_successfully'.tr, isError: false);
         Get.find<CartController>().getAllCarts();
-        Get.offNamed(RouteHelper.getOfflinePaymentScreen(
-          zoneId: zoneID, total: amount, orderId: orderID, contactNumber: placeOrderBody.contactPersonNumber??'',
-          maxCodOrderAmount: maximumCodOrderAmount, fromCart: fromCart, isCodActive: isCashOnDeliveryActive, forParcel: false,
-        ));
+        Get.offNamed(
+          RouteHelper.getOfflinePaymentScreen(
+            zoneId: zoneID,
+            total: amount,
+            orderId: orderID,
+            contactNumber: placeOrderBody.contactPersonNumber ?? '',
+            maxCodOrderAmount: maximumCodOrderAmount,
+            fromCart: fromCart,
+            isCodActive: isCashOnDeliveryActive,
+            forParcel: false,
+          ),
+        );
       }
       _orderAttachment = null;
       _rawAttachment = null;
@@ -1127,8 +1454,19 @@ class CheckoutController extends GetxController implements GetxService {
         print('-------- Order placed successfully $orderID ----------');
       }
     } else {
-      if(!isOfflinePay) {
-        callback(false, response.statusText, '-1', zoneID, amount, maximumCodOrderAmount, fromCart, isCashOnDeliveryActive, placeOrderBody.contactPersonNumber, userID);
+      if (!isOfflinePay) {
+        callback(
+          false,
+          response.statusText,
+          '-1',
+          zoneID,
+          amount,
+          maximumCodOrderAmount,
+          fromCart,
+          isCashOnDeliveryActive,
+          placeOrderBody.contactPersonNumber,
+          userID,
+        );
       } else {
         showCustomSnackBar(response.statusText);
       }
@@ -1138,15 +1476,33 @@ class CheckoutController extends GetxController implements GetxService {
     return orderID;
   }
 
-  Future<void> placePrescriptionOrder({required int? storeId, required int? zoneID, required double? distance, required String address, required String longitude,
-    required String latitude, required String note, required List<XFile> orderAttachment, required List<String> savedImages, required String dmTips,
-    required String deliveryInstruction, required double orderAmount, required double maxCodAmount, required bool fromCart, required bool isCashOnDeliveryActive,
+  Future<void> placePrescriptionOrder({
+    required int? storeId,
+    required int? zoneID,
+    required double? distance,
+    required String address,
+    required String longitude,
+    required String latitude,
+    required String note,
+    required List<XFile> orderAttachment,
+    required List<String> savedImages,
+    required String dmTips,
+    required String deliveryInstruction,
+    required double orderAmount,
+    required double maxCodAmount,
+    required bool fromCart,
+    required bool isCashOnDeliveryActive,
   }) async {
     List<MultipartBody> multiParts = [];
     List<String> resolvedSavedImages = [];
-    for(int index = 0; index < orderAttachment.length; index++) {
-      final bool fromMediaLibrary = index < _pickedPrescriptionFromMediaLibrary.length && _pickedPrescriptionFromMediaLibrary[index];
-      final String savedImageName = index < _pickedPrescriptionSavedImageNames.length ? _pickedPrescriptionSavedImageNames[index]?.trim() ?? '' : '';
+    for (int index = 0; index < orderAttachment.length; index++) {
+      final bool fromMediaLibrary =
+          index < _pickedPrescriptionFromMediaLibrary.length &&
+          _pickedPrescriptionFromMediaLibrary[index];
+      final String savedImageName =
+          index < _pickedPrescriptionSavedImageNames.length
+          ? _pickedPrescriptionSavedImageNames[index]?.trim() ?? ''
+          : '';
       if (fromMediaLibrary && savedImageName.isNotEmpty) {
         resolvedSavedImages.add(savedImageName);
         continue;
@@ -1156,122 +1512,225 @@ class CheckoutController extends GetxController implements GetxService {
     }
     _isLoading = true;
     update();
-    Response response = await checkoutServiceInterface.placePrescriptionOrder(storeId, distance, address,longitude, latitude, note, multiParts, resolvedSavedImages, dmTips, deliveryInstruction);
+    Response response = await checkoutServiceInterface.placePrescriptionOrder(
+      storeId,
+      distance,
+      address,
+      longitude,
+      latitude,
+      note,
+      multiParts,
+      resolvedSavedImages,
+      dmTips,
+      deliveryInstruction,
+    );
     _isLoading = false;
     if (response.statusCode == 200) {
       String? message = response.body['message'];
       String orderID = response.body['order_id'].toString();
-      _saveRecentDeliveryAddress(orderType: 'delivery', address: address, latitude: latitude, longitude: longitude);
-      callback(true, message, orderID, zoneID, orderAmount, maxCodAmount, fromCart, isCashOnDeliveryActive, null, '');
+      _saveRecentDeliveryAddress(
+        orderType: 'delivery',
+        address: address,
+        latitude: latitude,
+        longitude: longitude,
+      );
+      callback(
+        true,
+        message,
+        orderID,
+        zoneID,
+        orderAmount,
+        maxCodAmount,
+        fromCart,
+        isCashOnDeliveryActive,
+        null,
+        '',
+      );
       _orderAttachment = null;
       _rawAttachment = null;
       if (kDebugMode) {
         print('-------- Order placed successfully $orderID ----------');
       }
     } else {
-      callback(false, response.statusText, '-1', zoneID, orderAmount, maxCodAmount, fromCart, isCashOnDeliveryActive, null, '');
+      callback(
+        false,
+        response.statusText,
+        '-1',
+        zoneID,
+        orderAmount,
+        maxCodAmount,
+        fromCart,
+        isCashOnDeliveryActive,
+        null,
+        '',
+      );
     }
     update();
   }
 
   void callback(
-      bool isSuccess, String? message, String orderID, int? zoneID, double amount,
-      double? maximumCodOrderAmount, bool fromCart, bool isCashOnDeliveryActive, String? contactNumber,
-      String userID) async {
-
-    if(isSuccess) {
-      if(fromCart) {
+    bool isSuccess,
+    String? message,
+    String orderID,
+    int? zoneID,
+    double amount,
+    double? maximumCodOrderAmount,
+    bool fromCart,
+    bool isCashOnDeliveryActive,
+    String? contactNumber,
+    String userID,
+  ) async {
+    if (isSuccess) {
+      if (fromCart) {
         Get.find<CartController>().clearCartList();
       }
       setGuestAddress(null);
-      if(!Get.find<OrderController>().showBottomSheet){
+      if (!Get.find<OrderController>().showBottomSheet) {
         Get.find<OrderController>().showRunningOrders(canUpdate: false);
       }
-      if(isDmTipSave){
+      if (isDmTipSave) {
         saveSharedPrefDmTipIndex(selectedTips.toString());
       }
       stopLoader(canUpdate: false);
       HomeScreen.loadData(true);
-      if(paymentMethodIndex == 2) {
-        if(GetPlatform.isWeb) {
+      if (paymentMethodIndex == 2) {
+        if (GetPlatform.isWeb) {
           // Get.back();
           await Get.find<AuthController>().saveGuestNumber(contactNumber ?? '');
           String? hostname = html.window.location.hostname;
           String protocol = html.window.location.protocol;
           String selectedUrl;
-          selectedUrl = '${AppConstants.baseUrl}/payment-mobile?order_id=$orderID&&customer_id=${Get.find<ProfileController>().userInfoModel?.id ?? (userID.isNotEmpty ? userID : AuthHelper.getGuestId())}'
+          selectedUrl =
+              '${AppConstants.baseUrl}/payment-mobile?order_id=$orderID&&customer_id=${Get.find<ProfileController>().userInfoModel?.id ?? (userID.isNotEmpty ? userID : AuthHelper.getGuestId())}'
               '&payment_method=$digitalPaymentName&payment_platform=web&&callback=$protocol//$hostname${RouteHelper.orderSuccess}?id=$orderID&status=';
 
-          html.window.open(selectedUrl,"_self");
-        } else{
-          Get.offNamed(RouteHelper.getPaymentRoute(
-            orderID, Get.find<ProfileController>().userInfoModel?.id ?? (userID.isNotEmpty ? int.parse(userID) : 0), orderType, amount,
-            isCashOnDeliveryActive, digitalPaymentName, guestId: userID.isNotEmpty ? userID : AuthHelper.getGuestId(),
-            contactNumber: contactNumber, createAccount: _isCreateAccount,
-          ));
+          html.window.open(selectedUrl, "_self");
+        } else {
+          Get.offNamed(
+            RouteHelper.getPaymentRoute(
+              orderID,
+              Get.find<ProfileController>().userInfoModel?.id ??
+                  (userID.isNotEmpty ? int.parse(userID) : 0),
+              orderType,
+              amount,
+              isCashOnDeliveryActive,
+              digitalPaymentName,
+              guestId: userID.isNotEmpty ? userID : AuthHelper.getGuestId(),
+              contactNumber: contactNumber,
+              createAccount: _isCreateAccount,
+            ),
+          );
         }
       } else {
-        double total = ((amount / 100) * Get.find<SplashController>().configModel!.loyaltyPointItemPurchasePoint!);
-        if(AuthHelper.isLoggedIn()) {
+        double total =
+            ((amount / 100) *
+            Get.find<SplashController>()
+                .configModel!
+                .loyaltyPointItemPurchasePoint!);
+        if (AuthHelper.isLoggedIn()) {
           Get.find<AuthController>().saveEarningPoint(total.toStringAsFixed(0));
         }
-        if (ResponsiveHelper.isDesktop(Get.context) && AuthHelper.isLoggedIn()){
+        if (ResponsiveHelper.isDesktop(Get.context) &&
+            AuthHelper.isLoggedIn()) {
           Get.offNamed(RouteHelper.getInitialRoute());
-          Future.delayed(const Duration(seconds: 2) , () => Get.dialog(Center(child: SizedBox(height: 350, width : 500, child: OrderSuccessfulDialog(orderID: orderID)))));
+          Future.delayed(
+            const Duration(seconds: 2),
+            () => Get.dialog(
+              Center(
+                child: SizedBox(
+                  height: 350,
+                  width: 500,
+                  child: OrderSuccessfulDialog(orderID: orderID),
+                ),
+              ),
+            ),
+          );
         } else {
-          Get.offNamed(RouteHelper.getOrderSuccessRoute(orderID, contactNumber, createAccount: _isCreateAccount));
+          Get.offNamed(
+            RouteHelper.getOrderSuccessRoute(
+              orderID,
+              contactNumber,
+              createAccount: _isCreateAccount,
+            ),
+          );
         }
       }
       clearPrevData();
       _monthlySubscribe = false;
       Get.find<CouponController>().removeCouponData(false);
       updateTips(
-        getSharedPrefDmTipIndex().isNotEmpty ? int.parse(getSharedPrefDmTipIndex()) : PriceConverter.noTipIndex,
+        getSharedPrefDmTipIndex().isNotEmpty
+            ? int.parse(getSharedPrefDmTipIndex())
+            : PriceConverter.noTipIndex,
         notify: false,
       );
-    }else {
+    } else {
       showCustomSnackBar(message);
     }
   }
 
-  Future<void> paymentAfterDigitalCancel(PaymentModel paymentData, bool fromHome) async {
+  Future<void> paymentAfterDigitalCancel(
+    PaymentModel paymentData,
+    bool fromHome,
+  ) async {
     Get.find<SplashController>().togglePaymentIncompleteBottomSheet(false);
-    if(paymentMethodIndex == 0) {
-      bool isSuccess = await Get.find<OrderController>().switchToCOD(paymentData.orderID, guestId: paymentData.guestId);
-      if(isSuccess) {
+    if (paymentMethodIndex == 0) {
+      bool isSuccess = await Get.find<OrderController>().switchToCOD(
+        paymentData.orderID,
+        guestId: paymentData.guestId,
+      );
+      if (isSuccess) {
         _redirection(paymentData, fromHome);
       }
-    } else if(paymentMethodIndex == 1) {
+    } else if (paymentMethodIndex == 1) {
       debugPrint('------wallet selected');
-      bool isSuccess = await Get.find<OrderController>().switchToWalletPayment(paymentData.orderID);
-      if(isSuccess) {
+      bool isSuccess = await Get.find<OrderController>().switchToWalletPayment(
+        paymentData.orderID,
+      );
+      if (isSuccess) {
         _redirection(paymentData, fromHome);
       }
-    } else if(paymentMethodIndex == 2) {
-      if(GetPlatform.isWeb) {
+    } else if (paymentMethodIndex == 2) {
+      if (GetPlatform.isWeb) {
         String? hostname = html.window.location.hostname;
         String protocol = html.window.location.protocol;
         String selectedUrl;
-        selectedUrl = '${AppConstants.baseUrl}/payment-mobile?order_id=${paymentData.orderID}&&customer_id=${paymentData.userId ?? AuthHelper.getGuestId()}'
+        selectedUrl =
+            '${AppConstants.baseUrl}/payment-mobile?order_id=${paymentData.orderID}&&customer_id=${paymentData.userId ?? AuthHelper.getGuestId()}'
             '&payment_method=$digitalPaymentName&payment_platform=web&&callback=$protocol//$hostname${RouteHelper.orderSuccess}?id=${paymentData.orderID}&status=';
 
-        html.window.open(selectedUrl,"_self");
-      } else{
-        Get.offNamed(RouteHelper.getPaymentRoute(
-          paymentData.orderID!, Get.find<ProfileController>().userInfoModel?.id ?? 0, paymentData.orderType, paymentData.orderAmount!,
-          paymentData.isCashOnDeliveryActive, digitalPaymentName, guestId: AuthHelper.getGuestId(),
-          contactNumber: paymentData.contactNumber,
-        ));
+        html.window.open(selectedUrl, "_self");
+      } else {
+        Get.offNamed(
+          RouteHelper.getPaymentRoute(
+            paymentData.orderID!,
+            Get.find<ProfileController>().userInfoModel?.id ?? 0,
+            paymentData.orderType,
+            paymentData.orderAmount!,
+            paymentData.isCashOnDeliveryActive,
+            digitalPaymentName,
+            guestId: AuthHelper.getGuestId(),
+            contactNumber: paymentData.contactNumber,
+          ),
+        );
       }
-    } else if(paymentMethodIndex == 3) {
+    } else if (paymentMethodIndex == 3) {
       debugPrint('------offline selected');
-      if(Get.isBottomSheetOpen!) {
+      if (Get.isBottomSheetOpen!) {
         Get.back();
       }
-      Get.toNamed(RouteHelper.getOfflinePaymentScreen(
-        zoneId: paymentData.zoneId, total: paymentData.orderAmount!, orderId: paymentData.orderID!, contactNumber: paymentData.contactNumber??'',
-        maxCodOrderAmount: paymentData.maxCodOrderAmount, fromCart: false, isCodActive: paymentData.isCashOnDeliveryActive, forParcel: paymentData.orderType == 'parcel',
-      ));
+      Get.toNamed(
+        RouteHelper.getOfflinePaymentScreen(
+          zoneId: paymentData.zoneId,
+          total: paymentData.orderAmount!,
+          orderId: paymentData.orderID!,
+          contactNumber: paymentData.contactNumber ?? '',
+          maxCodOrderAmount: paymentData.maxCodOrderAmount,
+          fromCart: false,
+          isCodActive: paymentData.isCashOnDeliveryActive,
+          forParcel: paymentData.orderType == 'parcel',
+        ),
+      );
     }
     clearPrevData();
     Get.find<CouponController>().removeCouponData(false);
@@ -1279,21 +1738,43 @@ class CheckoutController extends GetxController implements GetxService {
 
   void _redirection(PaymentModel paymentData, bool fromHome) {
     Get.find<SplashController>().savePaymentIncompleteSheetStatus(false);
-    double total = ((paymentData.orderAmount! / 100) * Get.find<SplashController>().configModel!.loyaltyPointItemPurchasePoint!);
-    if(AuthHelper.isLoggedIn()) {
+    double total =
+        ((paymentData.orderAmount! / 100) *
+        Get.find<SplashController>()
+            .configModel!
+            .loyaltyPointItemPurchasePoint!);
+    if (AuthHelper.isLoggedIn()) {
       Get.find<AuthController>().saveEarningPoint(total.toStringAsFixed(0));
     }
-    if(Get.currentRoute.contains(RouteHelper.orderDetails)) {
+    if (Get.currentRoute.contains(RouteHelper.orderDetails)) {
       Get.back();
-    } else if (ResponsiveHelper.isDesktop(Get.context) && AuthHelper.isLoggedIn()){
-      if(fromHome && Get.isDialogOpen!) {
+    } else if (ResponsiveHelper.isDesktop(Get.context) &&
+        AuthHelper.isLoggedIn()) {
+      if (fromHome && Get.isDialogOpen!) {
         Get.back();
       } else {
         Get.offNamed(RouteHelper.getInitialRoute());
-        Future.delayed(const Duration(seconds: 2) , () => Get.dialog(Center(child: SizedBox(height: 350, width : 500, child: OrderSuccessfulDialog(orderID: paymentData.orderID)))));
+        Future.delayed(
+          const Duration(seconds: 2),
+          () => Get.dialog(
+            Center(
+              child: SizedBox(
+                height: 350,
+                width: 500,
+                child: OrderSuccessfulDialog(orderID: paymentData.orderID),
+              ),
+            ),
+          ),
+        );
       }
     } else {
-      Get.offNamed(RouteHelper.getOrderSuccessRoute(paymentData.orderID!, paymentData.contactNumber, createAccount: _isCreateAccount));
+      Get.offNamed(
+        RouteHelper.getOrderSuccessRoute(
+          paymentData.orderID!,
+          paymentData.contactNumber,
+          createAccount: _isCreateAccount,
+        ),
+      );
     }
   }
 
@@ -1309,56 +1790,72 @@ class CheckoutController extends GetxController implements GetxService {
 
   void updateDateSlot(int index, int? interval) {
     _selectedDateSlot = index;
-    if(_allTimeSlots != null) {
+    if (_allTimeSlots != null) {
       validateSlot(_allTimeSlots!, index, interval);
     }
     update();
   }
 
-  void validateSlot(List<TimeSlotModel> slots, int dateIndex, int? interval, {bool notify = true}) {
+  void validateSlot(
+    List<TimeSlotModel> slots,
+    int dateIndex,
+    int? interval, {
+    bool notify = true,
+  }) {
     _timeSlots = [];
     DateTime now = DateTime.now();
-    if(Get.find<SplashController>().configModel!.moduleConfig!.module!.orderPlaceToScheduleInterval!) {
+    if (Get.find<SplashController>()
+        .configModel!
+        .moduleConfig!
+        .module!
+        .orderPlaceToScheduleInterval!) {
       now = now.add(Duration(minutes: interval!));
     }
     int day = 0;
-    if(dateIndex == 0) {
+    if (dateIndex == 0) {
       day = DateTime.now().weekday;
-    }else {
+    } else {
       day = DateTime.now().add(const Duration(days: 1)).weekday;
     }
-    if(day == 7) {
+    if (day == 7) {
       day = 0;
     }
     for (var slot in slots) {
-      if (day == slot.day && (dateIndex == 0 ? slot.endTime!.isAfter(now) : true)) {
+      if (day == slot.day &&
+          (dateIndex == 0 ? slot.endTime!.isAfter(now) : true)) {
         _timeSlots!.add(slot);
       }
     }
-    if(notify) {
+    if (notify) {
       update();
     }
   }
 
-  void toggleCreateAccount({bool willUpdate = true}){
+  void toggleCreateAccount({bool willUpdate = true}) {
     _isCreateAccount = !_isCreateAccount;
-    if(willUpdate) {
+    if (willUpdate) {
       update();
     }
   }
 
   Future<void> getOrderTax(PlaceOrderBodyModel placeOrderBody) async {
     final int requestId = ++_taxRequestId;
-    Response response = await checkoutServiceInterface.getOrderTax(placeOrderBody);
+    Response response = await checkoutServiceInterface.getOrderTax(
+      placeOrderBody,
+    );
     // A newer tax request was fired while this one was in flight; discard this stale response.
-    if(requestId != _taxRequestId) return;
-    if(response.statusCode == 200) {
+    if (requestId != _taxRequestId) return;
+    if (response.statusCode == 200) {
       _isFirstTime = false;
-      _orderTax = double.tryParse(response.body['tax_amount'].toString()) ?? 0.0;
+      _orderTax =
+          double.tryParse(response.body['tax_amount'].toString()) ?? 0.0;
       _taxIncluded = response.body['tax_included'];
-    } else if(response.statusCode == 403 && response.body is Map && response.body['errors'] is List && response.body['errors'].isNotEmpty) {
+    } else if (response.statusCode == 403 &&
+        response.body is Map &&
+        response.body['errors'] is List &&
+        response.body['errors'].isNotEmpty) {
       final error = response.body['errors'][0];
-      if(error is Map && error['code'] == 'not_found') {
+      if (error is Map && error['code'] == 'not_found') {
         _isFirstTime = false;
         showCustomSnackBar('product_currently_unavailable'.tr);
       } else {
@@ -1372,31 +1869,50 @@ class CheckoutController extends GetxController implements GetxService {
     update();
   }
 
-  Future<void> getSurgePrice({required String zoneId, required String moduleId, required String dateTime, String? guestId}) async {
-    SurgePriceModel? surgePriceModel = await checkoutServiceInterface.getSurgePrice(zoneId: zoneId, moduleId: moduleId, dateTime: dateTime, guestId: guestId);
-    if(surgePriceModel != null) {
+  Future<void> getSurgePrice({
+    required String zoneId,
+    required String moduleId,
+    required String dateTime,
+    String? guestId,
+  }) async {
+    SurgePriceModel? surgePriceModel = await checkoutServiceInterface
+        .getSurgePrice(
+          zoneId: zoneId,
+          moduleId: moduleId,
+          dateTime: dateTime,
+          guestId: guestId,
+        );
+    if (surgePriceModel != null) {
       _surgePrice = surgePriceModel;
     }
     update();
   }
 
-  Future<void> insertAddresses(AddressModel? addressModel, {bool notify = false})async {
+  Future<void> insertAddresses(
+    AddressModel? addressModel, {
+    bool notify = false,
+  }) async {
     _address = addressModel;
 
     String phone = '';
     String name = '';
 
-    if(AuthHelper.isLoggedIn()) {
-      if(Get.find<ProfileController>().userInfoModel == null) {
+    if (AuthHelper.isLoggedIn()) {
+      if (Get.find<ProfileController>().userInfoModel == null) {
         await Get.find<ProfileController>().getUserInfo();
       }
       phone = Get.find<ProfileController>().userInfoModel!.phone ?? '';
-      name ='${Get.find<ProfileController>().userInfoModel!.fName ?? ''} ${Get.find<ProfileController>().userInfoModel!.lName ?? ''}';
+      name =
+          '${Get.find<ProfileController>().userInfoModel!.fName ?? ''} ${Get.find<ProfileController>().userInfoModel!.lName ?? ''}';
     }
 
     try {
-
-      String processPhone = (addressModel != null && addressModel.contactPersonNumber != null && addressModel.contactPersonNumber != 'null') ? addressModel.contactPersonNumber??'' : phone;
+      String processPhone =
+          (addressModel != null &&
+              addressModel.contactPersonNumber != null &&
+              addressModel.contactPersonNumber != 'null')
+          ? addressModel.contactPersonNumber ?? ''
+          : phone;
 
       PhoneNumber phoneNumber = PhoneNumber.parse(processPhone);
       countryDialCode = '+${phoneNumber.countryCode}';

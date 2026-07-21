@@ -7,12 +7,25 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:651856058825:android:3c266295f2cc9a0ab63018",
+        "mobilesdk_app_id": "1:651856058825:android:b04e1fad77c354f8b63018",
         "android_client_info": {
-          "package_name": "com.wekala.user"
+          "package_name": "com.wekala.delivery"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "651856058825-d6gb1v2ne6um30bkvmv01ab8avbimol2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wekala.delivery",
+            "certificate_hash": "99accf0b741a335bc9561ef170ad94d0fc73c0ed"
+          }
+        },
+        {
+          "client_id": "651856058825-tu0gghqlo1pq2ue1uoc6mgjeld8q9ikq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCAne474KbTww_03AJj-445nr0yQGOsxUk"
@@ -20,7 +33,107 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "651856058825-tu0gghqlo1pq2ue1uoc6mgjeld8q9ikq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "651856058825-6id3b46s1dp7hglbef6hn9jl1pd6s415.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.wekala.user"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:651856058825:android:3c266295f2cc9a0ab63018",
+        "android_client_info": {
+          "package_name": "com.wekala.user"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "651856058825-60hpl9bmmn6aboqm3u4ijjgespbj8qld.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wekala.user",
+            "certificate_hash": "99accf0b741a335bc9561ef170ad94d0fc73c0ed"
+          }
+        },
+        {
+          "client_id": "651856058825-tu0gghqlo1pq2ue1uoc6mgjeld8q9ikq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAne474KbTww_03AJj-445nr0yQGOsxUk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "651856058825-tu0gghqlo1pq2ue1uoc6mgjeld8q9ikq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "651856058825-6id3b46s1dp7hglbef6hn9jl1pd6s415.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.wekala.user"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:651856058825:android:4d26d888e9783accb63018",
+        "android_client_info": {
+          "package_name": "com.wekala.vendor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "651856058825-d16eikau1u24k9uqeugc22raqnh951s7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wekala.vendor",
+            "certificate_hash": "99accf0b741a335bc9561ef170ad94d0fc73c0ed"
+          }
+        },
+        {
+          "client_id": "651856058825-tu0gghqlo1pq2ue1uoc6mgjeld8q9ikq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAne474KbTww_03AJj-445nr0yQGOsxUk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "651856058825-tu0gghqlo1pq2ue1uoc6mgjeld8q9ikq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "651856058825-6id3b46s1dp7hglbef6hn9jl1pd6s415.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.wekala.user"
+              }
+            }
+          ]
         }
       }
     }

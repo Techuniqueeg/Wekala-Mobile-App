@@ -12,7 +12,7 @@ class AppConstants {
   static const int balanceInputLen = 10;
   static const String webHostedUrl = 'https://6ammart-react.6amtech.com';
   static const bool stopPolylineAnimation = false;
-  static const String googleServerClientId = '478237197563-6s8vi58eojhdu4lqbusm6lrcbse12kfa.apps.googleusercontent.com';
+  static const String googleServerClientId = '651856058825-tu0gghqlo1pq2ue1uoc6mgjeld8q9ikq.apps.googleusercontent.com';
   static const String pusherBroadcustUrl = '/api/v1/broadcasting/user-auth';
 
   static const String baseUrl = 'https://elwekalaa.com';

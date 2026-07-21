@@ -26,8 +26,20 @@ class PaymentWebViewScreen extends StatefulWidget {
   final bool? createAccount;
   final bool isProSubscription;
   final bool isRenew;
-  const PaymentWebViewScreen({super.key, required this.orderModel, required this.isCashOnDelivery, this.addFundUrl, required this.paymentMethod,
-    required this.guestId, required this.contactNumber, this.subscriptionUrl, this.storeId, this.createAccount = false, this.isProSubscription = false, this.isRenew = false});
+  const PaymentWebViewScreen({
+    super.key,
+    required this.orderModel,
+    required this.isCashOnDelivery,
+    this.addFundUrl,
+    required this.paymentMethod,
+    required this.guestId,
+    required this.contactNumber,
+    this.subscriptionUrl,
+    this.storeId,
+    this.createAccount = false,
+    this.isProSubscription = false,
+    this.isRenew = false,
+  });
 
   @override
   PaymentScreenState createState() => PaymentScreenState();
@@ -46,39 +58,63 @@ class PaymentScreenState extends State<PaymentWebViewScreen> {
   void initState() {
     super.initState();
 
-    if(widget.addFundUrl == '' && widget.addFundUrl!.isEmpty && widget.subscriptionUrl == '' && widget.subscriptionUrl!.isEmpty){
-      selectedUrl = '${AppConstants.baseUrl}/payment-mobile?customer_id=${widget.orderModel.userId == 0 ? widget.guestId : widget.orderModel.userId}&order_id=${widget.orderModel.id}&payment_method=${widget.paymentMethod}';
-    } else if(widget.subscriptionUrl != '' && widget.subscriptionUrl!.isNotEmpty){
+    final bool hasAddFundUrl =
+        widget.addFundUrl != null && widget.addFundUrl!.isNotEmpty;
+
+    final bool hasSubscriptionUrl =
+        widget.subscriptionUrl != null && widget.subscriptionUrl!.isNotEmpty;
+
+    if (!hasAddFundUrl && !hasSubscriptionUrl) {
+      selectedUrl =
+          '${AppConstants.baseUrl}/payment-mobile'
+          '?customer_id=${widget.orderModel.userId == 0 ? widget.guestId : widget.orderModel.userId}'
+          '&order_id=${widget.orderModel.id}'
+          '&payment_method=${widget.paymentMethod}';
+    } else if (hasSubscriptionUrl) {
       selectedUrl = widget.subscriptionUrl!;
-    } else{
+    } else {
       selectedUrl = widget.addFundUrl!;
     }
-
 
     _initData();
   }
 
   void _initData() async {
-    if(widget.addFundUrl == null  || (widget.addFundUrl != null && widget.addFundUrl!.isEmpty)){
-      for(ZoneData zData in AddressHelper.getUserAddressFromSharedPref()!.zoneData!) {
-        for(Modules m in zData.modules!) {
-          if(m.id == Get.find<SplashController>().module!.id) {
-            maximumCodOrderAmount = m.pivot!.maximumCodOrderAmount;
+    if (widget.addFundUrl?.isEmpty ?? true) {
+      final address = AddressHelper.getUserAddressFromSharedPref();
+      final moduleId = Get.find<SplashController>().module?.id;
+
+      for (ZoneData zData in address?.zoneData ?? []) {
+        for (Modules m in zData.modules ?? []) {
+          if (m.id == moduleId) {
+            maximumCodOrderAmount = m.pivot?.maximumCodOrderAmount;
             break;
           }
         }
       }
     }
 
-    pullToRefreshController = GetPlatform.isWeb || ![TargetPlatform.iOS, TargetPlatform.android].contains(defaultTargetPlatform) ? null : PullToRefreshController(
-      onRefresh: () async {
-        if (defaultTargetPlatform == TargetPlatform.android) {
-          webViewController?.reload();
-        } else if (defaultTargetPlatform == TargetPlatform.iOS || defaultTargetPlatform == TargetPlatform.macOS) {
-          webViewController?.loadUrl(urlRequest: URLRequest(url: await webViewController?.getUrl()));
-        }
-      },
-    );
+    pullToRefreshController =
+        GetPlatform.isWeb ||
+            ![
+              TargetPlatform.iOS,
+              TargetPlatform.android,
+            ].contains(defaultTargetPlatform)
+        ? null
+        : PullToRefreshController(
+            onRefresh: () async {
+              if (defaultTargetPlatform == TargetPlatform.android) {
+                webViewController?.reload();
+              } else if (defaultTargetPlatform == TargetPlatform.iOS ||
+                  defaultTargetPlatform == TargetPlatform.macOS) {
+                webViewController?.loadUrl(
+                  urlRequest: URLRequest(
+                    url: await webViewController?.getUrl(),
+                  ),
+                );
+              }
+            },
+          );
   }
 
   @override
@@ -90,7 +126,11 @@ class PaymentScreenState extends State<PaymentWebViewScreen> {
       },
       child: Scaffold(
         backgroundColor: Theme.of(context).cardColor,
-        appBar: CustomAppBar(title: '', onBackPressed: () => _exitApp(), backButton: true),
+        appBar: CustomAppBar(
+          title: '',
+          onBackPressed: () => _exitApp(),
+          backButton: true,
+        ),
         body: Stack(
           children: [
             InAppWebView(
@@ -110,10 +150,18 @@ class PaymentScreenState extends State<PaymentWebViewScreen> {
               },
               onLoadStart: (controller, url) async {
                 Get.find<OrderController>().paymentRedirect(
-                  url: url.toString(), canRedirect: _canRedirect, onClose: (){} ,
-                  addFundUrl: widget.addFundUrl, orderID: widget.orderModel.id.toString(), contactNumber: widget.contactNumber,
-                  subscriptionUrl: widget.subscriptionUrl, storeId: widget.storeId, createAccount: widget.createAccount!,
-                  guestId: widget.guestId, isProSubscription: widget.isProSubscription, isRenew: widget.isRenew,
+                  url: url.toString(),
+                  canRedirect: _canRedirect,
+                  onClose: () {},
+                  addFundUrl: widget.addFundUrl,
+                  orderID: widget.orderModel.id.toString(),
+                  contactNumber: widget.contactNumber,
+                  subscriptionUrl: widget.subscriptionUrl,
+                  storeId: widget.storeId,
+                  createAccount: widget.createAccount!,
+                  guestId: widget.guestId,
+                  isProSubscription: widget.isProSubscription,
+                  isRenew: widget.isRenew,
                 );
                 setState(() {
                   _isLoading = true;
@@ -121,7 +169,15 @@ class PaymentScreenState extends State<PaymentWebViewScreen> {
               },
               shouldOverrideUrlLoading: (controller, navigationAction) async {
                 Uri uri = navigationAction.request.url!;
-                if (!["http", "https", "file", "chrome", "data", "javascript", "about"].contains(uri.scheme)) {
+                if (![
+                  "http",
+                  "https",
+                  "file",
+                  "chrome",
+                  "data",
+                  "javascript",
+                  "about",
+                ].contains(uri.scheme)) {
                   launchUrl(uri, mode: LaunchMode.externalApplication);
                   return NavigationActionPolicy.CANCEL;
                 }
@@ -133,10 +189,18 @@ class PaymentScreenState extends State<PaymentWebViewScreen> {
                   _isLoading = false;
                 });
                 Get.find<OrderController>().paymentRedirect(
-                  url: url.toString(), canRedirect: _canRedirect, onClose: (){} ,
-                  addFundUrl: widget.addFundUrl, orderID: widget.orderModel.id.toString(), contactNumber: widget.contactNumber,
-                  subscriptionUrl: widget.subscriptionUrl, storeId: widget.storeId, createAccount: widget.createAccount!,
-                  guestId: widget.guestId, isProSubscription: widget.isProSubscription, isRenew: widget.isRenew,
+                  url: url.toString(),
+                  canRedirect: _canRedirect,
+                  onClose: () {},
+                  addFundUrl: widget.addFundUrl,
+                  orderID: widget.orderModel.id.toString(),
+                  contactNumber: widget.contactNumber,
+                  subscriptionUrl: widget.subscriptionUrl,
+                  storeId: widget.storeId,
+                  createAccount: widget.createAccount!,
+                  guestId: widget.guestId,
+                  isProSubscription: widget.isProSubscription,
+                  isRenew: widget.isRenew,
                 );
                 // _redirect(url.toString());
               },
@@ -152,29 +216,46 @@ class PaymentScreenState extends State<PaymentWebViewScreen> {
                 debugPrint(consoleMessage.message);
               },
             ),
-            _isLoading ? Center(
-              child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).primaryColor)),
-            ) : const SizedBox.shrink(),
+            _isLoading
+                ? Center(
+                    child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                        Theme.of(context).primaryColor,
+                      ),
+                    ),
+                  )
+                : const SizedBox.shrink(),
           ],
         ),
       ),
     );
   }
 
-  Future<bool?> _exitApp() async {
-    if((widget.addFundUrl == null  || (widget.addFundUrl != null && widget.addFundUrl!.isEmpty)) || !Get.find<SplashController>().configModel!.digitalPaymentInfo!.pluginPaymentGateways!){
-      return Get.dialog(PaymentFailedDialog(
+Future<bool?> _exitApp() async {
+  final hasAddFundUrl = widget.addFundUrl?.isNotEmpty ?? false;
+
+  final pluginPaymentGateways =
+      Get.find<SplashController>()
+          .configModel
+          ?.digitalPaymentInfo
+          ?.pluginPaymentGateways ?? false;
+
+  if (!hasAddFundUrl || !pluginPaymentGateways) {
+    return Get.dialog(
+      PaymentFailedDialog(
         orderID: widget.orderModel.id.toString(),
         orderAmount: widget.orderModel.orderAmount,
         maxCodOrderAmount: maximumCodOrderAmount,
         orderType: widget.orderModel.orderType,
         isCashOnDelivery: widget.isCashOnDelivery,
         guestId: widget.guestId,
-      ));
-    }else{
-      return Get.dialog(FundPaymentDialogWidget(isSubscription: widget.subscriptionUrl != null && widget.subscriptionUrl!.isNotEmpty));
-    }
-
+      ),
+    );
   }
 
-}
+  return Get.dialog(
+    FundPaymentDialogWidget(
+      isSubscription: widget.subscriptionUrl?.isNotEmpty ?? false,
+    ),
+  );
+}}

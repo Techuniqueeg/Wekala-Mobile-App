@@ -216,7 +216,9 @@ class DashboardScreenState extends State<DashboardScreen> {
   @override
   void dispose() {
     _secondaryAnimation?.removeListener(_onCoverChanged);
-    HomeStatusBarTint.active.value = false;
+    Future.microtask(() {
+      HomeStatusBarTint.active.value = false;
+    });
     _pageController?.dispose();
     super.dispose();
   }
